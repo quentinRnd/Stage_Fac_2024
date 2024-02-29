@@ -2,6 +2,8 @@ from pycsp3 import *
 import numpy as np
 import pandas as pd
 
+import json
+
 #durée maximal de la visite peut être aussi vu comme une heure de fin
 max_tiempo=2000
 
@@ -198,25 +200,37 @@ maximize(Sum(y[i]*score_pdi[i] for i in parcours_pdi))
 
 if solve(sols=ALL) is SAT :
     print(f"Nombre de solutions: {n_solutions()}" )
-    print(f"Solution ")
-    print("X->")
-
-    fichier = open("solution.txt", "w")
-    chaine=""
+    
+    fichier = open("solution.json", "w")
+    
+    #tableau qui compile toute les valeurs résultat trouvé
+    tab_res=[]
+    
     for numero_solution in range(n_solutions()):
-        chaine+=(f"\nNumero Solution {numero_solution}\n")
+        #valeur des arcs relier entre les pdi 
         arc_res=values(x, sol=numero_solution)
+
+        #valeur des pdi present dans la solution
         pdi_present=values(y, sol=numero_solution)
-        chaine+=f"x\n"
-        for i in range(len(arc_res)):
-            for j in range(len(arc_res[i])):
-                if arc_res[i,j]==1:
-                    chaine+=(f"{i},{j}\n")
-        chaine+=f"y\n"
-        for i in range(len(pdi_present)):
-            if(pdi_present[i]==1):
-                chaine+=(f"{i} |")
-    fichier.write(chaine)
+
+        #valeur des départ des visite des pdi 
+        start_pdi=values(s, sol=numero_solution)
+        tab_res.append([arc_res,pdi_present,start_pdi])
+    
+    json_data=json.dumps(tab_res, indent=3)
+    
+    fichier.write(json_data)
+    sol=0
+    for ligne in tab_res:
+        arc=ligne[0]
+        print(f"solution {sol}")
+        for i in range(len(arc)):
+            for j in range(len(arc[i])):
+                if(arc[i,j]==1):
+                    print(i,j)
+        sol+=1
+        
+
     fichier.close()
 else:
     print("il n'y a pas de solutions")
