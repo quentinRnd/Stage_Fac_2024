@@ -203,8 +203,11 @@ Fonction objectif
 #fonction objectif qui maximise la satisfaction utilisateur.ice
 maximize(Sum(y[i]*score_pdi[i] for i in parcours_pdi))
 
+#timout pour le solver
+solver_timeout_seconds=3600
+
 repertoire_solution="solution"
-resultat_recherche=solve(sols=ALL,verbose=0)
+resultat_recherche=solve(sols=ALL,verbose=0,options=f"-t={solver_timeout_seconds}s")
 if resultat_recherche is SAT or resultat_recherche is OPTIMUM is not UNSAT:
     print(f"Nombre de solutions: {n_solutions()}" )
     
