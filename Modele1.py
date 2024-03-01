@@ -201,10 +201,10 @@ satisfy(disjunction(conjunction(y[i],s[i]>=0),conjunction(y[i]==0,s[i]==0)))
 Fonction objectif
 """
 #fonction objectif qui maximise la satisfaction utilisateur.ice
-#maximize(Sum(y[i]*score_pdi[i] for i in parcours_pdi))
+maximize(Sum(y[i]*score_pdi[i] for i in parcours_pdi))
 
 repertoire_solution="solution"
-resultat_recherche=solve(sols=100)
+resultat_recherche=solve(sols=ALL,verbose=0)
 if resultat_recherche is SAT or resultat_recherche is OPTIMUM is not UNSAT:
     print(f"Nombre de solutions: {n_solutions()}" )
     

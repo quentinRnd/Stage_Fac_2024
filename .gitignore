@@ -161,6 +161,6 @@ cython_debug/
 
 *.log
 *.xml
-*.json
+solution/*.json
 instance_solve/*
 note.md
