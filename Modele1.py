@@ -190,15 +190,19 @@ Contrainte 13
 
 satisfy(disjunction(conjunction(y[i]==1,Maximum(x[i,:])==1),conjunction(y[i]==1,Maximum(x[:,i])==1),y[i]==0) for i in parcours_pdi)
 
+"""
+Contrainte 14
+"""
+satisfy(disjunction(conjunction(y[i],s[i]>=0),conjunction(y[i]==0,s[i]==0)))
 
 """
 Fonction objectif
 """
+#fonction objectif qui maximise la satisfaction utilisateur.ice
 maximize(Sum(y[i]*score_pdi[i] for i in parcours_pdi))
-#maximize(Sum(x[i,j] for i in parcours_pdi for j in parcours_pdi))
 
 
-if solve(sols=ALL) is SAT :
+if solve(sols=ALL) is SAT or OPTIMUM:
     print(f"Nombre de solutions: {n_solutions()}" )
     
     fichier = open("solution.json", "w")
