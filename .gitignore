@@ -159,8 +159,8 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-solution.txt
-
 *.log
 *.xml
 *.json
+instance_solve/*
+note.md

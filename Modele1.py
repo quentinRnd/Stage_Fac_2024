@@ -8,16 +8,19 @@ import json
 max_tiempo=2000
 
 #catégorie de point d'interet permise dans la selection 
+#catégorie pour l'instance 14
 categorie_permise = [1,2,3]
 
 #nom de l'instance utiliser pour trouver des solutions
-nom_instance="Instancia14.csv"
+nom_instance="Instancia14"
+#extension de fichier utiliser pour l'instance
+extension_instance=".csv"
 
 #nom du répertoire ou sont les instances
 nom_repertoire_instance="Instancias"
 
 #dataFrame contenant l'instance 
-df=pd.read_csv(nom_repertoire_instance+"/"+nom_instance,sep=";")
+df=pd.read_csv(nom_repertoire_instance+"/"+nom_instance+extension_instance,sep=";")
 
 """
 Contrainte 6
@@ -109,8 +112,7 @@ for i in categorie_df:
 
 
 dossier_save_def="instance_solve"
-name_instance="instance14"
-df.to_csv(dossier_save_def+"/"+name_instance+".csv")
+df.to_csv(dossier_save_def+"/"+nom_instance+extension_instance)
 
 """
 Pour les explications des contraintes voir le rapport 
@@ -199,13 +201,14 @@ satisfy(disjunction(conjunction(y[i],s[i]>=0),conjunction(y[i]==0,s[i]==0)))
 Fonction objectif
 """
 #fonction objectif qui maximise la satisfaction utilisateur.ice
-maximize(Sum(y[i]*score_pdi[i] for i in parcours_pdi))
+#maximize(Sum(y[i]*score_pdi[i] for i in parcours_pdi))
 
-
-if solve(sols=ALL) is SAT or OPTIMUM:
+repertoire_solution="solution"
+resultat_recherche=solve(sols=100)
+if resultat_recherche is SAT or resultat_recherche is OPTIMUM is not UNSAT:
     print(f"Nombre de solutions: {n_solutions()}" )
     
-    fichier = open("solution.json", "w")
+    fichier = open(f"{repertoire_solution}/solution_{nom_instance}.json", "w")
     
     #tableau qui compile toute les valeurs résultat trouvé
     tab_res=[]
