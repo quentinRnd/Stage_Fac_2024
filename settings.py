@@ -1,0 +1,5 @@
+verbose_key="verbose"
+instance_repertory_key="nom_repertoire_instance"
+timeout_solver_key="timout_solver"
+nombre_solution_key="nombre_solution"
+repertoire_solution_key="repertoire_solution"

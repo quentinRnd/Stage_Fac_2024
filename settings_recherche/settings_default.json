@@ -1,0 +1,7 @@
+{   
+    "verbose":-1
+    ,"nom_repertoire_instance":"Instancias"
+    ,"timout_solver":7200
+    ,"nombre_solution":"ALL"
+    ,"repertoire_solution":"solution"
+}
