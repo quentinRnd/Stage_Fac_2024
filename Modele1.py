@@ -122,9 +122,6 @@ def modele1(nom_instance,solver_verbose,instance_repertory,timeout_solver,nombre
         valeur_ajout=100000000
         depense_max_categorie[i]=valeur_ajout
 
-    dossier_save_def="instance_solve"
-    df.to_csv(dossier_save_def+"/"+nom_instance+extension_instance)
-
     """
     Pour les explications des contraintes voir le rapport 
     """
@@ -268,13 +265,20 @@ if __name__ == "__main__":
     with open(f"{dossier_settings_json}/{fichier_settings_json}") as settings_json:
         #objet json qui contient les settings de la recherche
         settings = json.load(settings_json)
+        #niveau de verbose que l'on autorise au solver
         niveau_verbose=settings[verbose_key]
+        #repertoire ou on trouve les instance csv
         instance_repertory=settings[instance_repertory_key]
+        #timout du solver 
         timeout_solver=settings[timeout_solver_key]
+        #nombre de solution que le solver va chercher 
         nombre_solution=settings[nombre_solution_key]
         if(nombre_solution=="ALL"):
             nombre_solution=ALL
         repertoire_solution=settings[repertoire_solution_key]
+
+        if not os.path.exists(repertoire_solution): 
+            os.makedirs(repertoire_solution) 
 
         #recupere toute les instance du dossier des instances
         instances=os.listdir(instance_repertory)
