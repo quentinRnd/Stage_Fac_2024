@@ -164,3 +164,4 @@ cython_debug/
 solution/*.json
 instance_solve/*
 note.md
+*.html

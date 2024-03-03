@@ -9,10 +9,16 @@ from settings import *
 
 #nom du répertoire ou sont les instances
 
-def modele1(nom_instance,solver_verbose,instance_repertory,timeout_solver,nombre_solution):
+def modele1(nom_instance
+            ,solver_verbose
+            ,instance_repertory
+            ,timeout_solver
+            ,nombre_solution
+            ,fonction_objectif
+            ,timeout_activer
+):
     print(f"solving {nom_instance}")
-    #durée maximal de la visite peut être aussi vu comme une heure de fin
-    max_tiempo=2000
+    
 
     #catégorie de point d'interet permise dans la selection 
     #catégorie pour l'instance 14
@@ -67,12 +73,15 @@ def modele1(nom_instance,solver_verbose,instance_repertory,timeout_solver,nombre
 
     #distance entre tout les point d'intérêt
     distance = {(i, j): round(np.hypot(loc_x[i]-loc_x[j], loc_y[i]-loc_y[j])) for i, j in arc}
-
+    
     #durée de la visite des points d'intérêt
     t = df['duracion_k'].values.tolist()
+     
 
+    #temps de visite max allouer a la somme des temps de visite des points d'intérêt
+    Temps_max_visite=3000
     #tableau ayant pour donnée les heure de depart de chaque viste de chaque point d'intérêt
-    s = VarArray(size=N,dom=range(0,max_tiempo+1))
+    s = VarArray(size=N,dom=range(-1,Temps_max_visite+1))
 
     #tableau permettant de savoir si un point d'interêt est chosi dans le chemin 
     y = VarArray(size=N, dom=(0,1))
@@ -80,15 +89,14 @@ def modele1(nom_instance,solver_verbose,instance_repertory,timeout_solver,nombre
     #variable qui me sert a pas me tromper dans le parcours de mes pdi
     parcours_pdi=range(0, N)
     #Capacité max autoriser par l'utilisateur.ice
-    capacite_max = 70
+    capacite_max = 500
     #capacitée de chaque point d'intérêt
     capacite= df['capacidad'].values.astype(int).tolist()
 
     #catégorie des point d'intérêt
     categorie=df['categoria'].tolist()
 
-    #temps de visite max allouer a la somme des temps de visite des points d'intérêt
-    Temps_max_visite=3000
+
 
     #distance minimum a parcourir
     d_min = 10
@@ -129,13 +137,15 @@ def modele1(nom_instance,solver_verbose,instance_repertory,timeout_solver,nombre
     """
     Contrainte 1
     """
-    satisfy(Sum (x[:, i]) <2 for i in parcours_pdi)
-    satisfy(Sum (x[i, :]) <2 for i in parcours_pdi)
+    #attention le nombre de passage est en -1 a cause du < 
+    nombre_passage_max=2
+    satisfy(Sum (x[:, i]) <nombre_passage_max for i in parcours_pdi)
+    satisfy(Sum (x[i, :]) <nombre_passage_max for i in parcours_pdi)
     """
     Contrainte 2
     """
-    satisfy( disjunction((s[i]+t[i]+distance[i,j]-s[j]<=0) , (1-x[i][j]))  for i in parcours_pdi for j in parcours_pdi if i!=j )
-
+    #satisfy( disjunction((s[i]+t[i]+distance[i,j]<=s[j]) , (x[i][j]==0))  for i in parcours_pdi for j in parcours_pdi if i!=j )
+    satisfy( disjunction(((s[i]+t[i]+distance[i,j])<s[j]) , (x[i][j]==0))  for i in parcours_pdi for j in parcours_pdi if i!=j )
 
     """
     Contrainte 3
@@ -177,7 +187,7 @@ def modele1(nom_instance,solver_verbose,instance_repertory,timeout_solver,nombre
     min_point_par_jour = 3
 
     satisfy(Sum(y[i] for i in parcours_pdi)>min_point_par_jour)
-    satisfy(Sum(y[i] for i in parcours_pdi)>max_point_par_jour)
+    satisfy(Sum(y[i] for i in parcours_pdi)<max_point_par_jour)
 
     """
     Contrainte 11
@@ -205,19 +215,36 @@ def modele1(nom_instance,solver_verbose,instance_repertory,timeout_solver,nombre
     """
     Contrainte 14
     """
-    satisfy(disjunction(conjunction(y[i],s[i]>=0),conjunction(y[i]==0,s[i]==0)))
+    satisfy(disjunction(conjunction(y[i],s[i]>=0),conjunction(y[i]==0,s[i]==-1)))
 
+    """
+    Contrainte 15
+    elle marche pas elle contraint juste faut voir pk mais a fixe
+    """
+    #V1
+    #satisfy(disjunction(disjunction(conjunction(x[i,j]==1,x[j,k]==1) for i in parcours_pdi  for k in parcours_pdi),y[j]==0)for j in parcours_pdi)
+    #V2
+    #satisfy(disjunction( (x[i,j]==1)==0,x[j,k]==1)for i in parcours_pdi for j in parcours_pdi for k in parcours_pdi)
+    #V3
+    satisfy(disjunction(y[i]==0,s[i]==Minimum(s),s[i]==Maximum(s),conjunction(Maximum(x[i,:])==1,Maximum(x[:,i])==1))for i in parcours_pdi)
+    """
+    Contrainte 16
+    """
+    satisfy(disjunction(s[i]!=s[j],conjunction(y[i]==0,y[j]==0)) for i in parcours_pdi for j in parcours_pdi if i!=j)
     """
     Fonction objectif
     """
     #fonction objectif qui maximise la satisfaction utilisateur.ice
-    maximize(Sum(y[i]*score_pdi[i] for i in parcours_pdi))
-
+    match(fonction_objectif):
+        case False:
+            pass
+        case True:
+            maximize(Sum(y[i]*score_pdi[i] for i in parcours_pdi))
     #timout pour le solver
     solver_timeout_seconds=timeout_solver
 
     repertoire_solution="solution"
-    resultat_recherche=solve(sols=nombre_solution,verbose=solver_verbose,options=f"-t={solver_timeout_seconds}s")
+    resultat_recherche=solve(sols=nombre_solution,verbose=solver_verbose,options=f"-t={solver_timeout_seconds}s" if timeout_activer else "")
     print(resultat_recherche)
     
     #tableau qui compile toute les valeurs résultat trouvé
@@ -226,9 +253,6 @@ def modele1(nom_instance,solver_verbose,instance_repertory,timeout_solver,nombre
 
     if resultat_recherche is SAT or resultat_recherche is OPTIMUM is not UNSAT:
         print(f"Nombre de solutions: {n_solutions()} pour l'instance {nom_instance}" )
-
-    
-        
 
         for numero_solution in range(n_solutions()):
             #valeur des arcs relier entre les pdi 
@@ -239,13 +263,24 @@ def modele1(nom_instance,solver_verbose,instance_repertory,timeout_solver,nombre
 
             #valeur des départ des visite des pdi 
             start_pdi=values(s, sol=numero_solution)
-            tab_res.append([arc_res,pdi_present,start_pdi])
+            tab_res.append({Arc_key:arc_res,Presence_pdi_key:pdi_present,Start_pdi_key:start_pdi})
 
 
     else:
         print(f"il n'y a pas de solutions pour l'instance {instance}")
-
-    data={"Status":{"Fin_recherche":resultat_recherche.__str__(),"Optimum":resultat_recherche is OPTIMUM},"Solutions":tab_res}
+    #objet qui contient toutes les donnée sur la recherche
+    data={
+            Status_key:
+                    {
+                        Fin_recherche_key:resultat_recherche.__str__()
+                        ,Optimum_key:resultat_recherche is OPTIMUM
+                    }
+            ,Solutions_key:tab_res
+            ,Coordonee_pdi_x_key:loc_x
+            ,Coordonee_pdi_y_key:loc_y
+            ,Temps_visite_key:t
+            ,Score_pdi_key:score_pdi
+        }
     json_data=json.dumps(data, indent=3)
     
     fichier.write(json_data)
@@ -276,6 +311,10 @@ if __name__ == "__main__":
         if(nombre_solution=="ALL"):
             nombre_solution=ALL
         repertoire_solution=settings[repertoire_solution_key]
+        fonction_objectif=settings[fonction_objectif_key]
+
+        #timeout activer 
+        timeout_activer=settings[timeout_actif_key] 
 
         if not os.path.exists(repertoire_solution): 
             os.makedirs(repertoire_solution) 
@@ -285,10 +324,13 @@ if __name__ == "__main__":
         pattern=r'\w+'
         #permet de récuperer uniquement les nom des fichier 
         instances=sorted([re.findall(pattern, i)[0] for i in instances])
+        #instances=["Instanciapetite"]
         for instance in instances:
             modele1(instance
                     ,solver_verbose=niveau_verbose
                     ,instance_repertory=instance_repertory
                     ,timeout_solver=timeout_solver
                     ,nombre_solution=nombre_solution
+                    ,fonction_objectif=fonction_objectif
+                    ,timeout_activer=timeout_activer
             )

@@ -1,7 +1,9 @@
 {   
-    "verbose":-1
+    "verbose":0
     ,"nom_repertoire_instance":"Instancias"
     ,"timout_solver":7200
+    ,"timeout_actif":false
     ,"nombre_solution":"ALL"
     ,"repertoire_solution":"solution"
+    ,"fonction_objectif":true
 }
