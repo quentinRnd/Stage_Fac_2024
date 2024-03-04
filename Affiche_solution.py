@@ -11,7 +11,8 @@ class affiche_solution:
     def affiche_fichier(repertoire_fichier,nom_fichier):
         with open(f"{repertoire_fichier}/{nom_fichier}.json") as solution_json:
             solution = json.load(solution_json)
-            nom_dossier_repre=f"repre_{nom_fichier}"
+            representation_solution_repertoire="representation"
+            nom_dossier_repre=f"{representation_solution_repertoire}/repre_{nom_fichier}"
             shutil.rmtree(nom_dossier_repre,ignore_errors=True)
             os.makedirs(nom_dossier_repre)
             Status=solution[Status_key]
@@ -22,7 +23,7 @@ class affiche_solution:
             for soluce in Solutions:
                 g = Network(height="1000px", width="100%", bgcolor="white", font_color="black")
                 g.add_nodes([i  for i in range(len(soluce[Presence_pdi_key]))],
-                         #title=['I am node 1', 'node 2 here', 'and im node 3'],
+                         title=[f"temps de départ : {soluce[Start_pdi_key][i]}" for i in range(len(soluce[Presence_pdi_key]))],
                          x=solution[Coordonee_pdi_x_key],
                          y=solution[Coordonee_pdi_y_key],
                          label=[f"PDI : {i}"  for i in range(len(soluce[Presence_pdi_key]))],
@@ -35,9 +36,9 @@ class affiche_solution:
 
                 nom_graphe=f"{nom_dossier_repre}/visualisation_{nom_fichier}_solution_{num_sol}.html"
                 #g.generate_html(name=f"{nom_dossier_repre}/visualisation_{nom_fichier}.html")
+                g.toggle_physics(False)
                 g.save_graph(nom_graphe)
                 num_sol+=1
-                exit(1)
 
 
         

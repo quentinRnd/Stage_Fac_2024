@@ -16,6 +16,7 @@ def modele1(nom_instance
             ,nombre_solution
             ,fonction_objectif
             ,timeout_activer
+            ,solver
 ):
     print(f"solving {nom_instance}")
     
@@ -244,7 +245,19 @@ def modele1(nom_instance
     solver_timeout_seconds=timeout_solver
 
     repertoire_solution="solution"
-    resultat_recherche=solve(sols=nombre_solution,verbose=solver_verbose,options=f"-t={solver_timeout_seconds}s" if timeout_activer else "")
+
+    match(solver):
+        case "ACE":
+            solver=ACE
+        case "CHOCO":
+            solver=CHOCO
+        case other:
+            solver=ACE
+    
+    resultat_recherche=solve(solver=solver 
+                            ,sols=nombre_solution
+                            ,verbose=solver_verbose
+                            ,options=f"-t={solver_timeout_seconds}s" if timeout_activer else "")
     print(resultat_recherche)
     
     #tableau qui compile toute les valeurs résultat trouvé
@@ -312,7 +325,7 @@ if __name__ == "__main__":
             nombre_solution=ALL
         repertoire_solution=settings[repertoire_solution_key]
         fonction_objectif=settings[fonction_objectif_key]
-
+        solver=settings[solver_key]
         #timeout activer 
         timeout_activer=settings[timeout_actif_key] 
 
@@ -333,4 +346,5 @@ if __name__ == "__main__":
                     ,nombre_solution=nombre_solution
                     ,fonction_objectif=fonction_objectif
                     ,timeout_activer=timeout_activer
+                    ,solver=solver
             )

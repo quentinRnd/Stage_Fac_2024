@@ -6,4 +6,5 @@
     ,"nombre_solution":"ALL"
     ,"repertoire_solution":"solution"
     ,"fonction_objectif":true
+    ,"solver":"ACE"
 }

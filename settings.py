@@ -16,6 +16,8 @@ repertoire_solution_key="repertoire_solution"
 fonction_objectif_key="fonction_objectif"
 #permet de desactiver/activer le timeout de la recherche
 timeout_actif_key="timeout_actif"
+#cle pour choisir quelle solveur on utilise lors de la recherche
+solver_key="solver"
 
 """
 Key pour les solution json
