@@ -4,8 +4,13 @@ import pandas as pd
 import os 
 import json
 import re
+import getopt
 
 from settings import *
+
+#retourne l'emplacement du fichier rechercher
+def nom_fichier(instance_repertory,nom_instance,extension_instance):
+    return instance_repertory+"/"+nom_instance+extension_instance
 
 #nom du répertoire ou sont les instances
 
@@ -17,6 +22,7 @@ def modele1(nom_instance
             ,fonction_objectif
             ,timeout_activer
             ,solver
+            ,extension_instance
 ):
     print(f"solving {nom_instance}")
     
@@ -26,13 +32,8 @@ def modele1(nom_instance
     #categorie_permise = [1,2,3]
     categorie_permise= [i for i in range (1000)]
 
-    #extension de fichier utiliser pour l'instance
-    extension_instance=".csv"
-
-
-
     #dataFrame contenant l'instance 
-    df=pd.read_csv(instance_repertory+"/"+nom_instance+extension_instance,sep=";")
+    df=pd.read_csv(nom_fichier(instance_repertory=instance_repertory,extension_instance=extension_instance,nom_instance=nom_instance),sep=";")
 
     """
     Contrainte 6
@@ -328,6 +329,23 @@ if __name__ == "__main__":
         solver=settings[solver_key]
         #timeout activer 
         timeout_activer=settings[timeout_actif_key] 
+        #extension pour les instances csv
+        extension_instance=settings[extension_instance_key]
+
+        
+
+        options, arguments = getopt.getopt(
+            sys.argv[1:],                      # Arguments
+            f"{key_file_include[key_short_arg]}:",                            # Short option definitions
+            [key_file_include[key_long_arg]]   # Long option definitions
+        )
+
+        file_a_traiter=""
+        print(options)
+        for o, a in options:
+            if o in ["-"+key_file_include[key_short_arg],"-"+key_file_include[key_long_arg]]:
+                #fichier que j'ai passer en paramètre de mon programme
+                file_a_traiter=a
 
         if not os.path.exists(repertoire_solution): 
             os.makedirs(repertoire_solution) 
@@ -337,7 +355,24 @@ if __name__ == "__main__":
         pattern=r'\w+'
         #permet de récuperer uniquement les nom des fichier 
         instances=sorted([re.findall(pattern, i)[0] for i in instances])
-        #instances=["Instanciapetite"]
+        
+        if(file_a_traiter!=""):
+            if(os.path.exists(nom_fichier
+                                        (
+                                            extension_instance=extension_instance
+                                            ,instance_repertory=instance_repertory
+                                            ,nom_instance=file_a_traiter
+                                        )
+                             )
+              ):
+                instances=[file_a_traiter]
+            else:
+                #sort du programme parce que le fichier est instrouvable
+                print("file {file_a_traiter} does not exists")
+                
+                exit(0)
+        
+        #instances=["Instanciamoyenne"]
         for instance in instances:
             modele1(instance
                     ,solver_verbose=niveau_verbose
@@ -347,4 +382,5 @@ if __name__ == "__main__":
                     ,fonction_objectif=fonction_objectif
                     ,timeout_activer=timeout_activer
                     ,solver=solver
+                    ,extension_instance=extension_instance
             )

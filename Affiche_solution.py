@@ -10,24 +10,43 @@ from pyvis.network import Network
 class affiche_solution:
     def affiche_fichier(repertoire_fichier,nom_fichier):
         with open(f"{repertoire_fichier}/{nom_fichier}.json") as solution_json:
+            
             solution = json.load(solution_json)
+            
             representation_solution_repertoire="representation"
             nom_dossier_repre=f"{representation_solution_repertoire}/repre_{nom_fichier}"
             shutil.rmtree(nom_dossier_repre,ignore_errors=True)
             os.makedirs(nom_dossier_repre)
             Status=solution[Status_key]
+            
             #tableau contenant mes solutions
             Solutions=solution[Solutions_key]
+            if(len(Solutions)<=0):
+                return 
 
             num_sol=0
-            for soluce in Solutions:
+            Solutions_choisi=[Solutions[len(Solutions)-1]]
+            for soluce in Solutions_choisi:
                 g = Network(height="1000px", width="100%", bgcolor="white", font_color="black")
+                color=[ '#27a9ea' for i in range(len(soluce[Presence_pdi_key]))]
+                #temps d'arriver au dernier pdi
+                arriver=max(soluce[Start_pdi_key])
+                #temps d'arriver au premier pdi
+                depart=min(soluce[Start_pdi_key])
+                for i in range(len(soluce[Start_pdi_key])):
+                    if soluce[Start_pdi_key][i]==arriver:
+                        color[i]='#00ff1e'
+                    if soluce[Start_pdi_key][i]==depart:
+                        color[i]='#dd4b39'
+                    
+                
+                
                 g.add_nodes([i  for i in range(len(soluce[Presence_pdi_key]))],
                          title=[f"temps de départ : {soluce[Start_pdi_key][i]}" for i in range(len(soluce[Presence_pdi_key]))],
-                         x=solution[Coordonee_pdi_x_key],
-                         y=solution[Coordonee_pdi_y_key],
+                         x=[i*10 for i in solution[Coordonee_pdi_x_key]],
+                         y=[i*10 for i in solution[Coordonee_pdi_y_key]],
                          label=[f"PDI : {i}"  for i in range(len(soluce[Presence_pdi_key]))],
-                         #color=['#00ff1e', '#162347', '#dd4b39']
+                         color=  color
                         )
                 for i in range(len(soluce[Arc_key])):
                     for j in range(len(soluce[Arc_key])):
@@ -42,4 +61,4 @@ class affiche_solution:
 
 
         
-affiche_solution.affiche_fichier("solution","solution_Instanciapetite")
+affiche_solution.affiche_fichier("solution","solution_Instanciamoyenne")

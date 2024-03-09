@@ -7,4 +7,5 @@
     ,"repertoire_solution":"solution"
     ,"fonction_objectif":true
     ,"solver":"ACE"
+    ,"extension_instance":".csv"
 }

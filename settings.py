@@ -19,6 +19,9 @@ timeout_actif_key="timeout_actif"
 #cle pour choisir quelle solveur on utilise lors de la recherche
 solver_key="solver"
 
+#extension de fichier utiliser pour l'instance
+extension_instance_key="extension_instance"
+
 """
 Key pour les solution json
 """
@@ -44,3 +47,14 @@ Coordonee_pdi_y_key="coordonee_pdi_y"
 Temps_visite_key="Temps_visite"
 #cle pour les score des pdi
 Score_pdi_key="Score_pdi"
+
+"""
+Argument du script python
+"""
+#clé pour les argument cours
+key_short_arg="short"
+#clé pour les argument long
+key_long_arg="long"
+
+#tableau qui contien les arguments long et cours pour inclure les fichier csv de chaque instance
+key_file_include={key_short_arg:"f",key_long_arg:"file"}
