@@ -304,6 +304,9 @@ def modele1(nom_instance
 
 if __name__ == "__main__":
 
+    #permet de remetre le dossier d'execution du script ou est le script 
+    os.chdir(os.path.dirname(__file__))
+
     #dossier ou sont stocker les settings json
     dossier_settings_json="settings_recherche"
 
