@@ -263,7 +263,7 @@ def modele1(nom_instance
     
     #tableau qui compile toute les valeurs résultat trouvé
     tab_res=[]
-    fichier = open(f"{repertoire_solution}/solution_{nom_instance}.json", "w")
+    fichier = open(f"{repertoire_solution}/{nom_instance}.json", "w")
 
     if resultat_recherche is SAT or resultat_recherche is OPTIMUM is not UNSAT:
         print(f"Nombre de solutions: {n_solutions()} pour l'instance {nom_instance}" )
@@ -344,7 +344,6 @@ if __name__ == "__main__":
         )
 
         file_a_traiter=""
-        print(options)
         for o, a in options:
             if o in ["-"+key_file_include[key_short_arg],"-"+key_file_include[key_long_arg]]:
                 #fichier que j'ai passer en paramètre de mon programme
