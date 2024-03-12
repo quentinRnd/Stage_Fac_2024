@@ -277,6 +277,11 @@ def modele1(nom_instance
 
             #valeur des départ des visite des pdi 
             start_pdi=values(s, sol=numero_solution)
+
+            for i in range(len(pdi_present)):
+                if(not pdi_present[i]):
+                    start_pdi[i]=-1
+
             tab_res.append({Arc_key:arc_res,Presence_pdi_key:pdi_present,Start_pdi_key:start_pdi})
 
 
