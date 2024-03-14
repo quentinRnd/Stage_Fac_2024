@@ -23,6 +23,7 @@ def modele1(nom_instance
             ,timeout_activer
             ,solver
             ,extension_instance
+            ,type_objectif
 ):
     print(f"solving {nom_instance}")
     
@@ -241,7 +242,9 @@ def modele1(nom_instance
         case False:
             pass
         case True:
-            maximize(Sum(y[i]*score_pdi[i] for i in parcours_pdi))
+            match(type_objectif):
+                case Maximise_score_pdi:
+                    maximize(Sum(y[i]*score_pdi[i] for i in parcours_pdi))
     #timout pour le solver
     solver_timeout_seconds=timeout_solver
 
@@ -340,6 +343,8 @@ if __name__ == "__main__":
         #extension pour les instances csv
         extension_instance=settings[extension_instance_key]
 
+        #type d'objectif rechercher
+        type_objectif=settings[type_objectif_key]
         
 
         options, arguments = getopt.getopt(
@@ -379,9 +384,11 @@ if __name__ == "__main__":
                 
                 exit(0)
         
-        #instances=["Instanciamoyenne"]
+        #instance déjà traiter 
+        instance_exclu=["Instancia1"]
         for instance in instances:
-            modele1(instance
+            if instance not in instance_exclu:
+                modele1(instance
                     ,solver_verbose=niveau_verbose
                     ,instance_repertory=instance_repertory
                     ,timeout_solver=timeout_solver
@@ -390,4 +397,5 @@ if __name__ == "__main__":
                     ,timeout_activer=timeout_activer
                     ,solver=solver
                     ,extension_instance=extension_instance
+                    ,type_objectif=type_objectif
             )

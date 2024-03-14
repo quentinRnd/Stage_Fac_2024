@@ -22,6 +22,14 @@ solver_key="solver"
 #extension de fichier utiliser pour l'instance
 extension_instance_key="extension_instance"
 
+# c'est le paramètre qui gére quelle fonction objectif est choisie 
+type_objectif_key="type_objectif"
+#il y'a plusieurs objectif qui sont les suivants
+#objectif qui permet de maximiser la somme des score des pdi
+Maximise_score_pdi="Maximise_score_pdi"
+Minimise_distance_parcourue="Minimise_distance_parcourue"
+
+
 """
 Key pour les solution json
 """

@@ -61,4 +61,4 @@ class affiche_solution:
 
 
         
-affiche_solution.affiche_fichier("solution","solution_Instanciamoyenne")
+affiche_solution.affiche_fichier("solution","Instancia1_solution_1")
