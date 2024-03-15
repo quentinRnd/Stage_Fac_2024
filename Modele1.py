@@ -234,23 +234,20 @@ def modele1(nom_instance
     Fonction objectif
     """
     #fonction objectif qui maximise la satisfaction utilisateur.ice
-    match(fonction_objectif):
-        case False:
-            pass
-        case True:
-            match(type_objectif):
-                case Maximise_score_pdi:
-                    maximize(Sum(y[i]*score_pdi[i] for i in parcours_pdi))
+    if(fonction_objectif):    
+        if(type_objectif==Maximise_score_pdi):
+            print("ici")
+            maximize(Sum(y[i]*score_pdi[i] for i in parcours_pdi))
     #timout pour le solver
     solver_timeout_seconds=timeout_solver
 
 
-    match(solver):
-        case "ACE":
-            solver=ACE
-        case "CHOCO":
+    if(solver=="ACE"):
+        solver=ACE
+    else: 
+        if solver=="CHOCO":
             solver=CHOCO
-        case other:
+        else:
             solver=ACE
     
     resultat_recherche=solve(solver=solver 
