@@ -165,3 +165,4 @@ solution/*.json
 instance_solve/*
 note.md
 *.html
+solution*

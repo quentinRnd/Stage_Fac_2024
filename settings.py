@@ -56,6 +56,17 @@ Temps_visite_key="Temps_visite"
 #cle pour les score des pdi
 Score_pdi_key="Score_pdi"
 
+#clé pour la valeur de la fonction objectif
+Bound_key="Bound"
+
+#sert a savoir quelle type d'objectif on a choisie sur la solution
+Type_objectif_key="type_objectif"
+
+#sert a savoir quelle était le temps de timout au moment de la résolution
+Timeout_solver_key="timeout_solver"
+
+#sert a savoir si le timeout était actif
+Timeout_activer_key="timeout_activer"
 """
 Argument du script python
 """

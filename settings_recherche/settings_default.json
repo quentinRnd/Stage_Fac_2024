@@ -4,7 +4,7 @@
     ,"timout_solver":129600
     ,"timeout_actif":true
     ,"nombre_solution":"ALL"
-    ,"repertoire_solution":"solution"
+    ,"repertoire_solution":"solution_optimise"
     ,"fonction_objectif":true
     ,"solver":"ACE"
     ,"extension_instance":".csv"

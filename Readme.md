@@ -33,21 +33,21 @@ modifications apportées. Et finalement développer une interface graphique.
 # paquet python requis pour éxécuter le code suivant
 - [PyCSP3](https://pypi.org/project/pycsp3/2.2/) installer la version 2.2 avec la commande 
 ```bash
-pip install pycsp3==2.2  
+pip3 install pycsp3==2.2  
 ```
 - [NumPy](https://pypi.org/project/numpy/1.26.4/) installer la version 1.26 avec la commande suivante 
 ```bash
-pip install numpy==1.26.4
+pip3 install numpy==1.26.4
 ```
 
 - [pandas](https://pypi.org/project/pandas/2.2.1/) installer la version 2.2.1 avec la commande suivante 
 
 ```bash
-pip install pandas==2.2.1
+pip3 install pandas==2.2.1
 ```
 
 - [Pyvis](https://pypi.org/project/pyvis/0.3.2/) installer la version 0.3.2 avec la commande suivante 
 ```bash
-pip install pyvis==0.3.2
+pip3 install pyvis==0.3.2
 ```
 

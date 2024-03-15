@@ -24,6 +24,7 @@ def modele1(nom_instance
             ,solver
             ,extension_instance
             ,type_objectif
+            ,repertoire_solution
 ):
     print(f"solving {nom_instance}")
     
@@ -148,7 +149,7 @@ def modele1(nom_instance
     Contrainte 2
     """
     #satisfy( disjunction((s[i]+t[i]+distance[i,j]<=s[j]) , (x[i][j]==0))  for i in parcours_pdi for j in parcours_pdi if i!=j )
-    satisfy( disjunction(((s[i]+t[i]+distance[i,j])<s[j]) , (x[i][j]==0))  for i in parcours_pdi for j in parcours_pdi if i!=j )
+    satisfy( disjunction(((s[i]+t[i]+distance[i,j])==s[j]) , (x[i][j]==0))  for i in parcours_pdi for j in parcours_pdi if i!=j )
 
     """
     Contrainte 3
@@ -224,11 +225,6 @@ def modele1(nom_instance
     Contrainte 15
     elle marche pas elle contraint juste faut voir pk mais a fixe
     """
-    #V1
-    #satisfy(disjunction(disjunction(conjunction(x[i,j]==1,x[j,k]==1) for i in parcours_pdi  for k in parcours_pdi),y[j]==0)for j in parcours_pdi)
-    #V2
-    #satisfy(disjunction( (x[i,j]==1)==0,x[j,k]==1)for i in parcours_pdi for j in parcours_pdi for k in parcours_pdi)
-    #V3
     satisfy(disjunction(y[i]==0,s[i]==Minimum(s),s[i]==Maximum(s),conjunction(Maximum(x[i,:])==1,Maximum(x[:,i])==1))for i in parcours_pdi)
     """
     Contrainte 16
@@ -248,7 +244,6 @@ def modele1(nom_instance
     #timout pour le solver
     solver_timeout_seconds=timeout_solver
 
-    repertoire_solution="solution"
 
     match(solver):
         case "ACE":
@@ -262,8 +257,7 @@ def modele1(nom_instance
                             ,sols=nombre_solution
                             ,verbose=solver_verbose
                             ,options=f"-t={solver_timeout_seconds}s" if timeout_activer else "")
-    print(resultat_recherche)
-    
+
     #tableau qui compile toute les valeurs résultat trouvé
     tab_res=[]
     fichier = open(f"{repertoire_solution}/{nom_instance}.json", "w")
@@ -297,16 +291,22 @@ def modele1(nom_instance
                         Fin_recherche_key:resultat_recherche.__str__()
                         ,Optimum_key:resultat_recherche is OPTIMUM
                     }
+            ,Bound_key:bound()
+            ,Type_objectif_key:type_objectif
+            ,Timeout_solver_key:solver_timeout_seconds
+            ,Timeout_activer_key:timeout_activer
             ,Solutions_key:tab_res
             ,Coordonee_pdi_x_key:loc_x
             ,Coordonee_pdi_y_key:loc_y
             ,Temps_visite_key:t
             ,Score_pdi_key:score_pdi
+            
         }
     json_data=json.dumps(data, indent=3)
     
     fichier.write(json_data)
     fichier.close()
+    print(f"solution saved in {repertoire_solution}/{nom_instance}.json")
     
     clear()
 
@@ -385,7 +385,7 @@ if __name__ == "__main__":
                 exit(0)
         
         #instance déjà traiter 
-        instance_exclu=["Instancia1"]
+        instance_exclu=[]
         for instance in instances:
             if instance not in instance_exclu:
                 modele1(instance
@@ -398,4 +398,5 @@ if __name__ == "__main__":
                     ,solver=solver
                     ,extension_instance=extension_instance
                     ,type_objectif=type_objectif
+                    ,repertoire_solution=repertoire_solution
             )
