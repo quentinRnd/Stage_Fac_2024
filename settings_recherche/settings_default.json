@@ -1,10 +1,10 @@
 {   
-    "verbose":0
+    "verbose":0    
     ,"nom_repertoire_instance":"Instancias"
     ,"timout_solver":129600
     ,"timeout_actif":true
     ,"nombre_solution":"ALL"
-    ,"repertoire_solution":"solution_optimise"
+    ,"repertoire_solution":"solution_test"
     ,"fonction_objectif":true
     ,"solver":"ACE"
     ,"extension_instance":".csv"

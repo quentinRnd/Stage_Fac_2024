@@ -32,12 +32,17 @@ class affiche_solution:
                 #temps d'arriver au dernier pdi
                 arriver=max(soluce[Start_pdi_key])
                 #temps d'arriver au premier pdi
-                depart=min(soluce[Start_pdi_key])
+                depart=soluce[Start_pdi_key][0]
+                for i in soluce[Start_pdi_key]:
+                    if i!=-1 and i<depart:
+                        depart=i
                 for i in range(len(soluce[Start_pdi_key])):
                     if soluce[Start_pdi_key][i]==arriver:
                         color[i]='#00ff1e'
                     if soluce[Start_pdi_key][i]==depart:
                         color[i]='#dd4b39'
+                    if not soluce[Presence_pdi_key][i]:
+                        color[i]='#FFFFFF'
                     
                 
                 
@@ -61,4 +66,4 @@ class affiche_solution:
 
 
         
-affiche_solution.affiche_fichier("solution","Instancia1_solution_1")
+affiche_solution.affiche_fichier("solution_test","Instanciamoyenne")

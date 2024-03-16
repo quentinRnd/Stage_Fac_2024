@@ -77,3 +77,8 @@ key_long_arg="long"
 
 #tableau qui contien les arguments long et cours pour inclure les fichier csv de chaque instance
 key_file_include={key_short_arg:"f",key_long_arg:"file"}
+
+#paramètre qui sert a savoir combien de thread de test sont lancer en parallèle 
+key_num_thread={key_short_arg:"t",key_long_arg:"num_thread"}
+#identifiant qui sert a savoir quelle est le numero du thread 
+key_id_thread={key_short_arg:"i",key_long_arg:"id_thread"}

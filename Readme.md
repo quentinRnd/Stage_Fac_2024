@@ -50,4 +50,7 @@ pip3 install pandas==2.2.1
 ```bash
 pip3 install pyvis==0.3.2
 ```
-
+-  [pydot](https://pypi.org/project/pydot/2.0.0/) installer la version 2.0.0 avec la commande suivante
+```bash
+pip3 install pydot==2.0.0
+```

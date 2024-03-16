@@ -120,7 +120,6 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
 .venv
 env/
 venv/
@@ -166,3 +165,5 @@ instance_solve/*
 note.md
 *.html
 solution*
+
+log*

@@ -148,8 +148,8 @@ def modele1(nom_instance
     """
     Contrainte 2
     """
-    #satisfy( disjunction((s[i]+t[i]+distance[i,j]<=s[j]) , (x[i][j]==0))  for i in parcours_pdi for j in parcours_pdi if i!=j )
-    satisfy( disjunction(((s[i]+t[i]+distance[i,j])==s[j]) , (x[i][j]==0))  for i in parcours_pdi for j in parcours_pdi if i!=j )
+    satisfy( disjunction((s[i]+t[i]+distance[i,j]<=s[j]) ,s[j]==Minimum([s[k] for k in parcours_pdi if s[k]!=-1]), (x[i][j]==0))  for i in parcours_pdi for j in parcours_pdi if i!=j )
+    #satisfy( disjunction(((s[i]+t[i]+distance[i,j])==s[j]) , (x[i][j]==0))  for i in parcours_pdi for j in parcours_pdi if i!=j )
 
     """
     Contrainte 3
@@ -223,9 +223,11 @@ def modele1(nom_instance
 
     """
     Contrainte 15
-    elle marche pas elle contraint juste faut voir pk mais a fixe
-    """
+    default
     satisfy(disjunction(y[i]==0,s[i]==Minimum(s),s[i]==Maximum(s),conjunction(Maximum(x[i,:])==1,Maximum(x[:,i])==1))for i in parcours_pdi)
+    """
+    satisfy(disjunction(y[i]==0,conjunction(y[i]==1,Maximum(x[i,:])==1,Maximum(x[:,i])==1))for i in parcours_pdi)
+    
     """
     Contrainte 16
     """
@@ -346,15 +348,21 @@ if __name__ == "__main__":
 
         options, arguments = getopt.getopt(
             sys.argv[1:],                      # Arguments
-            f"{key_file_include[key_short_arg]}:",                            # Short option definitions
-            [key_file_include[key_long_arg]]   # Long option definitions
+            f"{key_file_include[key_short_arg]}:{key_num_thread[key_short_arg]}:{key_id_thread[key_short_arg]}:",                            # Short option definitions
+            [key_file_include[key_long_arg],key_num_thread[key_long_arg],key_id_thread[key_long_arg]]   # Long option definitions
         )
-
+        num_thread=1
+        decalage_thread=0
         file_a_traiter=""
         for o, a in options:
             if o in ["-"+key_file_include[key_short_arg],"-"+key_file_include[key_long_arg]]:
                 #fichier que j'ai passer en paramètre de mon programme
                 file_a_traiter=a
+            if o in ["-"+key_num_thread[key_short_arg],"-"+key_num_thread[key_long_arg]]:
+                num_thread=int(a)
+            if o in ["-"+key_id_thread[key_short_arg],"-"+key_id_thread[key_long_arg]]:
+                decalage_thread=int(a)
+
 
         if not os.path.exists(repertoire_solution): 
             os.makedirs(repertoire_solution) 
@@ -383,17 +391,37 @@ if __name__ == "__main__":
         
         #instance déjà traiter 
         instance_exclu=[]
-        for instance in instances:
-            if instance not in instance_exclu:
-                modele1(instance
-                    ,solver_verbose=niveau_verbose
-                    ,instance_repertory=instance_repertory
-                    ,timeout_solver=timeout_solver
-                    ,nombre_solution=nombre_solution
-                    ,fonction_objectif=fonction_objectif
-                    ,timeout_activer=timeout_activer
-                    ,solver=solver
-                    ,extension_instance=extension_instance
-                    ,type_objectif=type_objectif
-                    ,repertoire_solution=repertoire_solution
-            )
+        if num_thread==1:
+            for instance in instances:
+                if instance not in instance_exclu:
+                    modele1(instance
+                        ,solver_verbose=niveau_verbose
+                        ,instance_repertory=instance_repertory
+                        ,timeout_solver=timeout_solver
+                        ,nombre_solution=nombre_solution
+                        ,fonction_objectif=fonction_objectif
+                        ,timeout_activer=timeout_activer
+                        ,solver=solver
+                        ,extension_instance=extension_instance
+                        ,type_objectif=type_objectif
+                        ,repertoire_solution=repertoire_solution
+                )
+        else:
+            instance_traiter=decalage_thread
+            
+            while instance_traiter < len(instances):
+                
+                modele1(instances[instance_traiter]
+                        ,solver_verbose=niveau_verbose
+                        ,instance_repertory=instance_repertory
+                        ,timeout_solver=timeout_solver
+                        ,nombre_solution=nombre_solution
+                        ,fonction_objectif=fonction_objectif
+                        ,timeout_activer=timeout_activer
+                        ,solver=solver
+                        ,extension_instance=extension_instance
+                        ,type_objectif=type_objectif
+                        ,repertoire_solution=repertoire_solution
+                )
+                instance_traiter+=num_thread
+    
