@@ -1,0 +1,15 @@
+{
+     "handi":true
+     ,"niveau marche":0
+     ,"interet_chemin":20
+     ,"préférence marche":
+     {
+        "nature":0.8
+        ,"ville":0.3
+        ,"élevation":0.5
+        ,"foret":0.6
+        ,"lac":0.7
+        ,"rivière":0.8
+     }
+     ,"interet chemin":20
+}

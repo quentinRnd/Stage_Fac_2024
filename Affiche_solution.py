@@ -2,7 +2,7 @@ import os
 import json
 import shutil
 import pydot
-
+import re
 from settings import *
 
 from pyvis.network import Network
@@ -19,6 +19,7 @@ class affiche_solution:
             os.makedirs(nom_dossier_repre)
             Status=solution[Status_key]
             
+            
             #tableau contenant mes solutions
             Solutions=solution[Solutions_key]
             if(len(Solutions)<=0):
@@ -27,15 +28,18 @@ class affiche_solution:
             num_sol=0
             Solutions_choisi=[Solutions[len(Solutions)-1]]
             for soluce in Solutions_choisi:
+                presence_pdi=soluce[Presence_pdi_key]
                 g = Network(height="1000px", width="100%", bgcolor="white", font_color="black")
                 color=[ '#27a9ea' for i in range(len(soluce[Presence_pdi_key]))]
                 #temps d'arriver au dernier pdi
-                arriver=max(soluce[Start_pdi_key])
+                arriver=soluce[Start_pdi_key][0]
                 #temps d'arriver au premier pdi
                 depart=soluce[Start_pdi_key][0]
-                for i in soluce[Start_pdi_key]:
-                    if i!=-1 and i<depart:
-                        depart=i
+                for i in range(len(soluce[Start_pdi_key])):
+                    if soluce[Start_pdi_key][i]<depart and presence_pdi[i]:
+                        depart=soluce[Start_pdi_key][i]
+                    if soluce[Start_pdi_key][i]>arriver and presence_pdi[i]:
+                        arriver=soluce[Start_pdi_key][i]
                 for i in range(len(soluce[Start_pdi_key])):
                     if soluce[Start_pdi_key][i]==arriver:
                         color[i]='#00ff1e'
@@ -47,7 +51,12 @@ class affiche_solution:
                 
                 
                 g.add_nodes([i  for i in range(len(soluce[Presence_pdi_key]))],
-                         title=[f"temps de départ : {soluce[Start_pdi_key][i]}" for i in range(len(soluce[Presence_pdi_key]))],
+                         title=[f"""
+                                    temps de départ : {soluce[Start_pdi_key][i]}
+                                    Intéressement : {solution[Score_pdi_key][i]}
+                                    
+                                """ 
+                                    for i in range(len(soluce[Presence_pdi_key]))],
                          x=[i*10 for i in solution[Coordonee_pdi_x_key]],
                          y=[i*10 for i in solution[Coordonee_pdi_y_key]],
                          label=[f"PDI : {i}"  for i in range(len(soluce[Presence_pdi_key]))],
@@ -66,4 +75,13 @@ class affiche_solution:
 
 
         
-affiche_solution.affiche_fichier("solution_test","Instanciamoyenne")
+
+dossier_solution="solution_essai"
+pattern=r'\w+'
+
+fichiers=os.listdir(dossier_solution)
+fichiers=[re.findall(pattern, i)[0] for i in fichiers]
+
+
+for fichier in fichiers:
+    affiche_solution.affiche_fichier(dossier_solution,fichier)

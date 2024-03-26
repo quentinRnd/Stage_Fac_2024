@@ -1,3 +1,5 @@
+#modele qui va intergrer les chemin ayant des caractéristique
+
 from pycsp3 import *
 import numpy as np
 import pandas as pd
@@ -18,7 +20,7 @@ def optimisation_chemin(nom_instance
                         ):
     pass
 
-def modele1_csv(nom_instance
+def modele2_json(nom_instance
             ,solver_verbose
             ,instance_repertory
             ,timeout_solver
@@ -28,47 +30,87 @@ def modele1_csv(nom_instance
             ,solver
             ,extension_instance
             ,type_objectif
-            ,repertoire_solution):
+            ,repertoire_solution
+            ,repertoire_preference_util
+            ,preference_util):
     #categorie permise par le modele
     categorie_permise= [i for i in range (1000)]
+    with open(f"{instance_repertory}/{nom_instance}.json") as instance_json:
+        with open(f"{repertoire_preference_util}/{preference_util}") as preference_json:
+            #objet json qui contient les préférence utilisteur.ice pour les chemins
+            preference_util_data=json.load(preference_json)
+            
+            #objet json qui contient l'instance json 
+            instance = json.load(instance_json)
 
-    #dataFrame contenant l'instance 
-    df=pd.read_csv(nom_fichier(instance_repertory=instance_repertory,extension_instance=extension_instance,nom_instance=nom_instance),sep=";")
+            #tableau qui me permet de traiter les différente préférence utilisateur.ice
+            preference_util_tab=[
+                                    preference_util_data[preference_marche_key][nature_key]
+                                    ,preference_util_data[preference_marche_key][ville_key]
+                                    ,preference_util_data[preference_marche_key][élevation_key]
+                                    ,preference_util_data[preference_marche_key][foret_key]
+                                    ,preference_util_data[preference_marche_key][lac_key]
+                                    ,preference_util_data[preference_marche_key][riviere_key]
+                                ]
+            #recuperation de l'interet utilisateur.ice
+            interet_chemin=preference_util_data[interet_chemin_key]
 
-    #budget maximum alloué au visite
-    budget_max=2000
+            #variable qui va contenir les different chemin qui aura les valuation mixer 
+            chemin_valuer=[]
 
-    #temps de visite max allouer a la somme des temps de visite des points d'intérêt
-    Temps_max_visite=3000
+            #je vais faire en sorte de mixer les interet preference util et les interet des chemin dans l'instance
+            for i in range(len(instance[Categorie_chemin_pdi_key])):
+                aux=[]
+                for j in range(len(instance[Categorie_chemin_pdi_key][i])):
+                    if instance[Categorie_chemin_pdi_key][i][j] is not None:
+                        aux.append(int(sum([instance[Categorie_chemin_pdi_key][i][j][k]*preference_util_tab[k]*interet_chemin
+                                              for k in range(max(len(instance[Categorie_chemin_pdi_key][i][j]),len(preference_util_tab)))])))
+                    else:
+                        aux.append(0)
+                chemin_valuer.append(aux)
+            
 
-    modele1(
-                nom_instance=nom_instance
-                ,solver_verbose=niveau_verbose
-                ,instance_repertory=instance_repertory
-                ,timeout_solver=timeout_solver
-                ,nombre_solution=nombre_solution
-                ,fonction_objectif=fonction_objectif
-                ,timeout_activer=timeout_activer
-                ,solver=solver
-                ,extension_instance=extension_instance
-                ,type_objectif=type_objectif
-                ,repertoire_solution=repertoire_solution
-                ,categorie_permise=categorie_permise
-                ,budget_max=budget_max
-                ,prix_entrer=df['entrada_k'].values.tolist()
-                ,ouverture_pdi=df['open_k'].values.tolist()
-                ,fermeture_pdi=df['close_k'].values.tolist()
-                ,interet_pdi=df['score_k'].values.astype(int).tolist()
-                ,coord_x=df['X_k'].astype(int).round().values.tolist()
-                ,coord_y=df['Y_k'].astype(int).round().values.tolist()
-                ,duree_visite=df['duracion_k'].values.tolist()
-                ,capaciter_pdi=df['capacidad'].values.astype(int).tolist()
-                ,categorie_pdi=df['categoria'].tolist()
-                ,Temps_max_visite=Temps_max_visite
-            )
+            
+            
+
+            #budget maximum alloué au visite
+            budget_max=2000
+
+            #temps de visite max allouer a la somme des temps de visite des points d'intérêt
+            Temps_max_visite=3000
+
+            modele2(
+                        nom_instance=nom_instance
+                        ,solver_verbose=niveau_verbose
+                        ,instance_repertory=instance_repertory
+                        ,timeout_solver=timeout_solver
+                        ,nombre_solution=nombre_solution
+                        ,fonction_objectif=fonction_objectif
+                        ,timeout_activer=timeout_activer
+                        ,solver=solver
+                        ,extension_instance=extension_instance
+                        ,type_objectif=type_objectif
+                        ,repertoire_solution=repertoire_solution
+                        ,categorie_permise=categorie_permise
+                        ,budget_max=budget_max
+                        ,prix_entrer=instance[Cout_entrer_key]
+                        ,ouverture_pdi=instance[Heure_ouverture_key]
+                        ,fermeture_pdi=instance[Heure_fermeture_key]
+                        ,interet_pdi=instance[Score_pdi_key]
+                        ,coord_x=instance[X_PDI_key]
+                        ,coord_y=instance[Y_PDI_key]
+                        ,duree_visite=instance[Temps_visite_key]
+                        ,capaciter_pdi=instance[Capacite_key]
+                        ,categorie_pdi=instance[Categorie_key]
+                        ,Temps_max_visite=Temps_max_visite
+                        ,chemin_valuer=chemin_valuer
+                    )
+                    #a faire 
+                    #faire en sorte de passer les donnée preference utilisateur sur les feuille de la matrice des chemin
+                    #crée une fonction objectif qui ce focus sur maximiser la somme du coup des chemins
 
 #nom du répertoire ou sont les instances
-def modele1(nom_instance
+def modele2(nom_instance
             ,solver_verbose
             ,instance_repertory
             ,timeout_solver
@@ -91,6 +133,8 @@ def modele1(nom_instance
             ,capaciter_pdi
             ,categorie_pdi
             ,Temps_max_visite
+            #les chemin de l'instance ayant des valuation sur les chemin 
+            ,chemin_valuer
 ):
     print(f"solving {nom_instance}")
     
@@ -119,7 +163,9 @@ def modele1(nom_instance
     capacite=[]
     #catégorie des point d'intérêt
     categorie=[]
-
+    """
+    Contrainte 6
+    """
     for i in range(len(categorie_pdi)):
         if categorie_pdi[i] in categorie_permise:
             b.append(prix_entrer[i])
@@ -308,6 +354,8 @@ def modele1(nom_instance
         if(type_objectif==Mix_distance_score_pdi):
             maximize(Sum(y[i]*score_pdi[i] for i in parcours_pdi))
             minimize((Sum(x[i,j]*distance[i,j] for i in parcours_pdi for j in parcours_pdi if i!=j)))
+        if(type_objectif==Maximise_score_chemin):
+            maximize(Sum(x[i,j]*chemin_valuer[i][j] for i in parcours_pdi for j in parcours_pdi if i!=j))
     #timout pour le solver
     solver_timeout_seconds=timeout_solver
 
@@ -393,7 +441,7 @@ if __name__ == "__main__":
         #niveau de verbose que l'on autorise au solver
         niveau_verbose=settings[verbose_key]
         #repertoire ou on trouve les instance csv
-        instance_repertory=settings[instance_repertory_csv_key]
+        instance_repertory=settings[nom_repertoire_instance_json_key]
         #timout du solver 
         timeout_solver=settings[timeout_solver_key]
         #nombre de solution que le solver va chercher 
@@ -410,6 +458,12 @@ if __name__ == "__main__":
 
         #type d'objectif rechercher
         type_objectif=settings[type_objectif_key]
+
+        #repertoire ou sont stocker les préférence utilisateur.ice
+        repertoire_preference_util=settings[repertoire_profile_marcheureuse_key]
+
+        #fichier preference utilisateur.ice choisie
+        preference_util=settings[profile_marcheureuse_choisie_key]
         
 
         options, arguments = getopt.getopt(
@@ -442,7 +496,7 @@ if __name__ == "__main__":
         if(file_a_traiter!=""):
             if(os.path.exists(nom_fichier
                                         (
-                                            extension_instance=extension_instance
+                                            extension_instance=".json"
                                             ,instance_repertory=instance_repertory
                                             ,nom_instance=file_a_traiter
                                         )
@@ -451,7 +505,7 @@ if __name__ == "__main__":
                 instances=[file_a_traiter]
             else:
                 #sort du programme parce que le fichier est instrouvable
-                print("file {file_a_traiter} does not exists")
+                print(f"file {file_a_traiter} does not exists")
                 
                 exit(0)
         
@@ -460,7 +514,7 @@ if __name__ == "__main__":
         if num_thread==1:
             for instance in instances:
                 if instance not in instance_exclu:
-                    modele1_csv(instance
+                    modele2_json(instance
                         ,solver_verbose=niveau_verbose
                         ,instance_repertory=instance_repertory
                         ,timeout_solver=timeout_solver
@@ -471,6 +525,8 @@ if __name__ == "__main__":
                         ,extension_instance=extension_instance
                         ,type_objectif=type_objectif
                         ,repertoire_solution=repertoire_solution
+                        ,repertoire_preference_util=repertoire_preference_util
+                        ,preference_util=preference_util
                 )
                     
         else:
@@ -480,7 +536,7 @@ if __name__ == "__main__":
             while instance_traiter < len(instances):
                 if nombre_instance_traiter>instance_deja_solve:    
                     
-                    modele1_csv(instances[instance_traiter]
+                    modele2_json(instances[instance_traiter]
                         ,solver_verbose=niveau_verbose
                         ,instance_repertory=instance_repertory
                         ,timeout_solver=timeout_solver
@@ -491,6 +547,8 @@ if __name__ == "__main__":
                         ,extension_instance=extension_instance
                         ,type_objectif=type_objectif
                         ,repertoire_solution=repertoire_solution
+                        ,repertoire_preference_util=repertoire_preference_util
+                        ,preference_util=preference_util
                     )
                 instance_traiter+=num_thread
                 nombre_instance_traiter+=1
