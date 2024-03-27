@@ -508,14 +508,9 @@ if __name__ == "__main__":
                 print(f"file {file_a_traiter} does not exists")
                 
                 exit(0)
-<<<<<<< HEAD
-        
-        #instance déjà traiter 
-=======
         instances=["Instancia1","Instancia5","Instancia6","Instancia7","Instancia8","Instancia12","Instancia14","Instancia15","Instanciamoyenne","Instanciapetite"]
         #instance déjà traiter 
 
->>>>>>> 810132d (few changes)
         instance_exclu=[]
         if num_thread==1:
             for instance in instances:

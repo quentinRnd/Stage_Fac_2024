@@ -15,10 +15,6 @@ fi
 for (( i=0 ; i<$NUM_PROCESSEUR_SOLVE ; ++i ))
 do
     
-<<<<<<< HEAD
-    python3 ./Modele1.py -t $NUM_PROCESSEUR_SOLVE -i $i 1>"$LOG_DIR/log_numthread_$i.txt" 2>"$LOG_DIR/log_error_numthread_$i.txt" &
-=======
     python3 ./Modele2.py -t $NUM_PROCESSEUR_SOLVE -i $i 1>"$LOG_DIR/log_numthread_$i.txt" 2>"$LOG_DIR/log_error_numthread_$i.txt" &
     sleep 120
->>>>>>> 810132d (few changes)
 done

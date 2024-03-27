@@ -57,10 +57,6 @@ class affiche_solution:
                          title=[f"""
                                     temps de départ : {soluce[Start_pdi_key][i]}
                                     Intéressement : {solution[Score_pdi_key][i]}
-<<<<<<< HEAD
-                                    
-=======
->>>>>>> 810132d (few changes)
                                 """ 
                                     for i in range(len(soluce[Presence_pdi_key]))],
                          x=[i*10 for i in solution[Coordonee_pdi_x_key]],
