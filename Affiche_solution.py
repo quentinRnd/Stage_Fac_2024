@@ -10,7 +10,10 @@ from pyvis.network import Network
 class affiche_solution:
     def affiche_fichier(repertoire_fichier,nom_fichier):
         with open(f"{repertoire_fichier}/{nom_fichier}.json") as solution_json:
-            
+            repertoire_instance="Instance_json"
+            instance_json=None
+            with open(f"{repertoire_instance}/{nom_fichier}.json") as instance_json_file:
+                instance_json=json.load(instance_json_file)
             solution = json.load(solution_json)
             
             representation_solution_repertoire="representation"
@@ -25,7 +28,7 @@ class affiche_solution:
             if(len(Solutions)<=0):
                 return 
 
-            num_sol=0
+            num_sol=len(Solutions)-1
             Solutions_choisi=[Solutions[len(Solutions)-1]]
             for soluce in Solutions_choisi:
                 presence_pdi=soluce[Presence_pdi_key]
@@ -54,7 +57,10 @@ class affiche_solution:
                          title=[f"""
                                     temps de départ : {soluce[Start_pdi_key][i]}
                                     Intéressement : {solution[Score_pdi_key][i]}
+<<<<<<< HEAD
                                     
+=======
+>>>>>>> 810132d (few changes)
                                 """ 
                                     for i in range(len(soluce[Presence_pdi_key]))],
                          x=[i*10 for i in solution[Coordonee_pdi_x_key]],
@@ -65,7 +71,14 @@ class affiche_solution:
                 for i in range(len(soluce[Arc_key])):
                     for j in range(len(soluce[Arc_key])):
                         if(soluce[Arc_key][i][j]==1):
-                            g.add_edge(i,j)
+                            g.add_edge(i,j,title="" if  instance_json[Categorie_chemin_pdi_key][i][j]==None else f"""
+                                nature : {instance_json[Categorie_chemin_pdi_key][i][j][0]}
+                                ville : {instance_json[Categorie_chemin_pdi_key][i][j][1]}
+                                élévation : {instance_json[Categorie_chemin_pdi_key][i][j][2]}
+                                forêt : {instance_json[Categorie_chemin_pdi_key][i][j][3]}
+                                lac : {instance_json[Categorie_chemin_pdi_key][i][j][4]}
+                                rivière : {instance_json[Categorie_chemin_pdi_key][i][j][5]}
+                            """)
 
                 nom_graphe=f"{nom_dossier_repre}/visualisation_{nom_fichier}_solution_{num_sol}.html"
                 #g.generate_html(name=f"{nom_dossier_repre}/visualisation_{nom_fichier}.html")
