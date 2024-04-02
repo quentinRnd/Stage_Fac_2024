@@ -9,11 +9,16 @@ from pyvis.network import Network
 
 class affiche_solution:
     def affiche_fichier(repertoire_fichier,nom_fichier):
+        #print(f"display {repertoire_fichier}/{nom_fichier}")
         with open(f"{repertoire_fichier}/{nom_fichier}.json") as solution_json:
             repertoire_instance="Instance_json"
             instance_json=None
-            with open(f"{repertoire_instance}/{nom_fichier}.json") as instance_json_file:
-                instance_json=json.load(instance_json_file)
+            try:
+
+                with open(f"{repertoire_instance}/{nom_fichier}.json") as instance_json_file:
+                    instance_json=json.load(instance_json_file)
+            except:
+                return 
             solution = json.load(solution_json)
             
             representation_solution_repertoire="representation"
@@ -32,17 +37,18 @@ class affiche_solution:
             Solutions_choisi=[Solutions[len(Solutions)-1]]
             for soluce in Solutions_choisi:
                 presence_pdi=soluce[Presence_pdi_key]
-                g = Network(height="1000px", width="100%", bgcolor="white", font_color="black")
+                g = Network(height="1000px", width="100%", bgcolor="white", font_color="black",directed =True)
                 color=[ '#27a9ea' for i in range(len(soluce[Presence_pdi_key]))]
                 #temps d'arriver au dernier pdi
                 arriver=soluce[Start_pdi_key][0]
                 #temps d'arriver au premier pdi
                 depart=soluce[Start_pdi_key][0]
                 for i in range(len(soluce[Start_pdi_key])):
-                    if soluce[Start_pdi_key][i]<depart and presence_pdi[i]:
+                    if soluce[Start_pdi_key][i]<depart and (presence_pdi[i] or max(soluce[Arc_key][i])==1 or max(soluce[Arc_key][:][i])==1 ):
                         depart=soluce[Start_pdi_key][i]
-                    if soluce[Start_pdi_key][i]>arriver and presence_pdi[i]:
+                    if soluce[Start_pdi_key][i]>arriver and (presence_pdi[i] or max(soluce[Arc_key][i])==1 or max(soluce[Arc_key][:][i])==1 ):
                         arriver=soluce[Start_pdi_key][i]
+                
                 for i in range(len(soluce[Start_pdi_key])):
                     if soluce[Start_pdi_key][i]==arriver:
                         color[i]='#00ff1e'
@@ -50,7 +56,9 @@ class affiche_solution:
                         color[i]='#dd4b39'
                     if not soluce[Presence_pdi_key][i]:
                         color[i]='#FFFFFF'
-                    
+                    if max(soluce[Arc_key][i])==1 and not soluce[Presence_pdi_key][i]:
+                        color[i]='f40fff'
+                
                 
                 
                 g.add_nodes([i  for i in range(len(soluce[Presence_pdi_key]))],
@@ -74,7 +82,8 @@ class affiche_solution:
                                 forêt : {instance_json[Categorie_chemin_pdi_key][i][j][3]}
                                 lac : {instance_json[Categorie_chemin_pdi_key][i][j][4]}
                                 rivière : {instance_json[Categorie_chemin_pdi_key][i][j][5]}
-                            """)
+                            """
+                            )
 
                 nom_graphe=f"{nom_dossier_repre}/visualisation_{nom_fichier}_solution_{num_sol}.html"
                 #g.generate_html(name=f"{nom_dossier_repre}/visualisation_{nom_fichier}.html")
@@ -85,7 +94,7 @@ class affiche_solution:
 
         
 
-dossier_solution="solution_essai"
+dossier_solution="solution/solution_test_modele2"
 pattern=r'\w+'
 
 fichiers=os.listdir(dossier_solution)

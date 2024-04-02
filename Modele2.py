@@ -36,6 +36,20 @@ def modele2_json(nom_instance
     #categorie permise par le modele
     categorie_permise= [i for i in range (1000)]
     with open(f"{instance_repertory}/{nom_instance}.json") as instance_json:
+        #budget maximum alloué au visite
+        budget_max=2000
+
+        #temps de visite max allouer a la somme des temps de visite des points d'intérêt
+        Temps_max_visite=3000
+
+        #distance parcourue par les utilisateur.ice
+        distance_parcourue_max=100
+        distance_parcourue_min=10
+        
+        #capacité max des pdi
+        capacite_max=500
+
+
         with open(f"{repertoire_preference_util}/{preference_util}") as preference_json:
             #objet json qui contient les préférence utilisteur.ice pour les chemins
             preference_util_data=json.load(preference_json)
@@ -55,6 +69,19 @@ def modele2_json(nom_instance
             #recuperation de l'interet utilisateur.ice
             interet_chemin=preference_util_data[interet_chemin_key]
 
+
+            capacite_max=preference_util_data[capacite_max_key]
+
+            budget_max=preference_util_data[budget_max_key]
+
+            Temps_max_visite=preference_util_data[Temps_max_visite_key]
+
+            distance_parcourue_max=preference_util_data[distance_parcourue_max_key]
+            distance_parcourue_min=preference_util_data[distance_parcourue_min_key]
+
+
+
+
             #variable qui va contenir les different chemin qui aura les valuation mixer 
             chemin_valuer=[]
 
@@ -63,22 +90,19 @@ def modele2_json(nom_instance
                 aux=[]
                 for j in range(len(instance[Categorie_chemin_pdi_key][i])):
                     if instance[Categorie_chemin_pdi_key][i][j] is not None:
-                        aux.append(int(sum([instance[Categorie_chemin_pdi_key][i][j][k]*preference_util_tab[k]*interet_chemin
-                                              for k in range(max(len(instance[Categorie_chemin_pdi_key][i][j]),len(preference_util_tab)))])))
+                        aux.append(
+                                    int(
+                                        sum(
+                                            [
+                                                instance[Categorie_chemin_pdi_key][i][j][k]*preference_util_tab[k]*interet_chemin
+                                                    for k in range(max(len(instance[Categorie_chemin_pdi_key][i][j]),len(preference_util_tab)))
+                                            ]
+                                           )
+                                      )
+                                  )
                     else:
                         aux.append(0)
                 chemin_valuer.append(aux)
-            
-
-            
-            
-
-            #budget maximum alloué au visite
-            budget_max=2000
-
-            #temps de visite max allouer a la somme des temps de visite des points d'intérêt
-            Temps_max_visite=3000
-
             modele2(
                         nom_instance=nom_instance
                         ,solver_verbose=niveau_verbose
@@ -104,6 +128,11 @@ def modele2_json(nom_instance
                         ,categorie_pdi=instance[Categorie_key]
                         ,Temps_max_visite=Temps_max_visite
                         ,chemin_valuer=chemin_valuer
+
+                        ,capacite_max=capacite_max
+                        ,distance_parcourue_max=distance_parcourue_max
+                        ,distance_parcourue_min=distance_parcourue_min
+
                     )
                     #a faire 
                     #faire en sorte de passer les donnée preference utilisateur sur les feuille de la matrice des chemin
@@ -135,6 +164,9 @@ def modele2(nom_instance
             ,Temps_max_visite
             #les chemin de l'instance ayant des valuation sur les chemin 
             ,chemin_valuer
+            ,capacite_max
+            ,distance_parcourue_max
+            ,distance_parcourue_min
 ):
     print(f"solving {nom_instance}")
     
@@ -196,24 +228,22 @@ def modele2(nom_instance
     #tableau ayant pour donnée les heure de depart de chaque viste de chaque point d'intérêt
     s = VarArray(size=N,dom=range(0,Temps_max_visite+1))
 
-    #Variable qui sert a stocker le minimum des heure de départ des pdi
-    min_s=Var(dom=range(0,Temps_max_visite+1))
-
-    #tableau permettant de savoir si un point d'interêt est chosi dans le chemin 
+    #tableau permettant de savoir si un point d'interêt est visité 
     y = VarArray(size=N, dom=(0,1))
+
+    p = VarArray(size=N, dom=(0,1))
 
     #variable qui me sert a pas me tromper dans le parcours de mes pdi
     parcours_pdi=range(0, N)
-    #Capacité max autoriser par l'utilisateur.ice
-    capacite_max = 500
+    
 
 
 
 
     #distance minimum a parcourir
-    d_min = 10
+    d_min = distance_parcourue_min
     #distance maximum a parcourir
-    d_max = 10000
+    d_max = distance_parcourue_max
 
     #catégorie présente dans la dataframe
     categorie_df=[]
@@ -239,28 +269,24 @@ def modele2(nom_instance
     """
 
     for i in categorie_df:
-        valeur_ajout=100000000
+        valeur_ajout=100
         depense_max_categorie[i]=valeur_ajout
 
     """
     Pour les explications des contraintes voir le rapport 
     """
     """
-    Contrainte sur le minimum de s
-    """
-    satisfy(min_s==Minimum(s))
-    """
     Contrainte 1
     """
     #attention le nombre de passage est en -1 a cause du < 
     nombre_passage_max=2
-    satisfy(Sum (x[:, i]) <nombre_passage_max for i in parcours_pdi)
-    satisfy(Sum (x[i, :]) <nombre_passage_max for i in parcours_pdi)
+    satisfy(Sum (x[j, i] for j in parcours_pdi) <nombre_passage_max for i in parcours_pdi)
+    satisfy(Sum (x[i, j] for j in parcours_pdi) <nombre_passage_max for i in parcours_pdi)
     """
     Contrainte 2
     satisfy( disjunction((s[i]+t[i]+distance[i,j]<=s[j]) ,s[j]==Minimum([s[k] for k in parcours_pdi if s[k]!=1]), (x[i][j]==0))  for i in parcours_pdi for j in parcours_pdi if i!=j )
     """
-    satisfy( disjunction((s[i]+t[i]+distance[i,j]<=s[j]) ,s[j]==min_s, (x[i][j]==0))  for i in parcours_pdi for j in parcours_pdi if i!=j )
+    satisfy( disjunction((s[i]+(t[i]*y[i])+distance[i,j]<=s[j]) ,s[j]==Minimum(s), (x[i][j]==0))  for i in parcours_pdi for j in parcours_pdi if i!=j )
     
     #satisfy( disjunction(((s[i]+t[i]+distance[i,j])==s[j]) , (x[i][j]==0))  for i in parcours_pdi for j in parcours_pdi if i!=j )
 
@@ -318,32 +344,23 @@ def modele2(nom_instance
     satisfy(y[i]==1 for i in mandatory)
 
     """
+    Contrainte aux
+    """
+    satisfy(p[i]==Maximum(x[i,:]) for i in parcours_pdi)
+
+    """
     Contrainte 12
     """
-
-    satisfy(disjunction(conjunction(y[i]==1,y[j]==1,x[i,j]==1),x[i,j]==0) for i in parcours_pdi for j in parcours_pdi)
-
+    satisfy( disjunction(y[i]==0,p[i]==1) for i in parcours_pdi )
     """
     Contrainte 13
     """
-
-    satisfy(disjunction(conjunction(y[i]==1,Maximum(x[i,:])==1),conjunction(y[i]==1,Maximum(x[:,i])==1),y[i]==0) for i in parcours_pdi)
+    satisfy(conjunction(disjunction( Maximum(x[:,j])==0,p[j]==1 ),disjunction(p[j]==0,Maximum(x[:,j])==1 )) for j in parcours_pdi)
 
     """
     Contrainte 14
-    desactiver car augmente le temps de résolution de beaucoup 
     """
-    #satisfy(disjunction(conjunction(y[i],s[i]>=0),conjunction(y[i]==0,s[i]==0)) for i in parcours_pdi)
-
-    """
-    Contrainte 15
-    """
-    satisfy(disjunction(y[i]==0,conjunction(y[i]==1,Maximum(x[i,:])==1,Maximum(x[:,i])==1))for i in parcours_pdi)
-    
-    """
-    Contrainte 16
-    """
-    satisfy(disjunction(s[i]!=s[j],conjunction(y[i]==0,y[j]==0)) for i in parcours_pdi for j in parcours_pdi if i!=j)
+    satisfy(disjunction(s[i]!=s[j],disjunction(p[i]==0,p[j]==0)) for i in parcours_pdi for j in parcours_pdi if i!=j)
     """
     Fonction objectif
     """
@@ -465,25 +482,40 @@ if __name__ == "__main__":
         #fichier preference utilisateur.ice choisie
         preference_util=settings[profile_marcheureuse_choisie_key]
         
-
-        options, arguments = getopt.getopt(
-            sys.argv[1:],                      # Arguments
-            f"{key_file_include[key_short_arg]}:{key_num_thread[key_short_arg]}:{key_id_thread[key_short_arg]}:e:v:",                            # Short option definitions
-            [key_file_include[key_long_arg],key_num_thread[key_long_arg],key_id_thread[key_long_arg]]   # Long option definitions
-        )
+        #identifiant processus
         num_thread=1
+        #identifiant du nombre de procesus en parrallèle
         decalage_thread=0
+        #fichier a traiter en solo
         file_a_traiter=""
-        for o, a in options:
-            if o in ["-"+key_file_include[key_short_arg],"-"+key_file_include[key_long_arg]]:
-                #fichier que j'ai passer en paramètre de mon programme
-                file_a_traiter=a
-            if o in ["-"+key_num_thread[key_short_arg],"-"+key_num_thread[key_long_arg]]:
-                num_thread=int(a)
-            if o in ["-"+key_id_thread[key_short_arg],"-"+key_id_thread[key_long_arg]]:
-                decalage_thread=int(a)
 
+        import argparse
 
+        parser = argparse.ArgumentParser(description='Optional app description')
+
+        # Optional argument
+        parser.add_argument(f"--{key_file_include[key_short_arg]}", type=str,default=None,
+                    help='add file tout solve')
+        parser.add_argument('-output', type=str,
+                    help='allow to name your output xml for pycsp3 ')
+        parser.add_argument('-ev', type=str,
+                    help='allow to display more verbose from pycsp3')
+        parser.add_argument(f"--{key_num_thread[key_short_arg]}", type=int,default=None,
+                    help='select how much there is thread concurent')
+        parser.add_argument(f"--{key_id_thread[key_short_arg]}", type=int,default=None,
+                    help='identifie the thread')
+        
+
+        args = parser.parse_args()
+            
+        if args.f is not None:
+            #fichier que j'ai passer en paramètre de mon programme
+            file_a_traiter=args.f
+        if args.t is not None:
+            num_thread=int(args.t)
+        if  args.i is not None:
+            decalage_thread=int(args.i)
+        
         if not os.path.exists(repertoire_solution): 
             os.makedirs(repertoire_solution) 
 

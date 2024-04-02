@@ -12,4 +12,11 @@
         ,"rivière":0.8
      }
      ,"interet chemin":20
+     
+     ,"capacite max":500
+     ,"distance parcourue min":10
+     ,"distance parcourue max":100
+     ,"budget max":2000
+     ,"Temps max visite":3000
+
 }

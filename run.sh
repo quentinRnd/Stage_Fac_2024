@@ -15,6 +15,9 @@ fi
 for (( i=0 ; i<$NUM_PROCESSEUR_SOLVE ; ++i ))
 do
     
-    python3 ./Modele2.py -t $NUM_PROCESSEUR_SOLVE -i $i 1>"$LOG_DIR/log_numthread_$i.txt" 2>"$LOG_DIR/log_error_numthread_$i.txt" &
+    python3 ./Modele2.py --t $NUM_PROCESSEUR_SOLVE --i $i -output="solve$i" 1>"$LOG_DIR/log_numthread_$i.txt" 2>"$LOG_DIR/log_error_numthread_$i.txt" &
     sleep 120
 done
+echo "all process launch waiting for them to complete"
+wait
+

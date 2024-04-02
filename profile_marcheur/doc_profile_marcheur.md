@@ -28,4 +28,8 @@ pour le paramètre __préférence marche__ pour un besoin de maintanebilité et 
 
 les valeur dans ce tableau sont également entre 0 et 1
     
- 
+- __capacite max__ représente le nombre de persone max autorisé dans un point d'interêt
+- __distance parcourue min__ représente la distance minimum a parcourir par les personnes
+- __distance parcourue max__  représente la distance maximum a parcourir par les personnes
+- __budget max__ représente le budget maximum a dépenser dans les point d'intérêt visiter
+- __Temps max visite__ représente le temps max de visite de tout les point d'intérêt dans le chemin

@@ -97,6 +97,9 @@ key_num_thread={key_short_arg:"t",key_long_arg:"num_thread"}
 #identifiant qui sert a savoir quelle est le numero du thread 
 key_id_thread={key_short_arg:"i",key_long_arg:"id_thread"}
 
+#paramètre pour nommer le modele 
+key_id_name_model={key_short_arg:"output",key_long_arg:"output"}
+
 
 """
 key for the instance json
@@ -145,3 +148,13 @@ lac_key="lac"
 riviere_key="rivière"
 #sert a savoir l'interêt de l'utilisateur.ice envers les chemin 
 interet_chemin_key="interet_chemin"
+#représente le nombre de persone max autorisé dans un point d'interêt
+capacite_max_key="capacite max"
+#représente la distance minimum a parcourir par les personnes
+distance_parcourue_min_key="distance parcourue min"
+#représente la distance maximum a parcourir par les personnes
+distance_parcourue_max_key="distance parcourue max"
+#représente le budget maximum a dépenser dans les point d'intérêt visiter
+budget_max_key="budget max"
+#représente le temps max de visite de tout les point d'intérêt dans le chemin
+Temps_max_visite_key="Temps max visite"
