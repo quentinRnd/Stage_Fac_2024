@@ -948,6 +948,94 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
          null,
@@ -1017,1052 +1105,91 @@
          null,
          null,
          null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null
-      ],
-      [
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null
-      ],
-      [
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null
-      ],
-      [
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null
-      ],
-      [
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null
-      ],
-      [
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null
-      ],
-      [
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null
-      ],
-      [
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null
-      ],
-      [
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null
-      ],
-      [
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null
-      ],
-      [
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
          null
       ],
       [
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -2126,6 +1253,14 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -2150,27 +1285,91 @@
          null,
          null,
          null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
          null
       ],
       [
-         null,
-         null,
-         null,
-         null,
-         null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -2234,39 +1433,14 @@
          null,
          null,
          null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null,
-         null
-      ],
-      [
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -2291,8 +1465,91 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -2356,6 +1613,14 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -2367,9 +1632,8 @@
          null,
          null,
          null,
-         null
-      ],
-      [
+         null,
+         null,
          null,
          null,
          null,
@@ -2381,8 +1645,91 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -2446,6 +1793,14 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -2474,7 +1829,87 @@
       ],
       [
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -2538,6 +1973,14 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -2562,8 +2005,91 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -2573,9 +2099,7 @@
          null,
          null,
          null,
-         null
-      ],
-      [
+         null,
          null,
          null,
          null,
@@ -2629,6 +2153,14 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -2653,8 +2185,91 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -2676,9 +2291,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -2721,6 +2333,14 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -2745,8 +2365,91 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -2779,9 +2482,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -2813,6 +2513,14 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -2836,8 +2544,92 @@
          null,
          null,
          null,
+         null,
+         null
+      ],
+      [
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -2882,9 +2674,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -2904,6 +2693,14 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -2928,8 +2725,91 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -2985,9 +2865,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -2996,6 +2873,14 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -3020,7 +2905,90 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -3085,12 +3053,17 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -3112,6 +3085,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -3125,6 +3101,62 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
          null,
          null,
          null,
@@ -3191,9 +3223,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -3208,6 +3237,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -3220,7 +3252,63 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
          null,
          null,
          null,
@@ -3294,9 +3382,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -3304,6 +3389,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -3316,7 +3404,63 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
          null,
          null,
          null,
@@ -3412,7 +3556,63 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
          null,
          null,
          null,
@@ -3493,6 +3693,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -3500,15 +3703,68 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
          null,
          null,
          null,
@@ -3589,6 +3845,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -3601,11 +3860,64 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -3685,6 +3997,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -3697,7 +4012,63 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
          null,
          null,
          null,
@@ -3706,9 +4077,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -3781,6 +4149,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -3793,6 +4164,62 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0.5,
+            1,
+            0.2
+         ],
          null,
          null,
          null,
@@ -3809,9 +4236,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -3877,6 +4301,27 @@
          null,
          null,
          null,
+         null
+      ],
+      [
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
          null,
          null,
          null,
@@ -3887,6 +4332,86 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
          null,
@@ -3912,9 +4437,8 @@
          null,
          null,
          null,
-         null
-      ],
-      [
+         null,
+         null,
          null,
          null,
          null,
@@ -3957,6 +4481,27 @@
          null,
          null,
          null,
+         null
+      ],
+      [
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
          null,
          null,
          null,
@@ -3966,7 +4511,87 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
          null,
@@ -4015,9 +4640,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -4039,6 +4661,27 @@
          null,
          null,
          null,
+         null
+      ],
+      [
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
          null,
          null,
          null,
@@ -4048,7 +4691,87 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
          null,
@@ -4121,6 +4844,24 @@
          null
       ],
       [
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
          null,
          null,
          null,
@@ -4130,7 +4871,87 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
          null,
@@ -4200,6 +5021,27 @@
          null,
          null,
          null,
+         null
+      ],
+      [
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
          null,
          null,
          null,
@@ -4209,7 +5051,87 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
          null,
@@ -4221,9 +5143,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -4282,6 +5201,27 @@
          null,
          null,
          null,
+         null
+      ],
+      [
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
          null,
          null,
          null,
@@ -4291,7 +5231,87 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
          null,
@@ -4324,9 +5344,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -4364,6 +5381,27 @@
          null,
          null,
          null,
+         null
+      ],
+      [
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
          null,
          null,
          null,
@@ -4373,7 +5411,87 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
          null,
@@ -4427,9 +5545,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -4446,6 +5561,27 @@
          null,
          null,
          null,
+         null
+      ],
+      [
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
          null,
          null,
          null,
@@ -4455,7 +5591,87 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
          null,
@@ -4525,19 +5741,117 @@
          null,
          null,
          null,
+         null
+      ],
+      [
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
          null,
          null,
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
          null,
@@ -4607,6 +5921,27 @@
          null,
          null,
          null,
+         null
+      ],
+      [
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
          null,
          null,
          null,
@@ -4616,7 +5951,87 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
          null,
@@ -4633,9 +6048,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -4689,6 +6101,27 @@
          null,
          null,
          null,
+         null
+      ],
+      [
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
+         null,
          null,
          null,
          null,
@@ -4698,6 +6131,86 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
          null,
@@ -4736,9 +6249,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -4771,6 +6281,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -4803,6 +6316,70 @@
          null,
          null,
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
          null,
          null,
          null,
@@ -4839,9 +6416,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -4866,6 +6440,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -4897,7 +6474,71 @@
          null,
          null,
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
          null,
          null,
          null,
@@ -4942,9 +6583,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -4961,6 +6599,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -4992,7 +6633,71 @@
          null,
          null,
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
          null,
          null,
          null,
@@ -5045,9 +6750,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -5056,6 +6758,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -5087,7 +6792,71 @@
          null,
          null,
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
          null,
          null,
          null,
@@ -5182,7 +6951,71 @@
          null,
          null,
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
          null,
          null,
          null,
@@ -5243,6 +7076,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -5251,9 +7087,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -5277,7 +7110,71 @@
          null,
          null,
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
          null,
          null,
          null,
@@ -5338,6 +7235,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -5354,9 +7254,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -5372,7 +7269,71 @@
          null,
          null,
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
          null,
          null,
          null,
@@ -5433,6 +7394,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -5457,9 +7421,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -5467,7 +7428,71 @@
          null,
          null,
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
          null,
          null,
          null,
@@ -5528,6 +7553,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -5559,10 +7587,71 @@
          null,
          null,
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -5623,6 +7712,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -5663,10 +7755,103 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
          null,
          null,
@@ -5714,6 +7899,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -5754,7 +7942,103 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
          null,
          null,
@@ -5766,9 +8050,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -5805,6 +8086,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -5845,7 +8129,103 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
          null,
          null,
@@ -5869,9 +8249,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -5896,6 +8273,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -5936,7 +8316,103 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
          null,
          null,
@@ -5972,9 +8448,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -5987,6 +8460,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -6027,7 +8503,103 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
          null,
          null,
@@ -6118,7 +8690,103 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
          null,
          null,
@@ -6166,11 +8834,9 @@
          null,
          null,
          null,
-         null,
-         null,
-         null,
-         null,
-         null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -6178,9 +8844,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -6214,7 +8877,103 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
          null,
          null,
@@ -6262,6 +9021,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -6281,9 +9043,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -6305,7 +9064,103 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
          null,
          null,
@@ -6353,6 +9208,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -6384,9 +9242,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -6396,7 +9251,103 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
          null,
          null,
@@ -6444,6 +9395,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -6484,12 +9438,105 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -6535,6 +9582,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -6575,7 +9625,103 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
          null,
          null,
@@ -6590,9 +9736,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -6626,6 +9769,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -6666,7 +9812,103 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
          null,
          null,
@@ -6693,9 +9935,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -6717,6 +9956,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -6757,6 +9999,102 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
          null,
          null,
@@ -6796,9 +10134,8 @@
          null,
          null,
          null,
-         null
-      ],
-      [
+         null,
+         null,
          null,
          null,
          null,
@@ -6806,6 +10143,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -6860,6 +10200,62 @@
          null,
          null,
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
          null,
          null,
          null,
@@ -6955,7 +10351,63 @@
          null,
          null,
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
          null,
          null,
          null,
@@ -6995,6 +10447,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -7002,9 +10457,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -7051,7 +10503,63 @@
          null,
          null,
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
          null,
          null,
          null,
@@ -7091,6 +10599,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -7105,9 +10616,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -7147,7 +10655,63 @@
          null,
          null,
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
          null,
          null,
          null,
@@ -7187,6 +10751,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -7208,9 +10775,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -7243,7 +10807,63 @@
          null,
          null,
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
          null,
          null,
          null,
@@ -7283,6 +10903,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -7311,9 +10934,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -7339,7 +10959,63 @@
          null,
          null,
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
          null,
          null,
          null,
@@ -7379,6 +11055,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -7414,9 +11093,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -7435,7 +11111,63 @@
          null,
          null,
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
          null,
          null,
          null,
@@ -7475,6 +11207,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -7517,9 +11252,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -7531,6 +11263,62 @@
          null,
          null,
          null,
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
+         [
+            0,
+            1,
+            1,
+            0,
+            1,
+            1
+         ],
          null,
          null,
          null,
@@ -7571,6 +11359,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -7620,9 +11411,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -7636,9 +11424,89 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -7664,6 +11532,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -7723,15 +11594,92 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -7757,6 +11705,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -7818,17 +11769,95 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
          null,
-         null
-      ],
-      [
+         null,
          null,
          null,
          null,
@@ -7849,6 +11878,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -7910,10 +11942,90 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -7929,9 +12041,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -7942,6 +12051,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -8003,10 +12115,90 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -8096,10 +12288,90 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -8125,6 +12397,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -8135,9 +12410,7 @@
          null,
          null,
          null,
-         null
-      ],
-      [
+         null,
          null,
          null,
          null,
@@ -8188,10 +12461,90 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -8217,6 +12570,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -8238,9 +12594,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -8281,10 +12634,90 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -8310,6 +12743,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -8341,9 +12777,8 @@
          null,
          null,
          null,
-         null
-      ],
-      [
+         null,
+         null,
          null,
          null,
          null,
@@ -8372,10 +12807,90 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -8401,6 +12916,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -8444,9 +12962,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -8475,9 +12990,73 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
          null,
@@ -8496,6 +13075,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -8547,9 +13129,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -8569,10 +13148,74 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
          null,
@@ -8591,6 +13234,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -8650,15 +13296,92 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -8684,6 +13407,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -8753,14 +13479,75 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
          null,
@@ -8779,6 +13566,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -8840,8 +13630,88 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -8856,9 +13726,8 @@
          null,
          null,
          null,
-         null
-      ],
-      [
+         null,
+         null,
          null,
          null,
          null,
@@ -8870,7 +13739,98 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            0.3,
+            0.2,
+            1
+         ],
          null,
          null,
          null,
@@ -8962,7 +13922,6 @@
          null
       ],
       [
-         null,
          null,
          null,
          null,
@@ -9033,10 +13992,74 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
          null,
@@ -9055,16 +14078,15 @@
          null,
          null,
          null,
-         null,
+         null
+      ],
+      [
          null,
          null,
          null,
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -9129,10 +14151,74 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
          null,
@@ -9151,6 +14237,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -9165,9 +14254,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -9224,10 +14310,74 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
          null,
@@ -9246,6 +14396,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -9268,9 +14421,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -9319,10 +14469,74 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
          null,
@@ -9341,6 +14555,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -9371,9 +14588,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -9414,10 +14628,74 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
          null,
@@ -9436,6 +14714,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -9474,9 +14755,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -9509,9 +14787,73 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
+         [
+            1,
+            0,
+            0.3,
+            1,
+            0.5,
+            0.8
+         ],
          null,
          null,
          null,
@@ -9531,6 +14873,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -9577,9 +14922,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -9617,6 +14959,78 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
          null,
          null,
          null,
@@ -9625,6 +15039,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -9680,9 +15097,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -9710,7 +15124,79 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
          null,
          null,
          null,
@@ -9719,6 +15205,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -9783,9 +15272,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -9804,7 +15290,79 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
          null,
          null,
          null,
@@ -9813,6 +15371,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -9886,9 +15447,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -9898,7 +15456,79 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
          null,
          null,
          null,
@@ -9907,6 +15537,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -9989,10 +15622,79 @@
          null,
          null,
          null,
-         null
-      ],
-      [
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
          null,
          null,
          null,
@@ -10001,6 +15703,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -10083,7 +15788,79 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
          null,
          null,
          null,
@@ -10177,7 +15954,79 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
          null,
          null,
          null,
@@ -10186,6 +16035,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -10195,9 +16047,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -10271,7 +16120,79 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
          null,
          null,
          null,
@@ -10280,6 +16201,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -10298,9 +16222,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -10365,7 +16286,79 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
          null,
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
          null,
          null,
          null,
@@ -10374,6 +16367,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -10401,9 +16397,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -10459,6 +16452,78 @@
          null,
          null,
          null,
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
+         [
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+         ],
          null,
          null,
          null,
@@ -10468,6 +16533,9 @@
          null,
          null,
          null,
+         null
+      ],
+      [
          null,
          null,
          null,
@@ -10504,9 +16572,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -10564,6 +16629,72 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ]
+      ],
+      [
          null,
          null,
          null,
@@ -10607,9 +16738,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -10659,7 +16787,73 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ]
+      ],
+      [
          null,
          null,
          null,
@@ -10710,9 +16904,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -10755,7 +16946,73 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ]
+      ],
+      [
          null,
          null,
          null,
@@ -10813,9 +17070,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -10851,7 +17105,73 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ]
+      ],
+      [
          null,
          null,
          null,
@@ -10916,9 +17236,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -10947,7 +17264,73 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ]
+      ],
+      [
          null,
          null,
          null,
@@ -11019,9 +17402,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -11043,7 +17423,73 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ]
+      ],
+      [
          null,
          null,
          null,
@@ -11122,9 +17568,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -11139,7 +17582,73 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ]
+      ],
+      [
          null,
          null,
          null,
@@ -11225,9 +17734,6 @@
          null,
          null,
          null,
-         null
-      ],
-      [
          null,
          null,
          null,
@@ -11235,7 +17741,73 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ]
+      ],
+      [
          null,
          null,
          null,
@@ -11328,6 +17900,70 @@
          null,
          null,
          null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
          null
       ]
    ]

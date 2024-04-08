@@ -6,9 +6,13 @@ import pandas as pd
 import os 
 import json
 import re
-import getopt
+import argparse
 import time
 from settings import *
+
+def creation_repertoire(nomrep):
+    if not os.path.exists(nomrep): 
+        os.makedirs(nomrep)
 
 #retourne l'emplacement du fichier rechercher
 def nom_fichier(instance_repertory,nom_instance,extension_instance):
@@ -20,7 +24,7 @@ def optimisation_chemin(nom_instance
                         ):
     pass
 
-def modele2_json(nom_instance
+def modele3_json(nom_instance
             ,solver_verbose
             ,instance_repertory
             ,timeout_solver
@@ -32,7 +36,9 @@ def modele2_json(nom_instance
             ,type_objectif
             ,repertoire_solution
             ,repertoire_preference_util
-            ,preference_util):
+            ,preference_util
+            ,solution_inter
+            ,timeout_sol_inter):
     #categorie permise par le modele
     categorie_permise= [i for i in range (1000)]
     with open(f"{instance_repertory}/{nom_instance}.json") as instance_json:
@@ -79,6 +85,7 @@ def modele2_json(nom_instance
             distance_parcourue_max=preference_util_data[distance_parcourue_max_key]
             distance_parcourue_min=preference_util_data[distance_parcourue_min_key]
 
+            
 
 
 
@@ -103,7 +110,7 @@ def modele2_json(nom_instance
                     else:
                         aux.append(0)
                 chemin_valuer.append(aux)
-            modele2(
+            modele3(
                         nom_instance=nom_instance
                         ,solver_verbose=niveau_verbose
                         ,instance_repertory=instance_repertory
@@ -132,6 +139,8 @@ def modele2_json(nom_instance
                         ,capacite_max=capacite_max
                         ,distance_parcourue_max=distance_parcourue_max
                         ,distance_parcourue_min=distance_parcourue_min
+                        ,solution_inter=solution_inter
+                        ,timeout_sol_inter=timeout_sol_inter
 
                     )
                     #a faire 
@@ -139,7 +148,7 @@ def modele2_json(nom_instance
                     #crée une fonction objectif qui ce focus sur maximiser la somme du coup des chemins
 
 #nom du répertoire ou sont les instances
-def modele2(nom_instance
+def modele3(nom_instance
             ,solver_verbose
             ,instance_repertory
             ,timeout_solver
@@ -167,7 +176,11 @@ def modele2(nom_instance
             ,capacite_max
             ,distance_parcourue_max
             ,distance_parcourue_min
+            #est ce que l'on produit des solution intermédiaire
+            ,solution_inter
+            ,timeout_sol_inter
 ):
+    clear()
     print(f"solving {nom_instance}")
     
     #Prix d'entrer pour chaque point d'interêt
@@ -289,11 +302,9 @@ def modele2(nom_instance
     satisfy(Sum (x[i, j] for j in parcours_pdi) <nombre_passage_max for i in parcours_pdi)
     """
     Contrainte 2
-    satisfy( disjunction((s[i]+t[i]+distance[i,j]<=s[j]) ,s[j]==Minimum([s[k] for k in parcours_pdi if s[k]!=1]), (x[i][j]==0))  for i in parcours_pdi for j in parcours_pdi if i!=j )
     """
-    satisfy( disjunction((s[i]+(t[i]*y[i])+distance[i,j]<=s[j]) ,s[j]==Minimum(s), (x[i][j]==0))  for i in parcours_pdi for j in parcours_pdi if i!=j )
-    
-    #satisfy( disjunction(((s[i]+t[i]+distance[i,j])==s[j]) , (x[i][j]==0))  for i in parcours_pdi for j in parcours_pdi if i!=j )
+    if not solution_inter:
+        satisfy( disjunction((s[i]+(t[i]*y[i])+distance[i,j]<=s[j]) ,s[j]==Minimum(s), (x[i][j]==0))  for i in parcours_pdi for j in parcours_pdi if i!=j )
 
     """
     Contrainte 3
@@ -381,31 +392,37 @@ def modele2(nom_instance
     #timout pour le solver
     solver_timeout_seconds=timeout_solver
 
-
+    solver_effectif=ACE
     if(solver=="ACE"):
-        solver=ACE
+        solver_effectif=ACE
     else: 
         if solver=="CHOCO":
-            solver=CHOCO
+            solver_effectif=CHOCO
         else:
-            solver=ACE
+            solver_effectif=ACE
     
-    resultat_recherche=UNKNOWN
-
-
+    #tableau contenant les different solution 
     tab_res=[]
-    bound_tab=[]
-    fichier = open(f"{repertoire_solution}/{nom_instance}.json", "w")
+    #tableau contenant les different solution intermediaire
+    tab_res_inter=[]
+
     boundmax=0
-    resultat_recherche=solve(solver=solver 
+    #sert a savoir quand on a commencer le solve 
+    debut_solve=int(time.time())
+
+    resultat_recherche=solve(solver=solver_effectif 
                             ,sols=nombre_solution
                             ,verbose=solver_verbose
-                            ,options=f"-t={int(solver_timeout_seconds)}s" if timeout_activer else "")
-
+                            ,options=f"-t={int(timeout_sol_inter) if solution_inter else int(solver_timeout_seconds)}s" if timeout_activer else "")
+    #sert a savoir quand on a fini le solve
+    fin_solve=int(time.time())
+    p_recherche=None
     if resultat_recherche is SAT or resultat_recherche is OPTIMUM is not UNSAT:
         print(f"Nombre de solutions: {n_solutions()} pour l'instance {nom_instance}" )
         boundmax=bound()
         for numero_solution in range(n_solutions()):
+            if numero_solution==n_solutions()-1:
+                p_recherche=values(p, sol=numero_solution)
             #valeur des arcs relier entre les pdi 
             arc_res=values(x, sol=numero_solution)
 
@@ -440,14 +457,80 @@ def modele2(nom_instance
             ,Score_pdi_key:score_pdi
             ,Closing_pdi_key:c
             ,Opening_pdi_key:e
-            ,Bound_tab_key:bound_tab
             ,Evaluation_path_key:chemin_valuer
         }
     json_data=json.dumps(data, indent=3)
     
+    if solution_inter:
+        fichier = open(f"{repertoire_solution}/{nom_instance}_inter.json", "w")
+    else:
+        fichier = open(f"{repertoire_solution}/{nom_instance}.json", "w")
     fichier.write(json_data)
     fichier.close()
     print(f"solution saved in {repertoire_solution}/{nom_instance}.json")
+    if solution_inter and p_recherche != None:
+        indice_sol=[i for i in parcours_pdi if p_recherche[i]==1]
+        capaciter_pdi_sol=[]
+        categorie_pdi_sol=[]
+        chemin_valuer_sol=[]
+        coord_x_sol=[]
+        coord_y_sol=[]
+        duree_visite_sol=[]
+        fermeture_pdi_sol=[]
+        interet_pdi_sol=[]
+        ouverture_pdi_sol=[]
+        prix_entrer_sol=[]
+
+        for i in indice_sol:
+            capaciter_pdi_sol.append(capacite[i])
+            categorie_pdi_sol.append(categorie[i])
+            chemin_aux=[]
+            for j in indice_sol:
+                chemin_aux.append(chemin_valuer[i][j])
+            chemin_valuer_sol.append(chemin_aux)
+            coord_x_sol.append(loc_x[i])
+            coord_y_sol.append(loc_y[i])
+            duree_visite_sol.append(t[i])
+            fermeture_pdi_sol.append(c[i])
+            interet_pdi_sol.append(score_pdi[i])
+            ouverture_pdi_sol.append(e[i])
+            prix_entrer_sol.append(b[i])
+
+
+
+
+
+        modele3(nom_instance=nom_instance
+                ,solver_verbose=solver_verbose
+                ,instance_repertory=instance_repertory
+                ,budget_max=budget_max
+                ,capacite_max=capacite_max
+                ,capaciter_pdi=capaciter_pdi_sol
+                ,categorie_pdi=categorie_pdi_sol
+                ,categorie_permise=categorie_permise
+                ,chemin_valuer=chemin_valuer_sol
+                ,coord_x=coord_x_sol
+                ,coord_y=coord_y_sol
+                ,distance_parcourue_max=distance_parcourue_max
+                ,distance_parcourue_min=distance_parcourue_min
+                ,duree_visite=duree_visite_sol
+                ,extension_instance=extension_instance
+                ,fermeture_pdi=fermeture_pdi_sol
+                ,fonction_objectif=fonction_objectif
+                ,interet_pdi=interet_pdi_sol
+                ,nombre_solution=nombre_solution
+                ,ouverture_pdi=ouverture_pdi_sol
+                ,prix_entrer=prix_entrer_sol
+                ,repertoire_solution=repertoire_solution
+                ,solution_inter=False
+                ,solver=solver
+                ,Temps_max_visite=Temps_max_visite
+                ,timeout_activer=timeout_activer
+                ,timeout_solver=timeout_solver+(timeout_sol_inter-(fin_solve-debut_solve))
+                ,type_objectif=type_objectif
+                ,timeout_sol_inter=timeout_sol_inter)
+        
+
     #clear toute les contraintes précédement poster 
     clear()
 
@@ -493,14 +576,20 @@ if __name__ == "__main__":
         #fichier preference utilisateur.ice choisie
         preference_util=settings[profile_marcheureuse_choisie_key]
         
+        #savoir si oui ou non on produit des solution intermediaire
+        solution_inter=settings[inter_solution_key]
+
+        #savoir  quelle est le timeout pour les solution intermediaire
+        timeout_sol_inter=settings[timout_solution_inter_key]
+
         #identifiant processus
         num_thread=1
         #identifiant du nombre de procesus en parrallèle
         decalage_thread=0
         #fichier a traiter en solo
         file_a_traiter=""
-
-        import argparse
+        
+        
 
         parser = argparse.ArgumentParser(description='Optional app description')
 
@@ -509,35 +598,27 @@ if __name__ == "__main__":
                     help='add file tout solve')
         parser.add_argument('-output', type=str,
                     help='allow to name your output xml for pycsp3 ')
-        parser.add_argument('-ev', type=str,
-                    help='allow to display more verbose from pycsp3')
         parser.add_argument(f"--{key_num_thread[key_short_arg]}", type=int,default=None,
                     help='select how much there is thread concurent')
         parser.add_argument(f"--{key_id_thread[key_short_arg]}", type=int,default=None,
                     help='identifie the thread')
         
-
-        args = parser.parse_args()
-            
-        if args.f is not None:
+        args = parser.parse_known_args()
+        if args[0].f is not None:
             #fichier que j'ai passer en paramètre de mon programme
-            file_a_traiter=args.f
-        if args.t is not None:
-            num_thread=int(args.t)
-        if  args.i is not None:
-            decalage_thread=int(args.i)
+            file_a_traiter=args[0].f
+        if args[0].t is not None:
+            num_thread=int(args[0].t)
+        if  args[0].i is not None:
+            decalage_thread=int(args[0].i)
         
-        if not os.path.exists(repertoire_solution): 
-            os.makedirs(repertoire_solution) 
-
+        creation_repertoire(repertoire_solution)
         #recupere toute les instance du dossier des instances
         instances=os.listdir(instance_repertory)
         pattern=r'\w+'
         #permet de récuperer uniquement les nom des fichier 
         instances=sorted([re.findall(pattern, i)[0] for i in instances])
-        
-        instances=["Instancia1","Instancia5","Instancia6","Instancia7","Instancia8","Instancia12","Instancia14","Instancia15","Instanciamoyenne","Instanciapetite"]
-        
+                
         if(file_a_traiter!=""):
             if(os.path.exists(nom_fichier
                                         (
@@ -559,7 +640,7 @@ if __name__ == "__main__":
         if num_thread==1:
             for instance in instances:
                 if instance not in instance_exclu:
-                    modele2_json(instance
+                    modele3_json(instance
                         ,solver_verbose=niveau_verbose
                         ,instance_repertory=instance_repertory
                         ,timeout_solver=timeout_solver
@@ -572,6 +653,8 @@ if __name__ == "__main__":
                         ,repertoire_solution=repertoire_solution
                         ,repertoire_preference_util=repertoire_preference_util
                         ,preference_util=preference_util
+                        ,solution_inter=solution_inter
+                        ,timeout_sol_inter=timeout_sol_inter
                 )
                     
         else:
@@ -581,7 +664,7 @@ if __name__ == "__main__":
             while instance_traiter < len(instances):
                 if nombre_instance_traiter>instance_deja_solve:    
                     
-                    modele2_json(instances[instance_traiter]
+                    modele3_json(instances[instance_traiter]
                         ,solver_verbose=niveau_verbose
                         ,instance_repertory=instance_repertory
                         ,timeout_solver=timeout_solver
@@ -594,7 +677,10 @@ if __name__ == "__main__":
                         ,repertoire_solution=repertoire_solution
                         ,repertoire_preference_util=repertoire_preference_util
                         ,preference_util=preference_util
+                        ,solution_inter=solution_inter
+                        ,timeout_sol_inter=timeout_sol_inter
                     )
                 instance_traiter+=num_thread
                 nombre_instance_traiter+=1
+            print(f"fin du traitement du process {num_thread}")
     

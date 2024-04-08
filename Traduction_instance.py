@@ -42,7 +42,11 @@ def traduction_instance():
 
 def ajout_chemin_pdi():
     repertoire_instance="Instance_json"
-    instances=["Instancia1","Instancia5","Instancia6","Instancia7","Instancia8","Instancia12","Instancia14","Instancia15","Instanciamoyenne","Instanciapetite"]
+    pattern=r'\w+'
+
+    instances=os.listdir(repertoire_instance)
+    instances=[re.findall(pattern, i)[0] for i in instances]
+
     ajout_chemin_instance_data=ajout_chemin_instance()
     for instance_nom in instances:
         ajout_chemin=ajout_chemin_instance_data[instance_nom]

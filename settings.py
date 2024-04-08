@@ -39,6 +39,11 @@ repertoire_profile_marcheureuse_key="repertoire_profile_marcheureuse"
 #cle servant a savoir quelle profile on a selectionner dans le repertoire
 profile_marcheureuse_choisie_key="profile_marcheureuse_choisie"
 
+#clé permettant de savoir si on génère des solution intermediaire ou pas 
+inter_solution_key="inter_solution"
+
+#clé pour le timeout des solution intermediaire 
+timout_solution_inter_key="timout_solution_inter"
 """
 Key pour les solution json
 """
@@ -68,6 +73,9 @@ Score_pdi_key="Score_pdi"
 #clé pour la valeur de la fonction objectif
 Bound_key="Bound"
 
+#clé pour le teableau des bound des différente solution
+Bound_tab_key="Bound_tab"
+
 #sert a savoir quelle type d'objectif on a choisie sur la solution
 Type_objectif_key="type_objectif"
 
@@ -80,6 +88,9 @@ Timeout_activer_key="timeout_activer"
 #sert a savoir quelle sont les horaire d'ouverture et de fermeture des différent point d'intérêt
 Closing_pdi_key="Closing_pdi"
 Opening_pdi_key="Opening_pdi"
+
+#sert a savoir les evaluation des chemin des pdi
+Evaluation_path_key="Evaluation_path"
 
 """
 Argument du script python
