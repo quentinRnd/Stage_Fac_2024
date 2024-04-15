@@ -57,7 +57,7 @@ Optimum_key="Optimum"
 Solutions_key="Solutions"
 #cle pour recupéré les arc des differente solution
 Arc_key="Arc"
-#cle pour savoir la presence des pdi dans la solutions 
+#cle pour savoir si on a visiter le pdi
 Presence_pdi_key="Presence_pdi"
 #cle pour savoir l'heure de départ des pdi
 Start_pdi_key="Start_pdi"
@@ -169,3 +169,5 @@ distance_parcourue_max_key="distance parcourue max"
 budget_max_key="budget max"
 #représente le temps max de visite de tout les point d'intérêt dans le chemin
 Temps_max_visite_key="Temps max visite"
+#représente les tranche de temps dans lequelle les départ sont découper
+Tranche_temps_key="Tranche de temps"

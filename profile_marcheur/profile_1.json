@@ -18,5 +18,6 @@
      ,"distance parcourue max":100
      ,"budget max":2000
      ,"Temps max visite":3000
+     ,"Tranche de temps":30
 
 }

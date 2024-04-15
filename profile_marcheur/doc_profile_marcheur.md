@@ -33,3 +33,4 @@ les valeur dans ce tableau sont également entre 0 et 1
 - __distance parcourue max__  représente la distance maximum a parcourir par les personnes
 - __budget max__ représente le budget maximum a dépenser dans les point d'intérêt visiter
 - __Temps max visite__ représente le temps max de visite de tout les point d'intérêt dans le chemin
+- __Tranche de temps__ représente les tranche de temps dans lequelle les départ sont découper

@@ -20,4 +20,4 @@ do
 done
 echo "all process launch waiting for them to complete"
 wait
-
+echo "all process have completed their task"

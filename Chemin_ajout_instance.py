@@ -8,45 +8,30 @@ def ajout_chemin_data(chemin_ajout):
     return instance_chemin
 
 def ajout_chemin_instance():
-    chemin={
-    "Instancia1":{
-                    #des chemin plutot de entre ville et nature
-                    (9,37):[0.3,0.8,0.1,0,0,0.6],(9,35):[0.3,0.8,0.1,0,0,0.6],(9,39):[0.3,0.8,0.1,0,0,0.6]
-                    ,(9,44):[0.3,0.8,0.1,0,0,0.6],(9,32):[0.3,0.8,0.1,0,0,0.6],(9,32):[0.3,0.8,0.1,0,0,0.6]
-                    ,(9,35):[0.3,0.8,0.1,0,0,0.6]
-                    # des chemin plutot de grande nature
-                    ,(36,31):[1,0,0.3,0.8,0.5,0.8],(0,31):[1,0,0.3,0.8,0.5,0.8],(9,35):[1,0,0.3,0.8,0.5,0.8]
-                    ,(36,41):[1,0,0.3,0.8,0.5,0.8],(31,41):[1,0,0.3,0.8,0.5,0.8],(0,36):[1,0,0.3,0.8,0.5,0.8]
-                    #des chemin de ville
-                    ,(47,12):[0,1,0.5,0,0,0],(12,24):[0,1,0.5,0,0,0],(47,24):[0,1,0.5,0,0,0]
-                    ,(21,12):[0,1,0.5,0,0,0],(38,12):[0,1,0.5,0,0,0],(38,21):[0,1,0.5,0,0,0]
-                    ,(38,47):[0,1,0.5,0,0,0],(40,38):[0,1,0.5,0,0,0]
+    chemin={}
 
-                    #des chemin pres de rivière et de lacs
-                    ,(42,43):[1,0,0.4,1,1,1],(42,11):[1,0,0.4,1,1,1],(42,45):[1,0,0.4,1,1,1],(11,45):[1,0,0.4,1,1,1]
-                    ,(11,10):[1,0,0.4,1,1,1],(10,34):[1,0,0.4,1,1,1],(10,37):[1,0,0.4,1,1,1],(10,45):[1,0,0.4,1,1,1]
-                    ,(10,37):[1,0,0.4,1,1,1],(34,22):[1,0,0.4,1,1,1],(34,7):[1,0,0.4,1,1,1],(34,35):[1,0,0.4,1,1,1]
+    instance1_data=[
+        #des chemin plutot de entre ville et nature
+        [[21,12,24,47,38,40,39,30,2],[0.3,0.8,0.1,0,0,0.6]]
+        # des chemin plutot de grande nature
+        ,[[46,43,42,6,3,27,11,10,45],[1,0,0.3,0.8,0.5,0.8]]
+        #des chemin de ville
+        ,[[15,25,23,31,41,36,17,18,26],[0,1,0.5,0,0,0]]
+        #des chemin pres de rivière et de lacs
+        ,[[9,34,35,37,7,22,44,32,0],[1,0,0.4,1,1,1]]
+        #des chemin de ville avec des lacs
+        ,[[5,29,20,8,13,33],[0.2,1,0.3,0,1,0.3]]
+        #avec de l'élevation en ville
+        ,[[28,14,16,4,1,19],[0.2,1,0.8,0,1,0.3]]
+        
+        #avec de l'élevation en nature
+        ,[[21,46,15,9,5,28],[1,0,0.8,0.4,0.6,0.6]]
+         #avec de l'élevation en nature
+        ,[[12,43,25,34,29,14],[1,0,0.8,0.4,0.6,0.6]]
 
-                    #des chemin de ville avec des lacs
-                    ,(23,36):[0.2,1,0.3,0,1,0.3],(23,25):[0.2,1,0.3,0,1,0.3],(23,15):[0.2,1,0.3,0,1,0.3]
-                    ,(23,26):[0.2,1,0.3,0,1,0.3],(23,18):[0.2,1,0.3,0,1,0.3],(23,16):[0.2,1,0.3,0,1,0.3]
-                    ,(18,26):[0.2,1,0.3,0,1,0.3],(18,36):[0.2,1,0.3,0,1,0.3],(18,17):[0.2,1,0.3,0,1,0.3]
-                    ,(18,15):[0.2,1,0.3,0,1,0.3],(41,36):[0.2,1,0.3,0,1,0.3],(36,31):[0.2,1,0.3,0,1,0.3]
-                    ,(36,25):[0.2,1,0.3,0,1,0.3],(36,23):[0.2,1,0.3,0,1,0.3],(36,25):[0.2,1,0.3,0,1,0.3]
-                    
-                    #avec de l'élevation en ville
-                    ,(6,45):[0.2,1,0.8,0,1,0.3],(6,3):[0.2,1,0.8,0,1,0.3],(6,27):[0.2,1,0.8,0,1,0.3]
-                    ,(6,45):[0.2,1,0.8,0,1,0.3],(6,22):[0.2,1,0.8,0,1,0.3],(6,11):[0.2,1,0.8,0,1,0.3]
-                    ,(3,27):[0.2,1,0.8,0,1,0.3],(3,11):[0.2,1,0.8,0,1,0.3],(3,45):[0.2,1,0.8,0,1,0.3]
-                    ,(27,45):[0.2,1,0.8,0,1,0.3],(27,10):[0.2,1,0.8,0,1,0.3],(27,7):[0.2,1,0.8,0,1,0.3]
-
-                    #avec de l'élevation en nature
-                    ,(40,30):[1,0,0.8,0.4,0.6,0.6],(40,15):[1,0,0.8,0.4,0.6,0.6],(40,25):[1,0,0.8,0.4,0.6,0.6]
-                    ,(40,17):[1,0,0.8,0.4,0.6,0.6],(40,18):[1,0,0.8,0.4,0.6,0.6],(40,23):[1,0,0.8,0.4,0.6,0.6]
-                    ,(40,2):[1,0,0.8,0.4,0.6,0.6],(32,0):[1,0,0.8,0.4,0.6,0.6],(32,23):[1,0,0.8,0.4,0.6,0.6]
-                    ,(32,11):[1,0,0.8,0.4,0.6,0.6]
-                }
-    }
+        
+    ]
+    chemin["Instancia1"]=ajout_chemin_data(instance1_data)
 
     instance2_data=[
         [
@@ -185,6 +170,19 @@ def ajout_chemin_instance():
             #chemin de nature dans la forêt avec certain lac et rivière
             [29,30,28,27,25,26,24,21,23,22,20,0],[1,0,0.3,1,0.5,0.8]
         ]
+        
+        #chemin de nature dans la forêt avec certain lac et rivière
+        ,[
+            [29,51,68,60,38,3,16,98,85,80],[1,0,0.3,1,0.5,0.8]
+        ]
+         #chemin de ville avec de l'élévation- des lac et des rivière 
+        ,[
+            [30,52,64,58,35,75,14,96,83,79],[0,1,1,0,1,1]
+        ]
+        #chemin de foret avec des lac et des rivière et de l'élévation
+        ,[
+            [28,50,72,56,31,5,12,95,82,77],[1,0,1,0.3,0.2,1]
+        ]
 
 
     ]
@@ -233,6 +231,21 @@ def ajout_chemin_instance():
             [0,20,21,22,23,24,25,26,27,28,29,30],[1,0,0.3,1,0.5,0.8]
         ]
 
+        #chemin de ville avec des rivière
+        ,[
+            [0,92,12,53,31,40,31,80,90],[0.2,1,0.1,0,0,1]
+        ]
+        #chemin de nature dans la forêt avec certain lac et rivière
+        ,[
+            [20,93,13,1,54,32,41,91,81,62],[1,0,0.3,1,0.5,0.8]
+        ]
+        #chemin de ville avec des lac et un peu de forêt
+        ,[
+            [21,94,14,2,55,42,33,89,70,63],[0.2,1,0.1,0.5,1,0.2]
+        ]
+
+
+
 
     ]
 
@@ -260,6 +273,20 @@ def ajout_chemin_instance():
             #chemin de foret avec des lac et des rivière et de l'élévation           
             [12,13,14,15,16,17,18,19],[1,0,1,0.3,0.2,1]
         ]
+
+         #chemin de nature dans la forêt avec certain lac et rivière
+        ,[
+            [40,31,0,1,12],[1,0,0.3,1,0.5,0.8]
+        ]
+        #chemin de ville avec des rivière
+        ,[
+            [41,32,20,2,13],[0.2,1,0.1,0,0,1]
+        ]
+        #Chemin de nature avec de l'élévation avec des forêt des rivière
+        ,[
+            [42,33,21,3,14],[1,0,1,1,0,1]
+        ]
+
         
     ]
     chemin["Instancia6"]=ajout_chemin_data(instance6_data)
@@ -288,6 +315,23 @@ def ajout_chemin_instance():
         ,[
             #chemin de ville avec de l'élévation            
             [20,92,42,44,60,47,89,9,77,30,64,2,97,48,94,7,90,32,81,23,99],[0,1,1,0,0,0]
+        ]
+
+        #chemin de ville avec de l'élévation   
+        ,[
+            [57,19,72,95,35,20],[0,1,1,0,0,0]
+        ]
+        #chemin de foret avec des lac et des rivière et de l'élévation 
+        ,[
+            [36,79,74,13,28,92],[1,0,1,0.3,0.2,1]
+        ]
+         #chemin de ville avec des rivière
+        ,[
+            [61,70,50,1,5,42],[0.2,1,0.1,0,0,1]
+        ]
+        #chemin de nature dans la forêt avec certain lac et rivière
+        ,[
+            [34,24,26,0,44,88],[1,0,0.3,1,0.5,0.8]
         ]
     ]
     chemin["Instancia7"]=ajout_chemin_data(instance7_data)
@@ -318,6 +362,19 @@ def ajout_chemin_instance():
             #chemin de ville avec de l'élévation            
             [39,38,2,35,71,36,32],[0,1,1,0,0,0]
         ]
+
+        #chemin de nature dans la forêt avec certain lac et rivière
+        ,[
+            [33,1,50,45,37,39],[1,0,0.3,1,0.5,0.8]
+        ]
+        #chemin de ville avec des lac et un peu de forêt
+        ,[
+            [6,23,57,3,58,38],[0.2,1,0.1,0.5,1,0.2]
+        ]
+         #Chemin de nature avec de l'élévation avec des forêt des rivière
+         ,[
+            [65,26,24,16,11,35],[1,0,1,1,0,1]
+         ]
     ]
     chemin["Instancia8"]=ajout_chemin_data(instance8_data)
 
@@ -410,6 +467,20 @@ def ajout_chemin_instance():
             [70,30,20,9,35,71,66,32,65,31],[1,0,0.3,1,0.5,0.8]
         ]
 
+        ,[
+            #chemin de nature dans la forêt avec certain lac et rivière
+            [38,41,95,2,96,53,89,27,88,70],[1,0,0.3,1,0.5,0.8]
+        ]
+        ,[
+            #chemin de ville avec des rivière
+            [43,23,87,21,59,12,46,69,36,30],[0.2,1,0.1,0,0,1]
+        ]
+        ,[
+            #chemin de foret avec des lac et des rivière et de l'élévation           
+            [86,67,98,4,17,80,8,50,49,20],[1,0,1,0.3,0.2,1]
+        ]
+        
+
 
     ]
 
@@ -439,6 +510,20 @@ def ajout_chemin_instance():
         ,[
             #chemin de ville avec de l'élévation            
             [72,0,35,81,29,20,55,28,83],[0,1,1,0,0,0]
+        ]
+
+
+        ,[
+            #chemin de foret avec des lac et des rivière et de l'élévation           
+            [52,68,9,48,18,72],[1,0,1,0.3,0.2,1]
+        ]
+        ,[
+            #chemin de ville avec de l'élévation            
+            [46,95,32,57,36,0],[0,1,1,0,0,0]
+        ]
+        ,[
+            #Chemin de nature avec de l'élévation avec des forêt des rivière
+            [70,97,24,21,54,35],[1,0,1,1,0,1]
         ]
     ]
     chemin["Instancia12"]=ajout_chemin_data(instance12_data)
@@ -485,6 +570,19 @@ def ajout_chemin_instance():
             [65,71,20,35,63,66,31,10,32,6],[1,0,0.3,1,0.5,0.8]
         ]
 
+        ,[
+            #chemin de nature dans la forêt avec certain lac et rivière
+            [38,23,16,21,61,29,94,0,82,65],[1,0,0.3,1,0.5,0.8]
+        ]
+        ,[
+            #chemin de foret avec des lac et des rivière et de l'élévation           
+            [43,67,100,55,93,79,45,27,36,71],[1,0,1,0.3,0.2,1]
+        ]
+        ,[
+            #chemin de ville avec de l'élévation- des lac et des rivière            
+            [14,75,91,40,99,76,8,77,49,20],[0,1,1,0,1,1]
+        ]
+
 
     ]
 
@@ -506,6 +604,20 @@ def ajout_chemin_instance():
         ,[
             #chemin de ville avec des lac et un peu de forêt
             [83,8,60,6,53,26,18,89,27,76,28,0,82,48,52,69,1,50,30,70,51,31,88,7,11,19,62,10,20,64,63,90,32,66],[0.2,1,0.1,0.5,1,0.2]
+        ]
+
+
+        ,[
+            #chemin de ville avec des rivière
+            [16,41,28,83],[0.2,1,0.1,0,0,1]
+        ]
+        ,[
+            #chemin de ville avec de l'élévation- des lac et des rivière            
+            [93,75,12,8],[0,1,1,0,1,1]
+        ]
+        ,[
+            #Chemin de nature avec de l'élévation avec des forêt des rivière
+            [92,23,80,60],[1,0,1,1,0,1]
         ]
     ]
     chemin["Instancia14"]=ajout_chemin_data(instance14_data)
@@ -530,6 +642,7 @@ def ajout_chemin_instance():
             #chemin de ville avec des lac et un peu de forêt
             [30,51,81,33,9,78,34,20,66,71,35,65],[0.2,1,0.1,0.5,1,0.2]
         ]
+        
         ,[
             #chemin de foret avec des lac et des rivière et de l'élévation           
             [41,0,36,30],[1,0,1,0.3,0.2,1]
@@ -537,6 +650,10 @@ def ajout_chemin_instance():
         ,[
             #chemin de ville avec de l'élévation            
             [22,38,47,51],[0,1,1,0,0,0]
+        ]
+        ,[
+            #Chemin de nature avec de l'élévation avec des forêt des rivière
+            [23,14,19,81],[1,0,1,1,0,1]
         ]
     ]
     chemin["Instancia15"]=ajout_chemin_data(instance15_data)

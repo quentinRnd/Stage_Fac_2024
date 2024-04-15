@@ -9,6 +9,7 @@ import re
 import argparse
 import time
 from settings import *
+import datetime
 
 def creation_repertoire(nomrep):
     if not os.path.exists(nomrep): 
@@ -84,7 +85,7 @@ def modele3_json(nom_instance
 
             distance_parcourue_max=preference_util_data[distance_parcourue_max_key]
             distance_parcourue_min=preference_util_data[distance_parcourue_min_key]
-
+            Tranche_temps=preference_util_data[Tranche_temps_key]
             
 
 
@@ -141,6 +142,7 @@ def modele3_json(nom_instance
                         ,distance_parcourue_min=distance_parcourue_min
                         ,solution_inter=solution_inter
                         ,timeout_sol_inter=timeout_sol_inter
+                        ,tranche_temps=Tranche_temps
 
                     )
                     #a faire 
@@ -179,6 +181,7 @@ def modele3(nom_instance
             #est ce que l'on produit des solution intermédiaire
             ,solution_inter
             ,timeout_sol_inter
+            ,tranche_temps
 ):
     clear()
     print(f"solving {nom_instance}")
@@ -233,7 +236,7 @@ def modele3(nom_instance
 
     #sert a représenter les connection entre les differrent point d'intérêt 
     #x[i][j] est égale a 1 si j est visiter après i 0 sinon
-    x = VarArray(size=[N, N], dom=lambda i, j: {0} if i == j else {0, 1})
+    x = VarArray(size=[N, N], dom=lambda i, j: {0} if i == j or chemin_valuer[i][j]==0 else {0, 1})
 
     #Point d'intérêt
     point=[i for i in range(N)] 
@@ -244,12 +247,13 @@ def modele3(nom_instance
     distance = {(i, j): round(np.hypot(loc_x[i]-loc_x[j], loc_y[i]-loc_y[j])) for i, j in arc}
     
     #tableau ayant pour donnée les heure de depart de chaque viste de chaque point d'intérêt
-    s = VarArray(size=N,dom=range(0,Temps_max_visite+1))
+    s = VarArray(size=N,dom=range(0,int((Temps_max_visite+1)/tranche_temps)))
 
     #tableau permettant de savoir si un point d'interêt est visité 
     y = VarArray(size=N, dom=(0,1))
 
     p = VarArray(size=N, dom=(0,1))
+    a = VarArray(size=N, dom=(0,1))
 
     #variable qui me sert a pas me tromper dans le parcours de mes pdi
     parcours_pdi=range(0, N)
@@ -304,7 +308,7 @@ def modele3(nom_instance
     Contrainte 2
     """
     if not solution_inter:
-        satisfy( disjunction((s[i]+(t[i]*y[i])+distance[i,j]<=s[j]) ,s[j]==Minimum(s), (x[i][j]==0))  for i in parcours_pdi for j in parcours_pdi if i!=j )
+        satisfy( disjunction(((s[i]*tranche_temps)+(t[i]*y[i])+distance[i,j]<=(s[j]*tranche_temps)) ,s[j]==Minimum(s), (x[i][j]==0))  for i in parcours_pdi for j in parcours_pdi if i!=j )
 
     """
     Contrainte 3
@@ -314,8 +318,8 @@ def modele3(nom_instance
     """
     Contrainte 4
     """
-    satisfy(s[i] >= (e[i]*y[i]) for i in parcours_pdi)
-    satisfy(((s[i]+t[i])*y[i]) <= c[i] for i in parcours_pdi)
+    satisfy((s[i]*tranche_temps) >= (e[i]*y[i]) for i in parcours_pdi)
+    satisfy((((s[i]*tranche_temps)+t[i])*y[i]) <= c[i] for i in parcours_pdi)
     """
     Contrainte 5
     """
@@ -362,7 +366,8 @@ def modele3(nom_instance
     """
     Contrainte aux
     """
-    satisfy(p[i]==Maximum(x[i,:]) for i in parcours_pdi)
+    satisfy(p[i]==Exist(x[i,j]==1 for j in parcours_pdi) for i in parcours_pdi)
+    satisfy(a[i]==Exist(x[j,i]==1 for j in parcours_pdi) for i in parcours_pdi)
 
     """
     Contrainte 12
@@ -371,7 +376,7 @@ def modele3(nom_instance
     """
     Contrainte 13
     """
-    satisfy(conjunction(disjunction( Maximum(x[:,j])==0,p[j]==1 ),disjunction(p[j]==0,Maximum(x[:,j])==1 )) for j in parcours_pdi)
+    satisfy(conjunction(disjunction( a[j]==0,p[j]==1 ),disjunction(p[j]==0,a[j]==1 )) for j in parcours_pdi)
 
     """
     Contrainte 14
@@ -410,12 +415,17 @@ def modele3(nom_instance
     #sert a savoir quand on a commencer le solve 
     debut_solve=int(time.time())
 
+    print("start of the solve ",datetime.datetime.now())
+
     resultat_recherche=solve(solver=solver_effectif 
                             ,sols=nombre_solution
                             ,verbose=solver_verbose
                             ,options=f"-t={int(timeout_sol_inter) if solution_inter else int(solver_timeout_seconds)}s" if timeout_activer else "")
     #sert a savoir quand on a fini le solve
+    print("ending of the solve ",datetime.datetime.now())
     fin_solve=int(time.time())
+
+
     p_recherche=None
     if resultat_recherche is SAT or resultat_recherche is OPTIMUM is not UNSAT:
         print(f"Nombre de solutions: {n_solutions()} pour l'instance {nom_instance}" )
@@ -446,6 +456,7 @@ def modele3(nom_instance
                         Fin_recherche_key:resultat_recherche.__str__()
                         ,Optimum_key:resultat_recherche is OPTIMUM
                     }
+            ,Tranche_temps_key: tranche_temps
             ,Bound_key:boundmax
             ,Type_objectif_key:type_objectif
             ,Timeout_solver_key:solver_timeout_seconds
@@ -462,7 +473,8 @@ def modele3(nom_instance
     json_data=json.dumps(data, indent=3)
     
     if solution_inter:
-        fichier = open(f"{repertoire_solution}/{nom_instance}_inter.json", "w")
+        creation_repertoire(f"{repertoire_solution}/solution_inter")
+        fichier = open(f"{repertoire_solution}/solution_inter/{nom_instance}.json", "w")
     else:
         fichier = open(f"{repertoire_solution}/{nom_instance}.json", "w")
     fichier.write(json_data)
@@ -499,7 +511,6 @@ def modele3(nom_instance
 
 
 
-
         modele3(nom_instance=nom_instance
                 ,solver_verbose=solver_verbose
                 ,instance_repertory=instance_repertory
@@ -526,9 +537,10 @@ def modele3(nom_instance
                 ,solver=solver
                 ,Temps_max_visite=Temps_max_visite
                 ,timeout_activer=timeout_activer
-                ,timeout_solver=timeout_solver+(timeout_sol_inter-(fin_solve-debut_solve))
+                ,timeout_solver=timeout_solver+abs(timeout_sol_inter-(fin_solve-debut_solve))
                 ,type_objectif=type_objectif
-                ,timeout_sol_inter=timeout_sol_inter)
+                ,timeout_sol_inter=timeout_sol_inter
+                ,tranche_temps=tranche_temps)
         
 
     #clear toute les contraintes précédement poster 

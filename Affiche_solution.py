@@ -13,7 +13,7 @@ class affiche_solution:
 
             solution = json.load(solution_json)
             
-            representation_solution_repertoire="representation"
+            representation_solution_repertoire="representation/instance"
             nom_dossier_repre=f"{representation_solution_repertoire}/repre_{nom_fichier}"
             shutil.rmtree(nom_dossier_repre,ignore_errors=True)
             os.makedirs(nom_dossier_repre)
@@ -31,8 +31,23 @@ class affiche_solution:
                      x=[i*10 for i in solution[X_PDI_key]],
                      y=[i*10 for i in solution[Y_PDI_key]],
                      label=[f"PDI : {i}"  for i in range(len(solution[X_PDI_key]))],
+                     title=[f"""
+                    Score : {solution[Score_pdi_key][i]}
+                    Temps visite : {solution[Temps_visite_key][i]}
+                    Cout entrer : {solution[Cout_entrer_key][i]}
+                    Heure ouverture : {solution[Heure_ouverture_key][i]}
+                    Heure fermeture : {solution[Heure_fermeture_key][i]}
+                    Categorie : {solution[Categorie_key][i]}
+                    Capacitée : {solution[Capacite_key][i]}
+                     """
+                     for i in range(len(solution[X_PDI_key]))
+                     ]
                     )
-            nom_graphe=f"{nom_dossier_repre}/visualisation_isntance_{nom_fichier}.html"
+            for i in range(len(solution[Categorie_chemin_pdi_key])):
+                    for j in range(len(solution[Categorie_chemin_pdi_key])):
+                        if(solution[Categorie_chemin_pdi_key][i][j]!=None):
+                            g.add_edge(i,j)
+            nom_graphe=f"{nom_dossier_repre}/visualisation_instance_{nom_fichier}.html"
             #g.generate_html(name=f"{nom_dossier_repre}/visualisation_{nom_fichier}.html")
             g.toggle_physics(False)
             g.save_graph(nom_graphe)
@@ -44,7 +59,7 @@ class affiche_solution:
 
             solution = json.load(solution_json)
             
-            representation_solution_repertoire="representation"
+            representation_solution_repertoire="representation/solution"
             nom_dossier_repre=f"{representation_solution_repertoire}/repre_{nom_fichier}"
             shutil.rmtree(nom_dossier_repre,ignore_errors=True)
             os.makedirs(nom_dossier_repre)
@@ -71,42 +86,38 @@ class affiche_solution:
                         depart=soluce[Start_pdi_key][i]
                     if soluce[Start_pdi_key][i]>arriver and (presence_pdi[i] or max(soluce[Arc_key][i])==1 or max(soluce[Arc_key][:][i])==1 ):
                         arriver=soluce[Start_pdi_key][i]
-                
                 for i in range(len(soluce[Start_pdi_key])):
                     if soluce[Start_pdi_key][i]==arriver:
-                        color[i]='#00ff1e'
-                    if soluce[Start_pdi_key][i]==depart:
-                        color[i]='#dd4b39'
-                    if not soluce[Presence_pdi_key][i]:
-                        color[i]='#FFFFFF'
-                    if max(soluce[Arc_key][i])==1 and not soluce[Presence_pdi_key][i]:
-                        color[i]='f40fff'
+                        color[i]='#00FF1E'
+                    else:
+                        if soluce[Start_pdi_key][i]==depart and (presence_pdi[i] or max(soluce[Arc_key][i])==1):
+                            color[i]='#DD4B39'
+                        else:
+                            if max(soluce[Arc_key][i])==1 and not soluce[Presence_pdi_key][i]:
+                                color[i]='#FFFFFF'
+                            else:
+                                if soluce[Presence_pdi_key][i]:
+                                    color[i]='#C0C0C0'
                 
-                
-                
+                facteur=20
                 g.add_nodes([i  for i in range(len(soluce[Presence_pdi_key]))],
                          title=[f"""
                                     temps de départ : {soluce[Start_pdi_key][i]}
                                     Intéressement : {solution[Score_pdi_key][i]}
+                                    Visité : {"oui" if soluce[Presence_pdi_key][i]==1 else "non"}
                                 """ 
                                     for i in range(len(soluce[Presence_pdi_key]))],
-                         x=[i*10 for i in solution[Coordonee_pdi_x_key]],
-                         y=[i*10 for i in solution[Coordonee_pdi_y_key]],
+                         x=[i*facteur for i in solution[Coordonee_pdi_x_key]],
+                         y=[i*facteur for i in solution[Coordonee_pdi_y_key]],
                          label=[f"PDI : {i}"  for i in range(len(soluce[Presence_pdi_key]))],
                          color=  color
+                         
                         )
                 
                 for i in range(len(soluce[Arc_key])):
                     for j in range(len(soluce[Arc_key])):
                         if(soluce[Arc_key][i][j]==1):
-                            g.add_edge(i,j,title="" if  chemin[i][j]==[0] else f"""
-                                nature : {chemin[i][j][0]}
-                                ville : {chemin[i][j][1]}
-                                élévation : {chemin[i][j][2]}
-                                forêt : {chemin[i][j][3]}
-                                lac : {chemin[i][j][4]}
-                                rivière : {chemin[i][j][5]}
-                            """
+                            g.add_edge(i,j,title="" if  chemin[i][j]==[0] else f"score chemin : {chemin[i][j]}"
                             )
 
                 nom_graphe=f"{nom_dossier_repre}/visualisation_{nom_fichier}_solution_{num_sol}.html"
@@ -118,11 +129,20 @@ class affiche_solution:
 
         
 
-dossier_solution="Instance_json"
+dossier_solution="solution/test_model2"
 pattern=r'\w+'
 
 fichiers=os.listdir(dossier_solution)
 fichiers=[re.findall(pattern, i)[0] for i in fichiers]
 
 for fichier in fichiers:
-    affiche_solution.affiche_instance(dossier_solution,fichier)
+    affiche_solution.affiche_fichier(dossier_solution,fichier)
+
+dossier_instance="Instance_json"
+pattern=r'\w+'
+
+fichiers=os.listdir(dossier_instance)
+fichiers=[re.findall(pattern, i)[0] for i in fichiers]
+
+for fichier in fichiers:
+    affiche_solution.affiche_instance(dossier_instance,fichier)
