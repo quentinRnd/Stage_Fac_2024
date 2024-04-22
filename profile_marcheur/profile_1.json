@@ -15,9 +15,9 @@
      
      ,"capacite max":500
      ,"distance parcourue min":10
-     ,"distance parcourue max":100
+     ,"distance parcourue max":300
      ,"budget max":2000
      ,"Temps max visite":3000
-     ,"Tranche de temps":30
+     ,"Tranche de temps":15
 
 }

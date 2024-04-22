@@ -4,8 +4,10 @@ import os
 import re
 import json
 
+
 from settings import * 
 from Chemin_ajout_instance import *
+
 
 def traduction_instance():
     repertoire_csv="Instancias"
@@ -66,5 +68,9 @@ def ajout_chemin_pdi():
             json_data=json.dumps(instance, indent=3)
             fichier.write(json_data)
             fichier.close()
+
+
+
+
 #traduction_instance()
-ajout_chemin_pdi()
+#ajout_chemin_pdi()

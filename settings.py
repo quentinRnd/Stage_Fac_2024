@@ -92,6 +92,13 @@ Opening_pdi_key="Opening_pdi"
 #sert a savoir les evaluation des chemin des pdi
 Evaluation_path_key="Evaluation_path"
 
+#sert a récuperer le cicuit généré par pycsp3
+Circuit_key="Circuit"
+
+#sert a savoir la distance minimal a parcourir
+Distance_min_key="d_min"
+#sert a savoir la distance maximal a parcourir
+Distance_max_key="d_max"
 """
 Argument du script python
 """
