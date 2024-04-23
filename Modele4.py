@@ -306,7 +306,8 @@ def modele4(nom_instance
     """
     
     #satisfy( disjunction(((s[i]*tranche_temps)+(t[i]*y[i])+distance[i,j]<=(s[j]*tranche_temps)) ,s[j]==Minimum(s), (x[i][j]==0))  for i in parcours_pdi for j in parcours_pdi if i!=j )
-    satisfy( disjunction(
+    if not solution_inter:    
+        satisfy( disjunction(
                             (
                                 (s[i]*tranche_temps)+(t[i]*y[i])+distance_var[i][circuit[i]]<=(s[circuit[i]]*tranche_temps)
                             ) 
@@ -440,6 +441,9 @@ def modele4(nom_instance
             #valeur du circuit créé
             circuit_res=values(circuit,sol=numero_solution)
             circuit_res=[[i,circuit_res[i]] for i in range(len(circuit_res)) if i !=circuit_res[i]]
+            
+            p_recherche=circuit_res
+            
             tab_res.append({Presence_pdi_key:pdi_present,Start_pdi_key:start_pdi,Circuit_key:circuit_res})
     
 
@@ -471,15 +475,83 @@ def modele4(nom_instance
             ,Evaluation_path_key:chemin_valuer
         }
     json_data=json.dumps(data, indent=3)
-    
-    fichier = open(f"{repertoire_solution}/{nom_instance}.json", "w")
+    fichier=None
+    repertoire_inter=f"{repertoire_solution}/sol_inter"
+    if solution_inter:
+        creation_repertoire(repertoire_inter)
+        fichier = open(f"{repertoire_inter}/{nom_instance}.json", "w")
+    else:
+        fichier = open(f"{repertoire_solution}/{nom_instance}.json", "w")
     fichier.write(json_data)
     fichier.close()
-    print(f"solution saved in {repertoire_solution}/{nom_instance}.json")
+    print(f"solution saved in {repertoire_inter if solution_inter else repertoire_solution}/{nom_instance}.json")
         
 
     #clear toute les contraintes précédement poster 
     clear()
+
+    if solution_inter and p_recherche != None:
+        indice_sol=[i[0] for i in p_recherche]
+        capaciter_pdi_sol=[]
+        categorie_pdi_sol=[]
+        chemin_valuer_sol=[]
+        coord_x_sol=[]
+        coord_y_sol=[]
+        duree_visite_sol=[]
+        fermeture_pdi_sol=[]
+        interet_pdi_sol=[]
+        ouverture_pdi_sol=[]
+        prix_entrer_sol=[]
+
+        for i in indice_sol:
+            capaciter_pdi_sol.append(capacite[i])
+            categorie_pdi_sol.append(categorie[i])
+            chemin_aux=[]
+            for j in indice_sol:
+                chemin_aux.append(chemin_valuer[i][j])
+            chemin_valuer_sol.append(chemin_aux)
+            coord_x_sol.append(loc_x[i])
+            coord_y_sol.append(loc_y[i])
+            duree_visite_sol.append(t[i])
+            fermeture_pdi_sol.append(c[i])
+            interet_pdi_sol.append(score_pdi[i])
+            ouverture_pdi_sol.append(e[i])
+            prix_entrer_sol.append(b[i])
+
+
+
+
+        modele4(nom_instance=nom_instance
+                ,solver_verbose=solver_verbose
+                ,instance_repertory=instance_repertory
+                ,budget_max=budget_max
+                ,capacite_max=capacite_max
+                ,capaciter_pdi=capaciter_pdi_sol
+                ,categorie_pdi=categorie_pdi_sol
+                ,categorie_permise=categorie_permise
+                ,chemin_valuer=chemin_valuer_sol
+                ,coord_x=coord_x_sol
+                ,coord_y=coord_y_sol
+                ,distance_parcourue_max=distance_parcourue_max
+                ,distance_parcourue_min=distance_parcourue_min
+                ,duree_visite=duree_visite_sol
+                ,extension_instance=extension_instance
+                ,fermeture_pdi=fermeture_pdi_sol
+                ,fonction_objectif=fonction_objectif
+                ,interet_pdi=interet_pdi_sol
+                ,nombre_solution=nombre_solution
+                ,ouverture_pdi=ouverture_pdi_sol
+                ,prix_entrer=prix_entrer_sol
+                ,repertoire_solution=repertoire_solution
+                ,solution_inter=False
+                ,solver=solver
+                ,Temps_max_visite=Temps_max_visite
+                ,timeout_activer=timeout_activer
+                ,timeout_solver=timeout_solver+abs(timeout_sol_inter-(fin_solve-debut_solve))
+                ,type_objectif=type_objectif
+                ,timeout_sol_inter=timeout_sol_inter
+                ,tranche_temps=tranche_temps)
+
 
 if __name__ == "__main__":
 
