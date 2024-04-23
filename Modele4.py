@@ -87,6 +87,8 @@ def modele4_json(nom_instance
             distance_parcourue_min=preference_util_data[distance_parcourue_min_key]
             Tranche_temps=preference_util_data[Tranche_temps_key]
             
+            Max_visite_pdi=preference_util_data[Max_visite_pdi_key]
+            Min_visite_pdi=preference_util_data[Min_visite_pdi_key]
 
 
 
@@ -143,7 +145,9 @@ def modele4_json(nom_instance
                         ,solution_inter=solution_inter
                         ,timeout_sol_inter=timeout_sol_inter
                         ,tranche_temps=Tranche_temps
-
+                        ,Max_visite_pdi=Max_visite_pdi
+                        ,Min_visite_pdi=Min_visite_pdi
+                        ,chemin_valuer_actif=True
                     )
                     #a faire 
                     #faire en sorte de passer les donnée preference utilisateur sur les feuille de la matrice des chemin
@@ -182,6 +186,10 @@ def modele4(nom_instance
             ,solution_inter
             ,timeout_sol_inter
             ,tranche_temps
+            ,Max_visite_pdi
+            ,Min_visite_pdi
+            #sert a savoir si on bloque les chemin qui ne sont pas valuer
+            ,chemin_valuer_actif
 ):
     clear()
     print(f"solving {nom_instance}")
@@ -243,8 +251,10 @@ def modele4(nom_instance
     #x = VarArray(size=[N, N], dom=lambda i, j: {0} if i == j or chemin_valuer[i][j]==0 else {0, 1})
 
     #variable qui contient le circuits
-    circuit = VarArray(size=N, dom=lambda i: {j for j in parcours_pdi if chemin_valuer[i][j]!=0 or i==j })
-
+    if chemin_valuer_actif:
+        circuit = VarArray(size=N, dom=lambda i: {j for j in parcours_pdi if chemin_valuer[i][j]!=0 or i==j })
+    else:
+        circuit = VarArray(size=N,dom=parcours_pdi)
 
 
     #distance entre tout les point d'intérêt
@@ -348,13 +358,8 @@ def modele4(nom_instance
     """
     Contrainte 9
     """
-    #nombre de point par jour a visiter au maximum
-    max_point_par_jour = 20
-    #nombre de poutn par jour a visiter au minimum
-    min_point_par_jour = 3
-
-    satisfy(Sum(y[i] for i in parcours_pdi)>min_point_par_jour)
-    satisfy(Sum(y[i] for i in parcours_pdi)<max_point_par_jour)
+    satisfy(Sum(y[i] for i in parcours_pdi)>Min_visite_pdi)
+    satisfy(Sum(y[i] for i in parcours_pdi)<Max_visite_pdi)
 
     """
     Contrainte 10
@@ -550,7 +555,10 @@ def modele4(nom_instance
                 ,timeout_solver=timeout_solver+abs(timeout_sol_inter-(fin_solve-debut_solve))
                 ,type_objectif=type_objectif
                 ,timeout_sol_inter=timeout_sol_inter
-                ,tranche_temps=tranche_temps)
+                ,tranche_temps=tranche_temps
+                ,Max_visite_pdi=Max_visite_pdi
+                ,Min_visite_pdi=Min_visite_pdi
+                ,chemin_valuer_actif=False)
 
 
 if __name__ == "__main__":

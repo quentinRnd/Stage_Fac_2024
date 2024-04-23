@@ -99,6 +99,13 @@ Circuit_key="Circuit"
 Distance_min_key="d_min"
 #sert a savoir la distance maximal a parcourir
 Distance_max_key="d_max"
+
+#sert a savoir le nombre de vsite maximal par jour
+Max_visite_pdi_key="Max_visite_pdi"
+
+#sert a savoir le nombre de visite maximal par jour 
+Min_visite_pdi_key="Min_visite_pdi"
+
 """
 Argument du script python
 """
