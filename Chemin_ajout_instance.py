@@ -7,6 +7,7 @@ def ajout_chemin_data(chemin_ajout):
             for noeud2 in chemin_ajout[0]:
                 if noeud1!=noeud2:
                     instance_chemin[noeud1,noeud2]=chemin_ajout[1]
+    
     return instance_chemin
 
 def ajout_chemin_instance():

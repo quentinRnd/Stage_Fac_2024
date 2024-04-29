@@ -147,7 +147,6 @@ def modele4_json(nom_instance
                         ,tranche_temps=Tranche_temps
                         ,Max_visite_pdi=Max_visite_pdi
                         ,Min_visite_pdi=Min_visite_pdi
-                        ,chemin_valuer_actif=True
                     )
                     #a faire 
                     #faire en sorte de passer les donnée preference utilisateur sur les feuille de la matrice des chemin
@@ -188,8 +187,8 @@ def modele4(nom_instance
             ,tranche_temps
             ,Max_visite_pdi
             ,Min_visite_pdi
-            #sert a savoir si on bloque les chemin qui ne sont pas valuer
-            ,chemin_valuer_actif
+            #sert a force certaine valeur du circuit après notament une première pré-solution
+            ,circuit_forcer=None
 ):
     clear()
     print(f"solving {nom_instance}")
@@ -251,10 +250,11 @@ def modele4(nom_instance
     #x = VarArray(size=[N, N], dom=lambda i, j: {0} if i == j or chemin_valuer[i][j]==0 else {0, 1})
 
     #variable qui contient le circuits
-    if chemin_valuer_actif:
+    circuit=None
+    if circuit_forcer is None:
         circuit = VarArray(size=N, dom=lambda i: {j for j in parcours_pdi if chemin_valuer[i][j]!=0 or i==j })
     else:
-        circuit = VarArray(size=N,dom=parcours_pdi)
+        circuit = VarArray(size=N,dom=lambda i: {circuit_forcer[i] })
 
 
     #distance entre tout les point d'intérêt
@@ -266,10 +266,18 @@ def modele4(nom_instance
     #pareille pour les score des pdi
     score_pdi_var=VarArray(size=N, dom=lambda i: {score_pdi[i]}  )
     #tableau ayant pour donnée les heure de depart de chaque viste de chaque point d'intérêt
-    s = VarArray(size=N,dom=range(0,int((Temps_max_visite+1)/tranche_temps)))
-
+    s=None
+    if circuit_forcer is None:
+        s = VarArray(size=N,dom=range(0,int((Temps_max_visite+1)/tranche_temps)))
+    else:
+        s = VarArray(size=N,dom=lambda i:range(0,int((Temps_max_visite+1)/tranche_temps))if circuit_forcer[i]!=i else {int((Temps_max_visite+1)/tranche_temps)})
+        
     #tableau permettant de savoir si un point d'interêt est visité 
-    y = VarArray(size=N, dom=(0,1))
+    y=None
+    if circuit_forcer is None:
+        y = VarArray(size=N, dom={0,1})
+    else:
+        y=VarArray(size=N, dom=lambda i:{0,1}if circuit_forcer[i]!=i else {0} )
 
     
 
@@ -327,13 +335,16 @@ def modele4(nom_instance
     """
     Contrainte 2
     """
+    
     satisfy(Sum(b[i]*y[i] for i in parcours_pdi)<=budget_max)
 
     """
     Contrainte 3
     """
-    satisfy((s[i]*tranche_temps) >= (e[i]*y[i]) for i in parcours_pdi)
-    satisfy((((s[i]*tranche_temps)+t[i])*y[i]) <= c[i] for i in parcours_pdi)
+    if not solution_inter:  
+        satisfy((s[i]*tranche_temps) >= (e[i]*y[i]) for i in parcours_pdi)
+        satisfy((((s[i]*tranche_temps)+t[i])*y[i]) <= c[i] for i in parcours_pdi)
+    
     """
     Contrainte 4
     """
@@ -352,15 +363,17 @@ def modele4(nom_instance
     """
     Contrainte 8
     """
+    
     satisfy(Sum((circuit[i]!=i)*distance_var[i][circuit[i]]  for i in parcours_pdi  )>d_min )
     satisfy(Sum((circuit[i]!=i)*distance_var[i][circuit[i]]  for i in parcours_pdi  )<d_max )
-
+    
     """
     Contrainte 9
     """
+    
     satisfy(Sum(y[i] for i in parcours_pdi)>Min_visite_pdi)
     satisfy(Sum(y[i] for i in parcours_pdi)<Max_visite_pdi)
-
+    
     """
     Contrainte 10
     """
@@ -384,7 +397,8 @@ def modele4(nom_instance
     """
     Contrainte 13
     """
-    satisfy(AllDifferent(s))
+    if not solution_inter:
+        satisfy( disjunction(s[i]!=s[j],disjunction(circuit[i]==i,circuit[j]==j)) for i in parcours_pdi for j in parcours_pdi if i!=j)
     """
     Fonction objectif
     """
@@ -430,6 +444,7 @@ def modele4(nom_instance
 
 
     p_recherche=None
+    circuit_forcer=None
     if resultat_recherche is SAT or resultat_recherche is OPTIMUM is not UNSAT:
         print(f"Nombre de solutions: {n_solutions()} pour l'instance {nom_instance}" )
         boundmax=bound()
@@ -448,6 +463,7 @@ def modele4(nom_instance
             circuit_res=[[i,circuit_res[i]] for i in range(len(circuit_res)) if i !=circuit_res[i]]
             
             p_recherche=circuit_res
+            circuit_forcer=values(circuit,sol=numero_solution)
             
             tab_res.append({Presence_pdi_key:pdi_present,Start_pdi_key:start_pdi,Circuit_key:circuit_res})
     
@@ -496,6 +512,7 @@ def modele4(nom_instance
     clear()
 
     if solution_inter and p_recherche != None:
+        """
         indice_sol=[i[0] for i in p_recherche]
         capaciter_pdi_sol=[]
         categorie_pdi_sol=[]
@@ -523,7 +540,7 @@ def modele4(nom_instance
             ouverture_pdi_sol.append(e[i])
             prix_entrer_sol.append(b[i])
 
-
+        
 
 
         modele4(nom_instance=nom_instance
@@ -557,8 +574,42 @@ def modele4(nom_instance
                 ,timeout_sol_inter=timeout_sol_inter
                 ,tranche_temps=tranche_temps
                 ,Max_visite_pdi=Max_visite_pdi
+                ,Min_visite_pdi=Min_visite_pdi)
+        """
+        modele4(nom_instance=nom_instance
+                ,solver_verbose=solver_verbose
+                ,instance_repertory=instance_repertory
+                ,budget_max=budget_max
+                ,capacite_max=capacite_max
+                ,capaciter_pdi=capaciter_pdi
+                ,categorie_pdi=categorie_pdi
+                ,categorie_permise=categorie_permise
+                ,chemin_valuer=chemin_valuer
+                ,coord_x=coord_x
+                ,coord_y=coord_y
+                ,distance_parcourue_max=distance_parcourue_max
+                ,distance_parcourue_min=distance_parcourue_min
+                ,duree_visite=duree_visite
+                ,extension_instance=extension_instance
+                ,fermeture_pdi=fermeture_pdi
+                ,fonction_objectif=fonction_objectif
+                ,interet_pdi=interet_pdi
+                ,nombre_solution=nombre_solution
+                ,ouverture_pdi=ouverture_pdi
+                ,prix_entrer=prix_entrer
+                ,repertoire_solution=repertoire_solution
+                ,solution_inter=False
+                ,solver=solver
+                ,Temps_max_visite=Temps_max_visite
+                ,timeout_activer=timeout_activer
+                ,timeout_solver=timeout_solver+abs(timeout_sol_inter-(fin_solve-debut_solve))
+                ,type_objectif=type_objectif
+                ,timeout_sol_inter=timeout_sol_inter
+                ,tranche_temps=tranche_temps
+                ,Max_visite_pdi=Max_visite_pdi
                 ,Min_visite_pdi=Min_visite_pdi
-                ,chemin_valuer_actif=False)
+                ,circuit_forcer=circuit_forcer)
+
 
 
 if __name__ == "__main__":

@@ -69,8 +69,48 @@ def ajout_chemin_pdi():
             fichier.write(json_data)
             fichier.close()
 
+def ajout_pdi():
+    
+    repertoire_instance="Instance_json"
+    instance_ajout="Instanciapetite"
+    extension_instance=".json"
+    #Chargement des setting json pour la recherche 
+    with open(f"{repertoire_instance}/{instance_ajout}{extension_instance}") as instance_file:
+        #objet json qui contient les settings de la recherche
+        instance = json.load(instance_file)
+        instance[X_PDI_key].append(0)
+        instance[Y_PDI_key].append(-10)
+        instance[Score_pdi_key].append(10)
+        instance[Temps_visite_key].append(10)
+        instance[Cout_entrer_key].append(10)
+        instance[Heure_ouverture_key].append(0)
+        instance[Heure_fermeture_key].append(2000)
+        instance[Categorie_key].append(1)
+        instance[Capacite_key].append(10)
+        
+        for i in range(len(instance[Categorie_chemin_pdi_key])):
+            instance[Categorie_chemin_pdi_key][i].append(None)
+        instance[Categorie_chemin_pdi_key].append([None for i in range(len(instance[Categorie_chemin_pdi_key][0]))])
 
 
+        data={
+            X_PDI_key:instance[X_PDI_key]
+            ,Y_PDI_key:instance[Y_PDI_key]
+            ,Score_pdi_key:instance[Score_pdi_key]
+            ,Temps_visite_key:instance[Temps_visite_key]
+            ,Cout_entrer_key:instance[Cout_entrer_key]
+            ,Heure_ouverture_key:instance[Heure_ouverture_key]
+            ,Heure_fermeture_key:instance[Heure_fermeture_key]
+            ,Categorie_key:instance[Categorie_key]
+            ,Capacite_key:instance[Capacite_key]
+            ,Categorie_chemin_pdi_key:instance[Categorie_chemin_pdi_key]
+        }
+
+        fichier = open(f"{repertoire_instance}/{instance_ajout}{extension_instance}", "w")
+        json_data=json.dumps(data, indent=3)
+        fichier.write(json_data)
+        fichier.close()
 
 #traduction_instance()
 #ajout_chemin_pdi()
+ajout_pdi()

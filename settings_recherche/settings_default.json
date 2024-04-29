@@ -6,7 +6,7 @@
     ,"timout_solution_inter":10800
     ,"timeout_actif":true
     ,"nombre_solution":"ALL"
-    ,"repertoire_solution":"solution/test_modele4_sol_inter"
+    ,"repertoire_solution":"solution/modele4_sol_inter_circuit_forcer"
     ,"fonction_objectif":true
     ,"solver":"ACE"
     ,"extension_instance":".csv"

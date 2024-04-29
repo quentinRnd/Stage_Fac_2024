@@ -15,10 +15,10 @@
      
      ,"capacite max":500
      ,"distance parcourue min":10
-     ,"distance parcourue max":300
+     ,"distance parcourue max":150
      ,"budget max":2000
      ,"Temps max visite":3000
-     ,"Tranche de temps":15
+     ,"Tranche de temps":30
      ,"Max_visite_pdi":20
      ,"Min_visite_pdi":3
 
