@@ -44,6 +44,13 @@ inter_solution_key="inter_solution"
 
 #clé pour le timeout des solution intermediaire 
 timout_solution_inter_key="timout_solution_inter"
+
+#sert a savoir si on utilise l'algo custom pour résoudre les temps des chemins
+solution_algo_custom_key="solution_algo_custom"
+
+
+
+
 """
 Key pour les solution json
 """
@@ -106,6 +113,9 @@ Max_visite_pdi_key="Max_visite_pdi"
 #sert a savoir le nombre de visite maximal par jour 
 Min_visite_pdi_key="Min_visite_pdi"
 
+#sert a savoir en combien de temps la solution a été généré
+solve_time_key="solve_time"
+
 """
 Argument du script python
 """
@@ -116,6 +126,13 @@ key_long_arg="long"
 
 #tableau qui contien les arguments long et cours pour inclure les fichier csv de chaque instance
 key_file_include={key_short_arg:"f",key_long_arg:"file"}
+
+#sert a identifier quelle settings on prend pour effectuer la recherche
+settings_choosing={key_short_arg:"s",key_long_arg:"settings"}
+
+#sert a réexecuter un solution custom
+solution_custom_reex={key_short_arg:"c",key_long_arg:"custom_sol"}
+
 
 #paramètre qui sert a savoir combien de thread de test sont lancer en parallèle 
 key_num_thread={key_short_arg:"t",key_long_arg:"num_thread"}
@@ -185,3 +202,6 @@ budget_max_key="budget max"
 Temps_max_visite_key="Temps max visite"
 #représente les tranche de temps dans lequelle les départ sont découper
 Tranche_temps_key="Tranche de temps"
+
+#sert a imposer des point d'interêt a visiter
+pdi_obligatoire_key="pdi_obligatoire"
