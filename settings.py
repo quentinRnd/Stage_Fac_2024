@@ -33,8 +33,12 @@ Maximise_score_pdi="Maximise_score_pdi"
 Mix_distance_score_pdi="Mix_distance_score_pdi"
 
 Maximise_score_chemin="Maximise_score_chemin"
+
+Maximise_chemin_pdi="Maximise_chemin_pdi"
 #clé servant a savoir ou les profile de marcheureuse sont stocker
 repertoire_profile_marcheureuse_key="repertoire_profile_marcheureuse"
+
+type_objectif_inter_solution="type_objectif_inter_solution"
 
 #cle servant a savoir quelle profile on a selectionner dans le repertoire
 profile_marcheureuse_choisie_key="profile_marcheureuse_choisie"
@@ -115,6 +119,15 @@ Min_visite_pdi_key="Min_visite_pdi"
 
 #sert a savoir en combien de temps la solution a été généré
 solve_time_key="solve_time"
+
+#sert a savoir les préférence utilisateur
+preference_utilisateur_key="preference_utilisateur"
+#sert a savoir les préférence de recherche 
+preference_recherche_key="preference_recherche"
+
+
+
+
 
 """
 Argument du script python

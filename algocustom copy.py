@@ -98,27 +98,16 @@ def algo_custom_solution(nom_instance
     solution=False
     pdi_selectionner=None
 
-    valeur_pdi_max=min(interet_pdi)-1
-    tab_res=[]
-    nbrun=0
-    while(vecteur_directeur!=None ):
-        nbrun+=1
-        if(nbrun%100==0):
-            print(f"Run {nbrun}",f":Bound {valeur_pdi_max}")
+    while(vecteur_directeur!=None and not solution):
+        
         if( sum(vecteur_directeur)<nombre_visite_pdi or sum(vecteur_directeur)>Max_visite_pdi ):
             vecteur_directeur=plus_un(vecteur_directeur)
             
         else:
-            
             fin_recherche=False
             pdi_selectionner=[pdi_classer[i] for i in range(len(pdi_classer)) if vecteur_directeur[i]==1]
-            valeur_pdi_selectionner=[interet_pdi[i] for i in pdi_selectionner]
-            valeur_pdi_actuelle=sum(valeur_pdi_selectionner)
-            if valeur_pdi_actuelle<=valeur_pdi_max:
-                fin_recherche=True
             somme_visite=sum([duree_visite[i] for i in pdi_selectionner])
-            temps_default=Temps_max_visite-1
-            start_pdi=[ temps_default for i in coord_x]
+            start_pdi=[Temps_max_visite-1 for i in coord_x]
             offset_pdi=0
             somme_prix_pdi=sum([prix_entrer[i] for i in pdi_selectionner])
             
@@ -128,7 +117,7 @@ def algo_custom_solution(nom_instance
                     mandatory_correct=False
 
 
-            while(not fin_recherche  and somme_visite<Temps_max_visite and somme_prix_pdi<budget_max and mandatory_correct):
+            while(not fin_recherche and not solution and somme_visite<Temps_max_visite and somme_prix_pdi<budget_max and mandatory_correct):
                 
                 i=offset_pdi
                 pdi_depart=circuit_fixer[i][0]
@@ -168,28 +157,23 @@ def algo_custom_solution(nom_instance
                     i+=1
                     i=i%len(circuit_fixer)
                 
-                if not pas_solution:
+                if pas_solution:
+                    offset_pdi+=1
+                    if offset_pdi>=len(circuit_fixer):
+                        fin_recherche=True
+                else:
                     solution=True
-                    y=[ 1  if i in pdi_selectionner else 0 for i in parcours_pdi]
-                    
-                    tab_res.append({Presence_pdi_key:y,Start_pdi_key:start_pdi,Circuit_key:circuit_fixer})
-                    valeur_pdi_max=valeur_pdi_actuelle
-                
-                offset_pdi+=1
-                if offset_pdi>=len(circuit_fixer) or not pas_solution :
-                    fin_recherche=True
                     
             vecteur_directeur=plus_un(vecteur_directeur)
-        if solution and int(time.time())-start_solve>timeout_sol_inter:
-            vecteur_directeur=None
     end_solve= int(time.time())
     resultat_recherche_inter=UNSAT
-    
+    tab_res=[]
     retour=None
     duree_solve=end_solve-start_solve
     if solution:
         resultat_recherche=resultat_recherche_csp
-         
+        y=[ 1  if i in pdi_selectionner else 0 for i in parcours_pdi]
+        tab_res.append({Presence_pdi_key:y,Start_pdi_key:start_pdi,Circuit_key:circuit_fixer}) 
         
 
         
@@ -200,8 +184,7 @@ def algo_custom_solution(nom_instance
             circuit[i[0]]=i[1]
 
         print("found solution custom")
-        sol_choisie=len(tab_res)-1
-        retour= circuit,tab_res[sol_choisie][Presence_pdi_key],tab_res[sol_choisie][Start_pdi_key],duree_solve,resultat_recherche
+        retour= circuit,y,start_pdi,duree_solve,resultat_recherche
     
     
     data={

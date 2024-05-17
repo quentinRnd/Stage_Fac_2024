@@ -31,6 +31,8 @@ def modele4_json(nom_instance
             ,solution_inter
             ,timeout_sol_inter
             ,solution_custom
+            ,preference_recherche
+            ,type_objectif_inter_solution
             ,nom_fichier_custom=None):
     #categorie permise par le modele
     categorie_permise= [i for i in range (1000)]
@@ -168,8 +170,10 @@ def modele4_json(nom_instance
                         ,y_default=y_default
                         ,s_default=s_default
                         ,solve_time_default=solve_time_default
-                        ,status_fin_recherche_default=SAT
                         ,desactive_contrainte=[]
+                        ,preference_utilisateur=preference_util_data
+                        ,preference_recherche=preference_recherche
+                        ,type_objectif_inter_solution=type_objectif_inter_solution
                     )
                     #a faire 
                     #faire en sorte de passer les donnée preference utilisateur sur les feuille de la matrice des chemin
@@ -210,6 +214,9 @@ def modele4(nom_instance
             ,Max_visite_pdi
             ,Min_visite_pdi
             ,solution_custom
+            ,preference_recherche
+            ,preference_utilisateur
+            ,type_objectif_inter_solution
             #sert a force certaine valeur du circuit après notament une première pré-solution
             ,circuit_forcer=None
             ,pdi_mandatory=[]
@@ -307,13 +314,15 @@ def modele4(nom_instance
     score_pdi_var=VarArray(size=N, dom=lambda i: {score_pdi[i]}  )
     #tableau ayant pour donnée les heure de depart de chaque viste de chaque point d'intérêt
     s=None
+    #temps maximum autoriser
+    Temps_max_tranche=int((Temps_max_visite+1)/tranche_temps)+1
     if circuit_forcer is None:
         if s_default is not None:
             s = VarArray(size=N,dom=lambda i: {s_default[i] })
         else:    
-            s = VarArray(size=N,dom=range(0,int((Temps_max_visite+1)/tranche_temps)))
+            s = VarArray(size=N,dom=range(0,Temps_max_tranche))
     else:
-        s = VarArray(size=N,dom=lambda i:range(0,int((Temps_max_visite+1)/tranche_temps))if circuit_forcer[i]!=i else {int((Temps_max_visite+1)/tranche_temps)-1})
+        s = VarArray(size=N,dom=lambda i:range(0,Temps_max_tranche)if circuit_forcer[i]!=i else {Temps_max_tranche-1})
         
     #tableau permettant de savoir si un point d'interêt est visité 
     y=None
@@ -460,20 +469,35 @@ def modele4(nom_instance
     """
     if  13 not in desactive_contrainte:
         print("contrainte 13 use")
+        #satisfy(AllDifferent(s,excepting=Temps_max_tranche-1 if tranche_temps!=1 else Temps_max_visite-1))
         satisfy( disjunction(s[i]!=s[j],disjunction(circuit[i]==i,circuit[j]==j)) for i in parcours_pdi for j in parcours_pdi if i!=j)
    
+    """
+    Contrainte 14
+    """
+    if  14 not in desactive_contrainte:
+        print("contrainte 14 use")
+        
+        satisfy(Knapsack(y, weights=[1 for i in parcours_pdi],wcondition=ge(Min_visite_pdi), profits=score_pdi)>=1)
     """
     Fonction objectif
     """
     #fonction objectif qui maximise la satisfaction utilisateur.ice
-    if(fonction_objectif):    
-        if(type_objectif==Maximise_score_pdi):
+    objectif=type_objectif
+    if(solution_inter):
+        objectif=type_objectif_inter_solution
+
+    
+    if(objectif):    
+        if(objectif==Maximise_score_pdi):
             maximize(Sum(y[i]*score_pdi[i] for i in parcours_pdi))
-        if(type_objectif==Mix_distance_score_pdi):
+        if(objectif==Mix_distance_score_pdi):
             maximize(Sum(y[i]*score_pdi[i] for i in parcours_pdi))
             minimize((Sum((circuit[i]!=i)*distance_var[i][circuit[i]] for i in parcours_pdi)))
-        if(type_objectif==Maximise_score_chemin):
+        if(objectif==Maximise_score_chemin):
             maximize(Sum((circuit[i]!=i)*(chemin_valuer_var[i][circuit[i]]+(score_pdi[i]+score_pdi_var[circuit[i]])) for i in parcours_pdi))
+        if(objectif==Maximise_chemin_pdi):
+            maximize(Sum(((circuit[i]!=i)*(chemin_valuer_var[i][circuit[i]]))+(score_pdi[i]*y[i]) for i in parcours_pdi))    
     #timout pour le solver
     solver_timeout_seconds=timeout_solver
 
@@ -551,8 +575,13 @@ def modele4(nom_instance
                     }
             ,Bound_key:boundmax
             ,solve_time_key:solve_time
+            ,preference_recherche_key:preference_recherche
+            ,preference_utilisateur_key:preference_utilisateur
+            
             ,Distance_max_key:d_max
             ,Distance_min_key:d_min
+            ,Max_visite_pdi_key:Max_visite_pdi
+            ,Min_visite_pdi_key:Min_visite_pdi
             ,Tranche_temps_key: tranche_temps
             ,Type_objectif_key:type_objectif
             ,Timeout_solver_key:solver_timeout_seconds
@@ -606,6 +635,7 @@ def modele4(nom_instance
                 ,repertoire_solution=repertoire_solution
                 ,solution_inter=False
                 ,solver=solver
+                ,type_objectif_inter_solution=type_objectif_inter_solution
                 ,Temps_max_visite=Temps_max_visite
                 ,timeout_activer=timeout_activer
                 ,timeout_solver=timeout_solver+abs(timeout_sol_inter-(fin_solve-debut_solve))
@@ -616,10 +646,17 @@ def modele4(nom_instance
                 ,Min_visite_pdi=Min_visite_pdi
                 ,solution_custom=solution_custom
                 ,circuit_forcer=circuit_forcer
-                ,pdi_mandatory=pdi_mandatory)
+                ,pdi_mandatory=pdi_mandatory
+                ,preference_recherche=preference_recherche
+                ,preference_utilisateur=preference_utilisateur)
     
     if solution_custom and p_recherche != None and solution_inter:
-        resultat_custom=algo_custom_solution(nom_instance=nom_instance
+        print(resultat_recherche)
+        i=len(tab_res)-1
+        tranche_temps=1
+        solution_custom_res=False
+        while(not solution_custom_res and i>=0):
+            resultat_custom=algo_custom_solution(nom_instance=nom_instance
                 ,solver_verbose=solver_verbose
                 ,budget_max=budget_max
                 ,capacite_max=capacite_max
@@ -650,15 +687,17 @@ def modele4(nom_instance
                 ,tranche_temps=tranche_temps
                 ,Max_visite_pdi=Max_visite_pdi
                 ,Min_visite_pdi=Min_visite_pdi
-                ,circuit_fixer=p_recherche
+                ,circuit_fixer=tab_res[i][Circuit_key]
                 ,boundmax=boundmax
                 ,pdi_mandatory=pdi_mandatory
                 ,resultat_recherche_csp=resultat_recherche
                 ,instance_repertory=instance_repertory)
-        if resultat_custom is not None:
-            modele4(nom_instance=nom_instance
+            
+            if resultat_custom is not None:
+                modele4(nom_instance=nom_instance
                 ,solver_verbose=solver_verbose
                 ,budget_max=budget_max
+                ,type_objectif_inter_solution=type_objectif_inter_solution
                 ,capacite_max=capacite_max
                 ,capaciter_pdi=capaciter_pdi
                 ,categorie_pdi=categorie_pdi
@@ -680,22 +719,25 @@ def modele4(nom_instance
                 ,solution_inter=False
                 ,solver=solver
                 ,Temps_max_visite=Temps_max_visite
-                ,timeout_activer=timeout_activer
+                ,timeout_activer=False
                 ,timeout_solver=timeout_solver+abs(timeout_sol_inter-(fin_solve-debut_solve))
                 ,type_objectif=type_objectif
                 ,timeout_sol_inter=timeout_sol_inter
                 ,tranche_temps=tranche_temps
                 ,Max_visite_pdi=Max_visite_pdi
                 ,Min_visite_pdi=Min_visite_pdi
-                ,solution_custom=False
+                ,solution_custom=True
                 ,pdi_mandatory=pdi_mandatory
                 ,circuit_default=resultat_custom[0]
                 ,y_default=resultat_custom[1]
                 ,s_default=resultat_custom[2]
                 ,solve_time_default=resultat_custom[3]+solve_time
                 ,status_fin_recherche_default=resultat_custom[4]
-                ,desactive_contrainte=[])
-            
+                ,desactive_contrainte=[]
+                ,preference_recherche=preference_recherche
+                ,preference_utilisateur=preference_utilisateur)
+                solution_custom_res=True
+            i-=1
 
 
 if __name__ == "__main__":
@@ -783,6 +825,7 @@ if __name__ == "__main__":
 
         #solution qui utilise un algo custom pour affecter les visite des pdi
         solution_custom=settings[solution_algo_custom_key]
+        type_objectif_inter_solution=settings[type_objectif_inter_solution]
 
         if args[0].f is not None:
             #fichier que j'ai passer en paramètre de mon programme
@@ -840,6 +883,8 @@ if __name__ == "__main__":
                         ,timeout_sol_inter=timeout_sol_inter
                         ,solution_custom=solution_custom
                         ,nom_fichier_custom=nom_fichier_iter
+                        ,preference_recherche=settings
+                        ,type_objectif_inter_solution=type_objectif_inter_solution
                 )
                     
         else:
@@ -865,6 +910,8 @@ if __name__ == "__main__":
                         ,solution_inter=solution_inter
                         ,timeout_sol_inter=timeout_sol_inter
                         ,solution_custom=solution_custom
+                        ,preference_recherche=settings
+                        ,type_objectif_inter_solution=type_objectif_inter_solution
                     )
                 instance_traiter+=num_thread
                 nombre_instance_traiter+=1

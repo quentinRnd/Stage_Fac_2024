@@ -18,9 +18,9 @@
      ,"distance parcourue max":150
      ,"budget max":2000
      ,"Temps max visite":3000
-     ,"Tranche de temps":1
+     ,"Tranche de temps":15
      ,"Max_visite_pdi":20
-     ,"Min_visite_pdi":3
+     ,"Min_visite_pdi":6
      ,"pdi_obligatoire":[]
 
 }
