@@ -19,8 +19,8 @@
      ,"budget max":2000
      ,"Temps max visite":3000
      ,"Tranche de temps":15
-     ,"Max_visite_pdi":20
-     ,"Min_visite_pdi":6
+     ,"Max_visite_pdi":0
+     ,"Min_visite_pdi":0
      ,"pdi_obligatoire":[]
 
 }

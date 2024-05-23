@@ -478,7 +478,7 @@ def modele4(nom_instance
     if  14 not in desactive_contrainte:
         print("contrainte 14 use")
         
-        satisfy(Knapsack(y, weights=[1 for i in parcours_pdi],wcondition=ge(Min_visite_pdi), profits=score_pdi)>=1)
+        satisfy(Knapsack(y, weights=[1 for i in parcours_pdi],wcondition=ge(Min_visite_pdi), profits=score_pdi)>=0)
     """
     Fonction objectif
     """
