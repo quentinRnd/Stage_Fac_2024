@@ -202,7 +202,7 @@ class affiche_solution:
 
         
 
-dossier_solution="solution/model4_custom"
+dossier_solution="solution/model4_test"
 pattern=r'\w+'
 
 fichiers=os.listdir(dossier_solution)

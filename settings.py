@@ -125,6 +125,8 @@ preference_utilisateur_key="preference_utilisateur"
 #sert a savoir les préférence de recherche 
 preference_recherche_key="preference_recherche"
 
+instance_data_key="instance_data"
+
 
 
 
@@ -218,3 +220,5 @@ Tranche_temps_key="Tranche de temps"
 
 #sert a imposer des point d'interêt a visiter
 pdi_obligatoire_key="pdi_obligatoire"
+
+poiInterresement="poiInterresement"

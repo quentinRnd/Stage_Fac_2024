@@ -2,7 +2,7 @@
     "verbose":0    
     ,"nom_repertoire_instance_csv":"Instancias"
     ,"nom_repertoire_instance_json":"Instance_json"
-    ,"timout_solver":3600
+    ,"timout_solver":60
     ,"timout_solution_inter":60 
     ,"timeout_actif":true
     ,"nombre_solution":"ALL"
@@ -14,6 +14,6 @@
     ,"type_objectif_inter_solution":"Maximise_score_chemin"
     ,"repertoire_profile_marcheureuse":"profile_marcheur"
     ,"profile_marcheureuse_choisie":"profile_1.json"
-    ,"inter_solution":false
-    ,"solution_algo_custom":false
+    ,"inter_solution":true
+    ,"solution_algo_custom":true
 }

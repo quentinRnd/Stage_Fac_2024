@@ -92,24 +92,40 @@ def modele4_json(nom_instance
 
             pdi_mandatory=preference_util_data[pdi_obligatoire_key]
 
+            #sert valuer les chemin et les interts des pdi entre 0 et 10
+            valuation_G=10
 
+            preference_pdi=preference_util_data[poiInterresement]
+            score_pdi=instance[Score_pdi_key]
+            max_score=max(score_pdi)*(preference_pdi if preference_pdi>0 else 1 )
+            for i in range(len(score_pdi)):
 
+                score_pdi[i]=int((valuation_G*preference_pdi*score_pdi[i])/max_score)
+
+            
             #variable qui va contenir les different chemin qui aura les valuation mixer 
             chemin_valuer=[]
 
-            #je vais faire en sorte de mixer les interet preference util et les interet des chemin dans l'instance
+            parcour_pdi=range(len(instance[Score_pdi_key]))
+
+            max_chemin=len(preference_util_tab)*(interet_chemin if interet_chemin>0 else 1 )*max([max([ max(instance[Categorie_chemin_pdi_key][i][j]) if instance[Categorie_chemin_pdi_key][i][j] is not None else 0 for j in parcour_pdi   ]) for i in parcour_pdi])
+            
+
+
+            #je vais faire en sorte de mixer les interet preference util et les interet des chemin dans l'instance            
             for i in range(len(instance[Categorie_chemin_pdi_key])):
                 aux=[]
                 for j in range(len(instance[Categorie_chemin_pdi_key][i])):
                     if instance[Categorie_chemin_pdi_key][i][j] is not None:
                         aux.append(
                                     int(
-                                        sum(
+                                        (sum(
                                             [
                                                 instance[Categorie_chemin_pdi_key][i][j][k]*preference_util_tab[k]*interet_chemin
-                                                    for k in range(max(len(instance[Categorie_chemin_pdi_key][i][j]),len(preference_util_tab)))
+                                                    for k in range(min(len(instance[Categorie_chemin_pdi_key][i][j]),len(preference_util_tab)))
                                             ]
-                                           )
+                                           )/max_chemin
+                                           )*valuation_G
                                       )
                                   )
                     else:
@@ -121,7 +137,7 @@ def modele4_json(nom_instance
             solve_time_default=None
             if instance_custom is not None:
                 solution_choisie=instance_custom[Solutions_key][0]
-                parcour_pdi=range(len(instance[Score_pdi_key]))
+                
                 circuit=solution_choisie[Circuit_key]
                 circuit_default=[i for i in parcour_pdi ]
                 for i in circuit:
@@ -147,7 +163,7 @@ def modele4_json(nom_instance
                         ,prix_entrer=instance[Cout_entrer_key]
                         ,ouverture_pdi=instance[Heure_ouverture_key]
                         ,fermeture_pdi=instance[Heure_fermeture_key]
-                        ,interet_pdi=instance[Score_pdi_key]
+                        ,interet_pdi=score_pdi
                         ,coord_x=instance[X_PDI_key]
                         ,coord_y=instance[Y_PDI_key]
                         ,duree_visite=instance[Temps_visite_key]
@@ -174,6 +190,7 @@ def modele4_json(nom_instance
                         ,preference_utilisateur=preference_util_data
                         ,preference_recherche=preference_recherche
                         ,type_objectif_inter_solution=type_objectif_inter_solution
+                        ,instance_data=instance
                     )
                     #a faire 
                     #faire en sorte de passer les donnée preference utilisateur sur les feuille de la matrice des chemin
@@ -217,6 +234,8 @@ def modele4(nom_instance
             ,preference_recherche
             ,preference_utilisateur
             ,type_objectif_inter_solution
+
+            ,instance_data
             #sert a force certaine valeur du circuit après notament une première pré-solution
             ,circuit_forcer=None
             ,pdi_mandatory=[]
@@ -232,31 +251,7 @@ def modele4(nom_instance
     clear()
     print(f"solving {nom_instance}")
     
-    #Prix d'entrer pour chaque point d'interêt
-    b=[]
-
-    #horaire d'ouverture des points d'interêts
-    e=[]
-
-    #horaire de fermeture  des points d'interêts
-    c=[]
-
-    #sert a savoir l'intérêt de l'utilisateur.ice envers les point d'interêt
-    score_pdi=[]
-
-    #cordonnée x des différent point d'intérêt
-    loc_x=[]
-
-    #cordonnée y des différent point d'intérêt
-    loc_y=[]
-
-    #durée de la visite des points d'intérêt
-    t=[]
-
-    #capacitée de chaque point d'intérêt
-    capacite=[]
-    #catégorie des point d'intérêt
-    categorie=[]
+    
     if solution_inter:
         desactive_contrainte.append(1)
         desactive_contrainte.append(3)
@@ -264,26 +259,12 @@ def modele4(nom_instance
 
     """
     Contrainte 5
+    elle est prise en charge lors de la création du circuit 
+    lorsque un pdi n'est pas dans les catégorie qui sont accepter alors le pdi n'est pas dans le circuit
     """
-    #chemin valuer en fonction des catégorie des pdi
-    chemin_valuer_aux=[]
     pdi_accepter=[i for i in range(len(prix_entrer)) if categorie_pdi[i] in categorie_permise]
-    for i in range(len(categorie_pdi)):
-        if categorie_pdi[i] in categorie_permise:
-            b.append(prix_entrer[i])
-            e.append(ouverture_pdi[i])
-            c.append(fermeture_pdi[i])
-            score_pdi.append(interet_pdi[i])
-            loc_x.append(coord_x[i])
-            loc_y.append(coord_y[i])
-            t.append(duree_visite[i])
-            capacite.append(capaciter_pdi[i])
-            categorie.append(categorie_pdi[i])
-            chemin_valuer_aux.append([chemin_valuer[i][j] for j in pdi_accepter]) 
-    chemin_valuer=chemin_valuer_aux
-
     #nombre de point d'interêt dans l'instance 
-    N = len(loc_x)
+    N = len(coord_x)
 
 
     #variable qui me sert a pas me tromper dans le parcours de mes pdi
@@ -299,30 +280,31 @@ def modele4(nom_instance
         if circuit_default is not None:
             circuit = VarArray(size=N,dom=lambda i: {circuit_default[i] })
         else:
-            circuit = VarArray(size=N, dom=lambda i: {j for j in parcours_pdi if chemin_valuer[i][j]!=0 or i==j })
+            circuit = VarArray(size=N, dom=lambda i: {j for j in parcours_pdi if chemin_valuer[i][j]!=0 or i==j  } if i in pdi_accepter else i)
     else:
         circuit = VarArray(size=N,dom=lambda i: {circuit_forcer[i] })
 
 
     #distance entre tout les point d'intérêt
-    distance = {(i, j): round(np.hypot(loc_x[i]-loc_x[j], loc_y[i]-loc_y[j])) for i in parcours_pdi for j in parcours_pdi }
+    distance = {(i, j): round(np.hypot(coord_x[i]-coord_x[j],coord_y[i]-coord_y[j])) for i in parcours_pdi for j in parcours_pdi }
     #variable qui contient les même valeur que distance ça sert juste pour acceder a ses valeur avec le systeme de suscesseur de circuit 
     distance_var=VarArray(size=[N, N], dom=lambda i, j: {distance[i,j]}  )
     #pareille mais pour les chemin 
     chemin_valuer_var=VarArray(size=[N, N], dom=lambda i, j: {chemin_valuer[i][j]}  )
     #pareille pour les score des pdi
-    score_pdi_var=VarArray(size=N, dom=lambda i: {score_pdi[i]}  )
+    score_pdi_var=VarArray(size=N, dom=lambda i: {interet_pdi[i]}  )
     #tableau ayant pour donnée les heure de depart de chaque viste de chaque point d'intérêt
     s=None
     #temps maximum autoriser
     Temps_max_tranche=int((Temps_max_visite+1)/tranche_temps)+1
+    tempsdefault=Temps_max_tranche-1
     if circuit_forcer is None:
         if s_default is not None:
             s = VarArray(size=N,dom=lambda i: {s_default[i] })
         else:    
-            s = VarArray(size=N,dom=range(0,Temps_max_tranche))
+            s = VarArray(size=N,dom=lambda i: range(0,Temps_max_tranche)if i in pdi_accepter else tempsdefault )
     else:
-        s = VarArray(size=N,dom=lambda i:range(0,Temps_max_tranche)if circuit_forcer[i]!=i else {Temps_max_tranche-1})
+        s = VarArray(size=N,dom=lambda i:range(0,Temps_max_tranche)if circuit_forcer[i]!=i else {tempsdefault})
         
     #tableau permettant de savoir si un point d'interêt est visité 
     y=None
@@ -330,7 +312,7 @@ def modele4(nom_instance
         if y_default is not None:
             y = VarArray(size=N,dom=lambda i: {y_default[i] })
         else:
-            y = VarArray(size=N, dom={0,1})
+            y = VarArray(size=N, dom=lambda i: {0,1} if i in pdi_accepter else {0})
     else:
         y=VarArray(size=N, dom=lambda i:{0,1}if circuit_forcer[i]!=i else {0} )
 
@@ -346,7 +328,7 @@ def modele4(nom_instance
 
     #catégorie présente dans la dataframe
     categorie_df=[]
-    for i in categorie:
+    for i in categorie_pdi:
         if i not in categorie_df:
             categorie_df.append(i)
     categorie_df=sorted(categorie_df)
@@ -378,12 +360,12 @@ def modele4(nom_instance
     Contrainte 1
     """
     
-    #satisfy( disjunction(((s[i]*tranche_temps)+(t[i]*y[i])+distance[i,j]<=(s[j]*tranche_temps)) ,s[j]==Minimum(s), (x[i][j]==0))  for i in parcours_pdi for j in parcours_pdi if i!=j )
+    #satisfy( disjunction(((s[i]*tranche_temps)+(duree_visite[i]*y[i])+distance[i,j]<=(s[j]*tranche_temps)) ,s[j]==Minimum(s), (x[i][j]==0))  for i in parcours_pdi for j in parcours_pdi if i!=j )
     if  1 not in desactive_contrainte:
         print("contrainte 1 use")    
         satisfy( disjunction(
                             (
-                                (s[i]*tranche_temps)+(t[i]*y[i])+distance_var[i][circuit[i]]<=(s[circuit[i]]*tranche_temps)
+                                (s[i]*tranche_temps)+(duree_visite[i]*y[i])+distance_var[i][circuit[i]]<=(s[circuit[i]]*tranche_temps)
                             ) 
                             ,s[circuit[i]]==Minimum(s)
                             ,(circuit[i]==i))  
@@ -393,36 +375,36 @@ def modele4(nom_instance
     """
     if  2 not in desactive_contrainte:
         print("contrainte 2 use")
-        satisfy(Sum(b[i]*y[i] for i in parcours_pdi)<=budget_max)
+        satisfy(Sum(prix_entrer[i]*y[i] for i in parcours_pdi)<=budget_max)
 
     """
     Contrainte 3
     """
     if  3 not in desactive_contrainte:
         print("contrainte 3 use")  
-        satisfy((s[i]*tranche_temps) >= (e[i]*y[i]) for i in parcours_pdi)
-        satisfy((((s[i]*tranche_temps)+t[i])*y[i]) <= c[i] for i in parcours_pdi)
+        satisfy((s[i]*tranche_temps) >= (ouverture_pdi[i]*y[i]) for i in parcours_pdi)
+        satisfy((((s[i]*tranche_temps)+duree_visite[i])*y[i]) <= fermeture_pdi[i] for i in parcours_pdi)
     
     """
     Contrainte 4
     """
     if  4 not in desactive_contrainte:
         print("contrainte 4 use")
-        satisfy((capacite[i] * y[i]) <=capacite_max for i in parcours_pdi)
+        satisfy((capaciter_pdi[i] * y[i]) <=capacite_max for i in parcours_pdi)
 
     """
     Contrainte 5
     """
     if  5 not in desactive_contrainte:
         print("contrainte 5 use")
-        satisfy(Sum(t[i]*y[i] for i in parcours_pdi)<=Temps_max_visite)
+        satisfy(Sum(duree_visite[i]*y[i] for i in parcours_pdi)<=Temps_max_visite)
 
     """
     Contrainte 7
     """
     if  7 not in desactive_contrainte:
         print("contrainte 7 use")
-        satisfy(Sum(b[i]*y[i]*(categorie[i]==j) for i in parcours_pdi)<=depense_max_categorie[j] for j in categorie_df)
+        satisfy(Sum(prix_entrer[i]*y[i]*(categorie_pdi[i]==j) for i in parcours_pdi)<=depense_max_categorie[j] for j in categorie_df)
 
     """
     Contrainte 8
@@ -478,7 +460,7 @@ def modele4(nom_instance
     if  14 not in desactive_contrainte:
         print("contrainte 14 use")
         
-        satisfy(Knapsack(y, weights=[1 for i in parcours_pdi],wcondition=ge(Min_visite_pdi), profits=score_pdi)>=0)
+        satisfy(Knapsack(y, weights=[1 for i in parcours_pdi],wcondition=ge(Min_visite_pdi), profits=interet_pdi)>=0)
     """
     Fonction objectif
     """
@@ -490,14 +472,14 @@ def modele4(nom_instance
     
     if(objectif):    
         if(objectif==Maximise_score_pdi):
-            maximize(Sum(y[i]*score_pdi[i] for i in parcours_pdi))
+            maximize(Sum(y[i]*interet_pdi[i] for i in parcours_pdi))
         if(objectif==Mix_distance_score_pdi):
-            maximize(Sum(y[i]*score_pdi[i] for i in parcours_pdi))
+            maximize(Sum(y[i]*interet_pdi[i] for i in parcours_pdi))
             minimize((Sum((circuit[i]!=i)*distance_var[i][circuit[i]] for i in parcours_pdi)))
         if(objectif==Maximise_score_chemin):
-            maximize(Sum((circuit[i]!=i)*(chemin_valuer_var[i][circuit[i]]+(score_pdi[i]+score_pdi_var[circuit[i]])) for i in parcours_pdi))
+            maximize(Sum((circuit[i]!=i)*(chemin_valuer_var[i][circuit[i]]+(interet_pdi[i]+score_pdi_var[circuit[i]])) for i in parcours_pdi))
         if(objectif==Maximise_chemin_pdi):
-            maximize(Sum(((circuit[i]!=i)*(chemin_valuer_var[i][circuit[i]]))+(score_pdi[i]*y[i]) for i in parcours_pdi))    
+            maximize(Sum(((circuit[i]!=i)*(chemin_valuer_var[i][circuit[i]]))+(interet_pdi[i]*y[i]) for i in parcours_pdi))    
     #timout pour le solver
     solver_timeout_seconds=timeout_solver
 
@@ -587,13 +569,14 @@ def modele4(nom_instance
             ,Timeout_solver_key:solver_timeout_seconds
             ,Timeout_activer_key:timeout_activer
             ,Solutions_key:tab_res
-            ,Coordonee_pdi_x_key:loc_x
-            ,Coordonee_pdi_y_key:loc_y
-            ,Temps_visite_key:t
-            ,Score_pdi_key:score_pdi
-            ,Closing_pdi_key:c
-            ,Opening_pdi_key:e
+            ,Coordonee_pdi_x_key:coord_x
+            ,Coordonee_pdi_y_key:coord_y
+            ,Temps_visite_key:duree_visite
+            ,Score_pdi_key:interet_pdi
+            ,Closing_pdi_key:fermeture_pdi
+            ,Opening_pdi_key:ouverture_pdi
             ,Evaluation_path_key:chemin_valuer
+            ,instance_data_key:instance_data
         }
     json_data=json.dumps(data, indent=3)
     fichier=None
@@ -648,7 +631,8 @@ def modele4(nom_instance
                 ,circuit_forcer=circuit_forcer
                 ,pdi_mandatory=pdi_mandatory
                 ,preference_recherche=preference_recherche
-                ,preference_utilisateur=preference_utilisateur)
+                ,preference_utilisateur=preference_utilisateur
+                ,instance_data=instance_data)
     
     if solution_custom and p_recherche != None and solution_inter:
         print(resultat_recherche)
@@ -735,7 +719,8 @@ def modele4(nom_instance
                 ,status_fin_recherche_default=resultat_custom[4]
                 ,desactive_contrainte=[]
                 ,preference_recherche=preference_recherche
-                ,preference_utilisateur=preference_utilisateur)
+                ,preference_utilisateur=preference_utilisateur
+                ,instance_data=instance_data)
                 solution_custom_res=True
             i-=1
 

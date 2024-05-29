@@ -1,7 +1,7 @@
 {
      "handi":true
      ,"niveau marche":0
-     ,"interet_chemin":20
+     ,"interet_chemin":0
      ,"préférence marche":
      {
         "nature":0.8
@@ -11,16 +11,15 @@
         ,"lac":0.7
         ,"rivière":0.8
      }
-     ,"interet chemin":20
-     
      ,"capacite max":500
      ,"distance parcourue min":10
      ,"distance parcourue max":150
      ,"budget max":2000
      ,"Temps max visite":3000
      ,"Tranche de temps":15
-     ,"Max_visite_pdi":0
+     ,"Max_visite_pdi":6
      ,"Min_visite_pdi":0
+     ,"poiInterresement":10
      ,"pdi_obligatoire":[]
 
 }
