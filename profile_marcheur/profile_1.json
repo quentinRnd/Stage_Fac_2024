@@ -1,7 +1,7 @@
 {
      "handi":true
      ,"niveau marche":0
-     ,"interet_chemin":0
+     
      ,"préférence marche":
      {
         "nature":0.8
@@ -20,6 +20,7 @@
      ,"Max_visite_pdi":6
      ,"Min_visite_pdi":0
      ,"poiInterresement":10
+     ,"interet_chemin":10
      ,"pdi_obligatoire":[]
 
 }

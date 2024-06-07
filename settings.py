@@ -52,6 +52,9 @@ timout_solution_inter_key="timout_solution_inter"
 #sert a savoir si on utilise l'algo custom pour résoudre les temps des chemins
 solution_algo_custom_key="solution_algo_custom"
 
+#timeout en seconde pour les solution custom
+timout_solution_custom="timout_solution_custom"
+
 
 
 

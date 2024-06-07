@@ -63,7 +63,8 @@ def algo_custom_solution(nom_instance
             ,circuit_fixer
             ,boundmax
             ,pdi_mandatory
-            ,resultat_recherche_csp):
+            ,resultat_recherche_csp
+            ,timeout_sol_custom):
     start_solve=int(time.time())
     print("start of the solve with custom algorithm ",datetime.datetime.now())
     #nombre de pdi que l'on veux visiter
@@ -98,11 +99,12 @@ def algo_custom_solution(nom_instance
     solution=False
     pdi_selectionner=None
 
-    valeur_pdi_max=min(interet_pdi)-1
+    valeur_pdi_max=-1
     tab_res=[]
     nbrun=0
     while(vecteur_directeur!=None ):
         nbrun+=1
+        
         if(nbrun%100==0):
             print(f"Run {nbrun}",f":Bound {valeur_pdi_max}")
         if( sum(vecteur_directeur)<nombre_visite_pdi or sum(vecteur_directeur)>Max_visite_pdi ):
@@ -156,7 +158,7 @@ def algo_custom_solution(nom_instance
                     pdi_depart=circuit_fixer[i][0]
                     pdi_arriver=circuit_fixer[i][1]
 
-                    start_pdi[pdi_arriver]=start_pdi[pdi_depart]+distance[pdi_depart,pdi_arriver]+(duree_visite[pdi_depart]if pdi_depart in pdi_selectionner else 0)
+                    start_pdi[pdi_arriver]=start_pdi[pdi_depart]+(distance[pdi_depart,pdi_arriver]if distance[pdi_depart,pdi_arriver]>0 else 1)+(duree_visite[pdi_depart]if pdi_depart in pdi_selectionner else 0)
                     
                     if  start_pdi[pdi_arriver] <Temps_max_visite:
                         if pdi_arriver in pdi_selectionner and  start_pdi[pdi_arriver] < ouverture_pdi[pdi_arriver]:
@@ -180,8 +182,9 @@ def algo_custom_solution(nom_instance
                     fin_recherche=True
                     
             vecteur_directeur=plus_un(vecteur_directeur)
-        if solution and int(time.time())-start_solve>timeout_sol_inter:
-            vecteur_directeur=None
+            if int(time.time())-start_solve>timeout_sol_custom:
+                vecteur_directeur=None
+        
     end_solve= int(time.time())
     resultat_recherche_inter=UNSAT
     

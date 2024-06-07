@@ -33,7 +33,10 @@ def modele4_json(nom_instance
             ,solution_custom
             ,preference_recherche
             ,type_objectif_inter_solution
-            ,nom_fichier_custom=None):
+            ,timeout_sol_custom
+            ,nom_fichier_custom=None
+
+            ):
     #categorie permise par le modele
     categorie_permise= [i for i in range (1000)]
 
@@ -92,15 +95,12 @@ def modele4_json(nom_instance
 
             pdi_mandatory=preference_util_data[pdi_obligatoire_key]
 
-            #sert valuer les chemin et les interts des pdi entre 0 et 10
-            valuation_G=10
 
             preference_pdi=preference_util_data[poiInterresement]
             score_pdi=instance[Score_pdi_key]
-            max_score=max(score_pdi)*(preference_pdi if preference_pdi>0 else 1 )
+            max_score=max(score_pdi)
             for i in range(len(score_pdi)):
-
-                score_pdi[i]=int((valuation_G*preference_pdi*score_pdi[i])/max_score)
+                score_pdi[i]=(int((score_pdi[i]/max_score)*preference_pdi)if preference_pdi>0 else 0)
 
             
             #variable qui va contenir les different chemin qui aura les valuation mixer 
@@ -108,9 +108,8 @@ def modele4_json(nom_instance
 
             parcour_pdi=range(len(instance[Score_pdi_key]))
 
-            max_chemin=len(preference_util_tab)*(interet_chemin if interet_chemin>0 else 1 )*max([max([ max(instance[Categorie_chemin_pdi_key][i][j]) if instance[Categorie_chemin_pdi_key][i][j] is not None else 0 for j in parcour_pdi   ]) for i in parcour_pdi])
+            max_chemin=len(preference_util_tab)
             
-
 
             #je vais faire en sorte de mixer les interet preference util et les interet des chemin dans l'instance            
             for i in range(len(instance[Categorie_chemin_pdi_key])):
@@ -121,15 +120,15 @@ def modele4_json(nom_instance
                                     int(
                                         (sum(
                                             [
-                                                instance[Categorie_chemin_pdi_key][i][j][k]*preference_util_tab[k]*interet_chemin
+                                                instance[Categorie_chemin_pdi_key][i][j][k]*preference_util_tab[k]
                                                     for k in range(min(len(instance[Categorie_chemin_pdi_key][i][j]),len(preference_util_tab)))
                                             ]
                                            )/max_chemin
-                                           )*valuation_G
-                                      )
+                                           )*interet_chemin
+                                      ) if max_chemin>0 else 0
                                   )
                     else:
-                        aux.append(0)
+                        aux.append(-1)
                 chemin_valuer.append(aux)
             circuit_default=None
             y_default=None
@@ -191,6 +190,7 @@ def modele4_json(nom_instance
                         ,preference_recherche=preference_recherche
                         ,type_objectif_inter_solution=type_objectif_inter_solution
                         ,instance_data=instance
+                        ,timeout_sol_custom=timeout_sol_custom
                     )
                     #a faire 
                     #faire en sorte de passer les donnée preference utilisateur sur les feuille de la matrice des chemin
@@ -236,6 +236,7 @@ def modele4(nom_instance
             ,type_objectif_inter_solution
 
             ,instance_data
+            ,timeout_sol_custom
             #sert a force certaine valeur du circuit après notament une première pré-solution
             ,circuit_forcer=None
             ,pdi_mandatory=[]
@@ -280,7 +281,7 @@ def modele4(nom_instance
         if circuit_default is not None:
             circuit = VarArray(size=N,dom=lambda i: {circuit_default[i] })
         else:
-            circuit = VarArray(size=N, dom=lambda i: {j for j in parcours_pdi if chemin_valuer[i][j]!=0 or i==j  } if i in pdi_accepter else i)
+            circuit = VarArray(size=N, dom=lambda i: {j for j in parcours_pdi if chemin_valuer[i][j]!=-1 or i==j  } if i in pdi_accepter else i)
     else:
         circuit = VarArray(size=N,dom=lambda i: {circuit_forcer[i] })
 
@@ -348,6 +349,10 @@ def modele4(nom_instance
                 valeur_ajout=1500
         depense_max_categorie[i]=valeur_ajout
     """
+    """
+    ******************************A RETIRER*************************************
+    """
+    #tranche_temps=1
 
     for i in categorie_df:
         valeur_ajout=budget_max
@@ -453,11 +458,11 @@ def modele4(nom_instance
         print("contrainte 13 use")
         #satisfy(AllDifferent(s,excepting=Temps_max_tranche-1 if tranche_temps!=1 else Temps_max_visite-1))
         satisfy( disjunction(s[i]!=s[j],disjunction(circuit[i]==i,circuit[j]==j)) for i in parcours_pdi for j in parcours_pdi if i!=j)
-   
+        #satisfy(Sum(s[i]==Minimum(s)for i in parcours_pdi )==1 )
     """
     Contrainte 14
     """
-    if  14 not in desactive_contrainte:
+    if  14 not in desactive_contrainte and not max(interet_pdi)==0:
         print("contrainte 14 use")
         
         satisfy(Knapsack(y, weights=[1 for i in parcours_pdi],wcondition=ge(Min_visite_pdi), profits=interet_pdi)>=0)
@@ -632,7 +637,8 @@ def modele4(nom_instance
                 ,pdi_mandatory=pdi_mandatory
                 ,preference_recherche=preference_recherche
                 ,preference_utilisateur=preference_utilisateur
-                ,instance_data=instance_data)
+                ,instance_data=instance_data
+                ,timeout_sol_custom=timeout_sol_custom)
     
     if solution_custom and p_recherche != None and solution_inter:
         print(resultat_recherche)
@@ -675,7 +681,8 @@ def modele4(nom_instance
                 ,boundmax=boundmax
                 ,pdi_mandatory=pdi_mandatory
                 ,resultat_recherche_csp=resultat_recherche
-                ,instance_repertory=instance_repertory)
+                ,instance_repertory=instance_repertory
+                ,timeout_sol_custom=timeout_sol_custom)
             
             if resultat_custom is not None:
                 modele4(nom_instance=nom_instance
@@ -720,7 +727,8 @@ def modele4(nom_instance
                 ,desactive_contrainte=[]
                 ,preference_recherche=preference_recherche
                 ,preference_utilisateur=preference_utilisateur
-                ,instance_data=instance_data)
+                ,instance_data=instance_data
+                ,timeout_sol_custom=timeout_sol_custom)
                 solution_custom_res=True
             i-=1
 
@@ -800,6 +808,9 @@ if __name__ == "__main__":
 
         #savoir  quelle est le timeout pour les solution intermediaire
         timeout_sol_inter=settings[timout_solution_inter_key]
+        
+        #savoir  quelle est le timeout pour les solution custom
+        timeout_sol_custom=settings[timout_solution_custom]
 
         #identifiant processus
         num_thread=1
@@ -870,6 +881,8 @@ if __name__ == "__main__":
                         ,nom_fichier_custom=nom_fichier_iter
                         ,preference_recherche=settings
                         ,type_objectif_inter_solution=type_objectif_inter_solution
+                        ,timeout_sol_custom=timeout_sol_custom
+                        
                 )
                     
         else:
@@ -897,6 +910,7 @@ if __name__ == "__main__":
                         ,solution_custom=solution_custom
                         ,preference_recherche=settings
                         ,type_objectif_inter_solution=type_objectif_inter_solution
+                        ,timeout_sol_custom=timeout_sol_custom
                     )
                 instance_traiter+=num_thread
                 nombre_instance_traiter+=1
