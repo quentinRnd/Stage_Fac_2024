@@ -5,10 +5,10 @@
     ,"timout_solver":3600
     ,"timout_solution_inter":3000
     ,"timout_solution_custom":600
-    
+    ,"densiter_graphe":null
     ,"timeout_actif":true
     ,"nombre_solution":"ALL"
-    ,"repertoire_solution":"solution/modele4_sol/model4_POI_chemin_custom"
+    ,"repertoire_solution":"solution/point_depart_fixe/modulation_chemin_POI/0-5_1/custom"
     ,"fonction_objectif":true
     ,"solver":"ACE"
     ,"extension_instance":".csv"
@@ -18,4 +18,5 @@
     ,"profile_marcheureuse_choisie":"profile_1.json"
     ,"inter_solution":true
     ,"solution_algo_custom":true
+
 }

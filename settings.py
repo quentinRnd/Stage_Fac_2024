@@ -21,6 +21,8 @@ timeout_actif_key="timeout_actif"
 #cle pour choisir quelle solveur on utilise lors de la recherche
 solver_key="solver"
 
+densiter_graphe_key="densiter_graphe"
+
 #extension de fichier utiliser pour l'instance
 extension_instance_key="extension_instance"
 
@@ -225,3 +227,13 @@ Tranche_temps_key="Tranche de temps"
 pdi_obligatoire_key="pdi_obligatoire"
 
 poiInterresement="poiInterresement"
+
+#sert a recuperer les point de départ de chaque instance
+point_depart_key="point_depart"
+
+#sert a recuperer le nom de l'instance dans le tableau de point_depart_key
+pdi_depart_instance_key="instance"
+#sert a recuperer le point de depart de l'instance dans le tableau de point_depart_key
+pdi_depart_depart_key="depart"
+#sert a activer ou desactiver les point de départs des instances
+point_depart_activer_key="point_depart_activer"

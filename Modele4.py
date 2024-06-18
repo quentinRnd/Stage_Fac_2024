@@ -13,6 +13,7 @@ import datetime
 import math
 from utils import *
 from algocustom import algo_custom_solution
+from Densiter_graphe import calcul_densiter_graphe,gestion_densiter_graphe
 
 
 def modele4_json(nom_instance
@@ -34,6 +35,7 @@ def modele4_json(nom_instance
             ,preference_recherche
             ,type_objectif_inter_solution
             ,timeout_sol_custom
+            ,densiter_graphe
             ,nom_fichier_custom=None
 
             ):
@@ -66,7 +68,11 @@ def modele4_json(nom_instance
             
             #objet json qui contient l'instance json 
             instance = json.load(instance_json)
+            
 
+            if densiter_graphe is not None:
+                instance=gestion_densiter_graphe(densiter_rechercher=densiter_graphe,graphe_default=instance)
+            
             #tableau qui me permet de traiter les différente préférence utilisateur.ice
             preference_util_tab=[
                                     preference_util_data[preference_marche_key][nature_key]
@@ -97,6 +103,18 @@ def modele4_json(nom_instance
 
 
             preference_pdi=preference_util_data[poiInterresement]
+            
+            #sert a savoir si on active les points de departs
+            point_depart_activer=preference_util_data[point_depart_activer_key]
+            
+            point_depart=None
+
+            if point_depart_activer:
+                point_depart=preference_util_data[point_depart_key]
+                for i in point_depart:
+                    if i[pdi_depart_instance_key]==nom_instance:
+                        point_depart=i[pdi_depart_depart_key]
+
             score_pdi=instance[Score_pdi_key]
             max_score=max(score_pdi)
             for i in range(len(score_pdi)):
@@ -191,6 +209,7 @@ def modele4_json(nom_instance
                         ,type_objectif_inter_solution=type_objectif_inter_solution
                         ,instance_data=instance
                         ,timeout_sol_custom=timeout_sol_custom
+                        ,point_depart=point_depart
                     )
                     #a faire 
                     #faire en sorte de passer les donnée preference utilisateur sur les feuille de la matrice des chemin
@@ -248,6 +267,7 @@ def modele4(nom_instance
             ,solve_time_default=None
             ,status_fin_recherche_default=None
             ,desactive_contrainte=[]
+            ,point_depart=None
 ):
     clear()
     print(f"solving {nom_instance}")
@@ -306,7 +326,13 @@ def modele4(nom_instance
             s = VarArray(size=N,dom=lambda i: range(0,Temps_max_tranche)if i in pdi_accepter else tempsdefault )
     else:
         s = VarArray(size=N,dom=lambda i:range(0,Temps_max_tranche)if circuit_forcer[i]!=i else {tempsdefault})
-        
+    
+    if point_depart is not None:
+        print("Contrainte Point de depart")
+        satisfy(s[point_depart]==Minimum(s))
+        satisfy(circuit[point_depart]!=point_depart)
+
+
     #tableau permettant de savoir si un point d'interêt est visité 
     y=None
     if circuit_forcer is None:
@@ -536,6 +562,9 @@ def modele4(nom_instance
             #valeur des départ des visite des pdi 
             start_pdi=values(s, sol=numero_solution)
 
+            for i in range(len(start_pdi)):
+                start_pdi[i]=start_pdi[i]*tranche_temps
+
             #valeur du circuit créé
             circuit_res=values(circuit,sol=numero_solution)
             circuit_res=[[i,circuit_res[i]] for i in range(len(circuit_res)) if i !=circuit_res[i]]
@@ -638,7 +667,8 @@ def modele4(nom_instance
                 ,preference_recherche=preference_recherche
                 ,preference_utilisateur=preference_utilisateur
                 ,instance_data=instance_data
-                ,timeout_sol_custom=timeout_sol_custom)
+                ,timeout_sol_custom=timeout_sol_custom
+                ,point_depart=point_depart)
     
     if solution_custom and p_recherche != None and solution_inter:
         print(resultat_recherche)
@@ -682,7 +712,8 @@ def modele4(nom_instance
                 ,pdi_mandatory=pdi_mandatory
                 ,resultat_recherche_csp=resultat_recherche
                 ,instance_repertory=instance_repertory
-                ,timeout_sol_custom=timeout_sol_custom)
+                ,timeout_sol_custom=timeout_sol_custom
+                ,point_depart=point_depart)
             
             if resultat_custom is not None:
                 modele4(nom_instance=nom_instance
@@ -728,7 +759,8 @@ def modele4(nom_instance
                 ,preference_recherche=preference_recherche
                 ,preference_utilisateur=preference_utilisateur
                 ,instance_data=instance_data
-                ,timeout_sol_custom=timeout_sol_custom)
+                ,timeout_sol_custom=timeout_sol_custom
+                ,point_depart=point_depart)
                 solution_custom_res=True
             i-=1
 
@@ -784,6 +816,10 @@ if __name__ == "__main__":
         timeout_solver=settings[timeout_solver_key]
         #nombre de solution que le solver va chercher 
         nombre_solution=settings[nombre_solution_key]
+        
+        #Permet de modifier la densiter du graphe 
+        densiter_graphe=settings[densiter_graphe_key]
+        
         if(nombre_solution=="ALL"):
             nombre_solution=ALL
         repertoire_solution=settings[repertoire_solution_key]
@@ -882,6 +918,7 @@ if __name__ == "__main__":
                         ,preference_recherche=settings
                         ,type_objectif_inter_solution=type_objectif_inter_solution
                         ,timeout_sol_custom=timeout_sol_custom
+                        ,densiter_graphe=densiter_graphe
                         
                 )
                     
@@ -911,6 +948,7 @@ if __name__ == "__main__":
                         ,preference_recherche=settings
                         ,type_objectif_inter_solution=type_objectif_inter_solution
                         ,timeout_sol_custom=timeout_sol_custom
+                        ,densiter_graphe=densiter_graphe
                     )
                 instance_traiter+=num_thread
                 nombre_instance_traiter+=1

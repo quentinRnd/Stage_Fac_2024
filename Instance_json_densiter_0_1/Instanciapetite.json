@@ -1,0 +1,123 @@
+{
+   "X_PDI": [
+      -10,
+      0,
+      10,
+      0,
+      0
+   ],
+   "Y_PDI": [
+      0,
+      10,
+      0,
+      -10,
+      -10
+   ],
+   "Score_pdi": [
+      10,
+      15,
+      5,
+      2,
+      20
+   ],
+   "Temps_visite": [
+      10,
+      10,
+      10,
+      10,
+      10
+   ],
+   "Cout_entrer": [
+      2,
+      2,
+      2,
+      2,
+      10
+   ],
+   "Heure_ouverture": [
+      0,
+      0,
+      0,
+      0,
+      0
+   ],
+   "Heure_fermeture": [
+      20000,
+      20000,
+      20000,
+      20000,
+      2000
+   ],
+   "Categorie": [
+      1,
+      1,
+      1,
+      1,
+      1
+   ],
+   "Capacite": [
+      200,
+      200,
+      200,
+      200,
+      10
+   ],
+   "Categorie_chemin_pdi": [
+      [
+         null,
+         null,
+         null,
+         null,
+         null
+      ],
+      [
+         null,
+         null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         null,
+         null
+      ],
+      [
+         null,
+         [
+            0.2,
+            1,
+            0.1,
+            0,
+            0,
+            1
+         ],
+         null,
+         null,
+         null
+      ],
+      [
+         null,
+         [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+         ],
+         null,
+         null,
+         null
+      ],
+      [
+         null,
+         null,
+         null,
+         null,
+         null
+      ]
+   ]
+}

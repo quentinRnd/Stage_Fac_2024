@@ -64,7 +64,8 @@ def algo_custom_solution(nom_instance
             ,boundmax
             ,pdi_mandatory
             ,resultat_recherche_csp
-            ,timeout_sol_custom):
+            ,timeout_sol_custom
+            ,point_depart):
     start_solve=int(time.time())
     print("start of the solve with custom algorithm ",datetime.datetime.now())
     #nombre de pdi que l'on veux visiter
@@ -105,8 +106,6 @@ def algo_custom_solution(nom_instance
     while(vecteur_directeur!=None ):
         nbrun+=1
         
-        if(nbrun%100==0):
-            print(f"Run {nbrun}",f":Bound {valeur_pdi_max}")
         if( sum(vecteur_directeur)<nombre_visite_pdi or sum(vecteur_directeur)>Max_visite_pdi ):
             vecteur_directeur=plus_un(vecteur_directeur)
             
@@ -114,6 +113,7 @@ def algo_custom_solution(nom_instance
             
             fin_recherche=False
             pdi_selectionner=[pdi_classer[i] for i in range(len(pdi_classer)) if vecteur_directeur[i]==1]
+            
             valeur_pdi_selectionner=[interet_pdi[i] for i in pdi_selectionner]
             valeur_pdi_actuelle=sum(valeur_pdi_selectionner)
             if valeur_pdi_actuelle<=valeur_pdi_max:
@@ -172,10 +172,15 @@ def algo_custom_solution(nom_instance
                 
                 if not pas_solution:
                     solution=True
-                    y=[ 1  if i in pdi_selectionner else 0 for i in parcours_pdi]
-                    
-                    tab_res.append({Presence_pdi_key:y,Start_pdi_key:start_pdi,Circuit_key:circuit_fixer})
-                    valeur_pdi_max=valeur_pdi_actuelle
+                    if point_depart is not None and  start_pdi[point_depart]!=min(start_pdi):
+                        pass
+                    else:
+                        y=[ 1  if i in pdi_selectionner else 0 for i in parcours_pdi]
+
+                        tab_res.append({Presence_pdi_key:y,Start_pdi_key:start_pdi,Circuit_key:circuit_fixer})
+
+                        valeur_pdi_max=valeur_pdi_actuelle
+                        print(f"Run {nbrun}",f":Bound {valeur_pdi_max}")
                 
                 offset_pdi+=1
                 if offset_pdi>=len(circuit_fixer) or not pas_solution :
@@ -213,7 +218,7 @@ def algo_custom_solution(nom_instance
                         Fin_recherche_key:resultat_recherche_csp.__str__()
                         ,Optimum_key:resultat_recherche_csp is OPTIMUM
                     }
-            ,Bound_key:boundmax
+            ,Bound_key:valeur_pdi_max
             ,Distance_max_key:distance_parcourue_max
             ,Distance_min_key:distance_parcourue_min
             ,Tranche_temps_key: tranche_temps
@@ -242,6 +247,7 @@ def algo_custom_solution(nom_instance
     print(f"nombre solution {len(tab_res)}")
     print("time to solve this instance ",duree_solve)
     
-    
+    print(retour[1])
+    print(sum([interet_pdi[i] for i in parcours_pdi if retour[1][i]==1]))
     return retour
     

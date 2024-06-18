@@ -15,7 +15,7 @@ echo "launching process"
 for (( i=0 ; i<$NUM_PROCESSEUR_SOLVE ; ++i ))
 do
     
-    python3 ./Modele4.py --t $NUM_PROCESSEUR_SOLVE --i $i -output="solve$i" 1>"$LOG_DIR/log_numthread_$i.txt" 2>"$LOG_DIR/log_error_numthread_$i.txt" &
+    python3 ./Modele4.py --t $NUM_PROCESSEUR_SOLVE --i $i -output="solve$i" 1>"$LOG_DIR/log_numthread_$i.log" 2>"$LOG_DIR/log_error_numthread_$i.log" &
     if (($i < $(( $NUM_PROCESSEUR_SOLVE -1 )) )); then 
         sleep 10
     fi

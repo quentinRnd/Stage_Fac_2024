@@ -20,7 +20,26 @@
      ,"Max_visite_pdi":6
      ,"Min_visite_pdi":0
      ,"poiInterresement":10
-     ,"interet_chemin":10
+     ,"interet_chemin":5
      ,"pdi_obligatoire":[]
+     ,"point_depart_activer":true
+     ,"point_depart":[
+                     {"instance":"Instancia1","depart":0}
+                     ,{"instance":"Instancia2","depart":0}
+                     ,{"instance":"Instancia3","depart":0}
+                     ,{"instance":"Instancia4","depart":0}
+                     ,{"instance":"Instancia5","depart":0}
+                     ,{"instance":"Instancia6","depart":0}
+                     ,{"instance":"Instancia7","depart":0}
+                     ,{"instance":"Instancia8","depart":0}
+                     ,{"instance":"Instancia9","depart":0}
+                     ,{"instance":"Instancia10","depart":0}
+                     ,{"instance":"Instancia12","depart":0}
+                     ,{"instance":"Instancia13","depart":0}
+                     ,{"instance":"Instancia14","depart":0}
+                     ,{"instance":"Instancia15","depart":0}
+                     ,{"instance":"Instanciapetite","depart":0}
+                     ,{"instance":"Instanciamoyenne","depart":0}
+                  ]
 
 }
