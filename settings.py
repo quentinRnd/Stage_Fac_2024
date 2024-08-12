@@ -57,6 +57,15 @@ solution_algo_custom_key="solution_algo_custom"
 #timeout en seconde pour les solution custom
 timout_solution_custom="timout_solution_custom"
 
+#possibilité de changer l'heuristique de choix des variable
+variable_heuristique_key="variable_heuristique"
+#permet d'inverser l'euristique de choix des variables
+inverse_heuristique_key="inverse_heuristique"
+#permet de choisir la façon dont on choisi les valeur des variable
+Value_ordering_heuristique_key="Value_ordering_heuristique"
+#permet de choisir une variante de certaine heuristique de variable
+variante_var_heuristique_key="variante_var_heuristique"
+
 
 
 
@@ -158,9 +167,11 @@ solution_custom_reex={key_short_arg:"c",key_long_arg:"custom_sol"}
 key_num_thread={key_short_arg:"t",key_long_arg:"num_thread"}
 #identifiant qui sert a savoir quelle est le numero du thread 
 key_id_thread={key_short_arg:"i",key_long_arg:"id_thread"}
+key_customrelauch={key_long_arg:"custom_relaunch"}
 
 #paramètre pour nommer le modele 
 key_id_name_model={key_short_arg:"output",key_long_arg:"output"}
+
 
 
 """

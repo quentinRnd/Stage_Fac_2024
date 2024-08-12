@@ -1,4 +1,4 @@
-	#modele qui va intergrer les chemin ayant des caractéristique
+#modele qui va intergrer les chemin ayant des caractéristique
 
 from pycsp3 import *
 import numpy as np
@@ -15,6 +15,245 @@ from utils import *
 from algocustom import algo_custom_solution
 from Densiter_graphe import calcul_densiter_graphe,gestion_densiter_graphe
 
+
+def execute_sol_inter(nom_instance
+            ,solver_verbose
+            ,instance_repertory
+            ,timeout_solver
+            ,nombre_solution
+            ,fonction_objectif
+            ,timeout_activer
+            ,solver
+            ,extension_instance
+            ,type_objectif
+            ,repertoire_solution
+            ,repertoire_preference_util
+            ,preference_util
+            ,solution_inter
+            ,timeout_sol_inter
+            ,solution_custom
+            ,preference_recherche
+            ,type_objectif_inter_solution
+            ,timeout_sol_custom
+            ,densiter_graphe
+            ,variable_heuristique
+            ,inverse_heuristique
+            ,Value_ordering_heuristique
+            ,variante_var_heuristique
+            ,nom_fichier_custom=None):
+    categorie_permise= [i for i in range (1000)]
+
+    instance_custom=None
+    if nom_fichier_custom is not None:
+        with open(f"{repertoire_solution}/sol_inter/{nom_fichier_custom}.json") as instance_json:
+            instance_custom=json.load(instance_json)
+
+    with open(f"{instance_repertory}/{nom_instance}.json") as instance_json:
+        #budget maximum alloué au visite
+        budget_max=2000
+
+        #temps de visite max allouer a la somme des temps de visite des points d'intérêt
+        Temps_max_visite=3000
+
+        #distance parcourue par les utilisateur.ice
+        distance_parcourue_max=100
+        distance_parcourue_min=10
+        
+        #capacité max des pdi
+        capacite_max=500
+
+
+        with open(f"{repertoire_preference_util}/{preference_util}") as preference_json:
+            #objet json qui contient les préférence utilisteur.ice pour les chemins
+            preference_util_data=json.load(preference_json)
+            
+            #objet json qui contient l'instance json 
+            instance = json.load(instance_json)
+            
+
+            if densiter_graphe is not None:
+                instance=gestion_densiter_graphe(densiter_rechercher=densiter_graphe,graphe_default=instance)
+            
+            #tableau qui me permet de traiter les différente préférence utilisateur.ice
+            preference_util_tab=[
+                                    preference_util_data[preference_marche_key][nature_key]
+                                    ,preference_util_data[preference_marche_key][ville_key]
+                                    ,preference_util_data[preference_marche_key][élevation_key]
+                                    ,preference_util_data[preference_marche_key][foret_key]
+                                    ,preference_util_data[preference_marche_key][lac_key]
+                                    ,preference_util_data[preference_marche_key][riviere_key]
+                                ]
+            #recuperation de l'interet utilisateur.ice
+            interet_chemin=preference_util_data[interet_chemin_key]
+
+
+            capacite_max=preference_util_data[capacite_max_key]
+
+            budget_max=preference_util_data[budget_max_key]
+
+            Temps_max_visite=preference_util_data[Temps_max_visite_key]
+
+            distance_parcourue_max=preference_util_data[distance_parcourue_max_key]
+            distance_parcourue_min=preference_util_data[distance_parcourue_min_key]
+            Tranche_temps=preference_util_data[Tranche_temps_key]
+            
+            Max_visite_pdi=preference_util_data[Max_visite_pdi_key]
+            Min_visite_pdi=preference_util_data[Min_visite_pdi_key]
+
+            pdi_mandatory=preference_util_data[pdi_obligatoire_key]
+
+
+            preference_pdi=preference_util_data[poiInterresement]
+            
+            #sert a savoir si on active les points de departs
+            point_depart_activer=preference_util_data[point_depart_activer_key]
+            
+            point_depart=None
+
+            if point_depart_activer:
+                point_depart=preference_util_data[point_depart_key]
+                for i in point_depart:
+                    if i[pdi_depart_instance_key]==nom_instance:
+                        point_depart=i[pdi_depart_depart_key]
+
+            score_pdi=instance[Score_pdi_key]
+            max_score=max(score_pdi)
+            for i in range(len(score_pdi)):
+                score_pdi[i]=(int((score_pdi[i]/max_score)*preference_pdi)if preference_pdi>0 else 0)
+
+            
+            #variable qui va contenir les different chemin qui aura les valuation mixer 
+            chemin_valuer=[]
+
+            parcour_pdi=range(len(instance[Score_pdi_key]))
+
+            max_chemin=len(preference_util_tab)
+            
+
+            #je vais faire en sorte de mixer les interet preference util et les interet des chemin dans l'instance            
+            for i in range(len(instance[Categorie_chemin_pdi_key])):
+                aux=[]
+                for j in range(len(instance[Categorie_chemin_pdi_key][i])):
+                    if instance[Categorie_chemin_pdi_key][i][j] is not None:
+                        aux.append(
+                                    int(
+                                        (sum(
+                                            [
+                                                instance[Categorie_chemin_pdi_key][i][j][k]*preference_util_tab[k]
+                                                    for k in range(min(len(instance[Categorie_chemin_pdi_key][i][j]),len(preference_util_tab)))
+                                            ]
+                                           )/max_chemin
+                                           )*interet_chemin
+                                      ) if max_chemin>0 else 0
+                                  )
+                    else:
+                        aux.append(-1)
+                chemin_valuer.append(aux)
+            circuit_default=None
+            y_default=None
+            s_default=None
+            solve_time_default=None
+            if instance_custom is not None:
+                solution_choisie=instance_custom[Solutions_key][0]
+                
+                circuit=solution_choisie[Circuit_key]
+                circuit_default=[i for i in parcour_pdi ]
+                for i in circuit:
+                    circuit_default[i[0]]=i[1]
+                y_default=solution_choisie[Presence_pdi_key]
+                s_default=solution_choisie[Start_pdi_key]
+                tab_res=instance_custom[Solutions_key]
+                solve_time_default=0
+                resultat_custom=algo_custom_solution(nom_instance=nom_instance
+                ,solver_verbose=solver_verbose
+                ,budget_max=budget_max
+                ,capacite_max=capacite_max
+                ,capaciter_pdi=instance[Capacite_key]
+                ,categorie_pdi=instance[Categorie_key]
+                ,categorie_permise=categorie_permise
+                ,chemin_valuer=chemin_valuer
+                ,coord_x=instance[X_PDI_key]
+                ,coord_y=instance[Y_PDI_key]
+                ,distance_parcourue_max=distance_parcourue_max
+                ,distance_parcourue_min=distance_parcourue_min
+                ,duree_visite=instance[Temps_visite_key]
+                ,extension_instance=extension_instance
+                ,fermeture_pdi=instance[Heure_fermeture_key]
+                ,fonction_objectif=fonction_objectif
+                ,interet_pdi=score_pdi
+                ,nombre_solution=nombre_solution
+                ,ouverture_pdi=instance[Heure_ouverture_key]
+                ,prix_entrer=instance[Cout_entrer_key]
+                ,repertoire_solution=repertoire_solution
+                ,solution_inter=False
+                ,solver=solver
+                ,Temps_max_visite=Temps_max_visite
+                ,timeout_activer=timeout_activer
+                ,timeout_solver=timeout_solver
+                ,type_objectif=type_objectif
+                ,timeout_sol_inter=timeout_sol_inter
+                ,tranche_temps=Tranche_temps
+                ,Max_visite_pdi=Max_visite_pdi
+                ,Min_visite_pdi=Min_visite_pdi
+                ,circuit_fixer=tab_res[len(tab_res)-1][Circuit_key]
+                ,boundmax=instance_custom[Bound_key]
+                ,pdi_mandatory=pdi_mandatory
+                ,resultat_recherche_csp=instance_custom[Status_key][Fin_recherche_key]
+                ,instance_repertory=instance_repertory
+                ,timeout_sol_custom=timeout_sol_custom
+                ,point_depart=point_depart)
+                if resultat_custom is not None:
+                    modele4(nom_instance=nom_instance
+                ,solver_verbose=solver_verbose
+                ,budget_max=budget_max
+                ,type_objectif_inter_solution=type_objectif_inter_solution
+                ,capacite_max=capacite_max
+                ,capaciter_pdi=instance[Capacite_key]
+                ,categorie_pdi=instance[Categorie_key]
+                ,categorie_permise=categorie_permise
+                ,chemin_valuer=chemin_valuer
+                ,coord_x=instance[X_PDI_key]
+                ,coord_y=instance[Y_PDI_key]
+                ,distance_parcourue_max=distance_parcourue_max
+                ,distance_parcourue_min=distance_parcourue_min
+                ,duree_visite=instance[Temps_visite_key]
+                ,extension_instance=extension_instance
+                ,fermeture_pdi=instance[Heure_fermeture_key]
+                ,fonction_objectif=fonction_objectif
+                ,interet_pdi=score_pdi
+                ,nombre_solution=nombre_solution
+                ,ouverture_pdi=instance[Heure_ouverture_key]
+                ,prix_entrer=instance[Cout_entrer_key]
+                ,repertoire_solution=repertoire_solution
+                ,solution_inter=False
+                ,solver=solver
+                ,Temps_max_visite=Temps_max_visite
+                ,timeout_activer=False
+                ,timeout_solver=timeout_solver
+                ,type_objectif=type_objectif
+                ,timeout_sol_inter=timeout_sol_inter
+                ,tranche_temps=Tranche_temps
+                ,Max_visite_pdi=Max_visite_pdi
+                ,Min_visite_pdi=Min_visite_pdi
+                ,solution_custom=True
+                ,pdi_mandatory=pdi_mandatory
+                ,circuit_default=resultat_custom[0]
+                ,y_default=resultat_custom[1]
+                ,s_default=resultat_custom[2]
+                ,solve_time_default=resultat_custom[3]
+                ,status_fin_recherche_default=resultat_custom[4]
+                ,desactive_contrainte=[]
+                ,preference_recherche=preference_recherche
+                ,preference_utilisateur=Tranche_temps
+                ,instance_data=instance
+                ,timeout_sol_custom=timeout_sol_custom
+                ,point_depart=point_depart
+                ,variable_heuristique=variable_heuristique
+                ,inverse_heuristique=inverse_heuristique
+                ,Value_ordering_heuristique=Value_ordering_heuristique
+                ,variante_var_heuristique=variante_var_heuristique)
+
+    
 
 def modele4_json(nom_instance
             ,solver_verbose
@@ -36,6 +275,10 @@ def modele4_json(nom_instance
             ,type_objectif_inter_solution
             ,timeout_sol_custom
             ,densiter_graphe
+            ,variable_heuristique
+            ,inverse_heuristique
+            ,Value_ordering_heuristique
+            ,variante_var_heuristique
             ,nom_fichier_custom=None
 
             ):
@@ -210,6 +453,10 @@ def modele4_json(nom_instance
                         ,instance_data=instance
                         ,timeout_sol_custom=timeout_sol_custom
                         ,point_depart=point_depart
+                        ,variable_heuristique=variable_heuristique
+                        ,inverse_heuristique=inverse_heuristique
+                        ,Value_ordering_heuristique=Value_ordering_heuristique
+                        ,variante_var_heuristique=variante_var_heuristique
                     )
                     #a faire 
                     #faire en sorte de passer les donnée preference utilisateur sur les feuille de la matrice des chemin
@@ -256,6 +503,11 @@ def modele4(nom_instance
 
             ,instance_data
             ,timeout_sol_custom
+
+            ,variable_heuristique
+            ,inverse_heuristique
+            ,Value_ordering_heuristique
+            ,variante_var_heuristique
             #sert a force certaine valeur du circuit après notament une première pré-solution
             ,circuit_forcer=None
             ,pdi_mandatory=[]
@@ -325,7 +577,8 @@ def modele4(nom_instance
         else:    
             s = VarArray(size=N,dom=lambda i: range(0,Temps_max_tranche)if i in pdi_accepter else tempsdefault )
     else:
-        s = VarArray(size=N,dom=lambda i:range(0,Temps_max_tranche)if circuit_forcer[i]!=i else {tempsdefault})
+        #s = VarArray(size=N,dom=lambda i:range(0,Temps_max_tranche)if circuit_forcer[i]!=i else {tempsdefault})
+        s = VarArray(size=N,dom=lambda i: range(0,Temps_max_tranche)if i in pdi_accepter else tempsdefault )
     
     if point_depart is not None:
         print("Contrainte Point de depart")
@@ -341,7 +594,8 @@ def modele4(nom_instance
         else:
             y = VarArray(size=N, dom=lambda i: {0,1} if i in pdi_accepter else {0})
     else:
-        y=VarArray(size=N, dom=lambda i:{0,1}if circuit_forcer[i]!=i else {0} )
+        y = VarArray(size=N, dom=lambda i: {0,1} if i in pdi_accepter else {0})
+        #y=VarArray(size=N, dom=lambda i:{0,1}if circuit_forcer[i]!=i else {0} )
 
     
 
@@ -450,8 +704,11 @@ def modele4(nom_instance
     """
     if  9 not in desactive_contrainte:
         print("contrainte 9 use")
-        satisfy(Sum(y[i] for i in parcours_pdi)>Min_visite_pdi-1)
-        satisfy(Sum(y[i] for i in parcours_pdi)<Max_visite_pdi+1)
+
+        somme_visite_pdi=Var(dom=range(Min_visite_pdi,Max_visite_pdi+1))
+        satisfy(somme_visite_pdi==Sum(y[i] for i in parcours_pdi))
+        #satisfy(Sum(y[i] for i in parcours_pdi)>Min_visite_pdi-1)
+        #satisfy(Sum(y[i] for i in parcours_pdi)<Max_visite_pdi+1)
     
     """
     Contrainte 10
@@ -489,9 +746,10 @@ def modele4(nom_instance
     Contrainte 14
     """
     if  14 not in desactive_contrainte and not max(interet_pdi)==0:
-        print("contrainte 14 use")
+        #print("contrainte 14 use")
         
-        satisfy(Knapsack(y, weights=[1 for i in parcours_pdi],wcondition=ge(Min_visite_pdi), profits=interet_pdi)>=0)
+        #satisfy(Knapsack(y, weights=[1 for i in parcours_pdi],wcondition=ge(Min_visite_pdi), profits=interet_pdi)>=0)
+        pass
     """
     Fonction objectif
     """
@@ -534,10 +792,17 @@ def modele4(nom_instance
 
     print("start of the solve ",datetime.datetime.now())
 
+    option_ACE=f"-t={int(timeout_sol_inter) if solution_inter else int(solver_timeout_seconds)}s" if timeout_activer else ""
+    option_ACE+=f" {f"-varh={variable_heuristique}" if variable_heuristique is not None else ""}"
+    option_ACE+=f" {"-anti_varh" if inverse_heuristique else ""}"
+    option_ACE+=f" {f"-valh={Value_ordering_heuristique}" if Value_ordering_heuristique else ""}"
+    option_ACE+=f" {f"-wt={variante_var_heuristique}" if variante_var_heuristique else ""}"
+
+
     resultat_recherche=solve(solver=solver_effectif 
                             ,sols=nombre_solution
                             ,verbose=solver_verbose
-                            ,options=f"-t={int(timeout_sol_inter) if solution_inter else int(solver_timeout_seconds)}s" if timeout_activer else "")
+                            ,options=option_ACE)
     #sert a savoir quand on a fini le solve
     print("ending of the solve ",datetime.datetime.now())
     fin_solve=int(time.time())
@@ -668,7 +933,11 @@ def modele4(nom_instance
                 ,preference_utilisateur=preference_utilisateur
                 ,instance_data=instance_data
                 ,timeout_sol_custom=timeout_sol_custom
-                ,point_depart=point_depart)
+                ,point_depart=point_depart
+                ,variable_heuristique=variable_heuristique
+                ,inverse_heuristique=inverse_heuristique
+                ,Value_ordering_heuristique=Value_ordering_heuristique
+                ,variante_var_heuristique=variante_var_heuristique)
     
     if solution_custom and p_recherche != None and solution_inter:
         print(resultat_recherche)
@@ -760,7 +1029,11 @@ def modele4(nom_instance
                 ,preference_utilisateur=preference_utilisateur
                 ,instance_data=instance_data
                 ,timeout_sol_custom=timeout_sol_custom
-                ,point_depart=point_depart)
+                ,point_depart=point_depart
+                ,variable_heuristique=variable_heuristique
+                ,inverse_heuristique=inverse_heuristique
+                ,Value_ordering_heuristique=Value_ordering_heuristique
+                ,variante_var_heuristique=variante_var_heuristique)
                 solution_custom_res=True
             i-=1
 
@@ -795,10 +1068,16 @@ if __name__ == "__main__":
                 help='choosing where the settings for the search is')
     parser.add_argument(f"--{solution_custom_reex[key_short_arg]}", type=str,default=None,
                 help='sert a réexecuter un solution custom')
+
+    parser.add_argument(f"--{key_customrelauch[key_long_arg]}", type=str,default=None,
+                help='sert a réexecuter une solution inter avec l\'algo custom')
         
     args = parser.parse_known_args()
     if(args[0].s is not None):
         fichier_settings_json=args[0].s
+
+    
+    
     
     
 
@@ -848,6 +1127,20 @@ if __name__ == "__main__":
         #savoir  quelle est le timeout pour les solution custom
         timeout_sol_custom=settings[timout_solution_custom]
 
+        #possibilité de changer l'heuristique de choix des variable
+        variable_heuristique=settings[variable_heuristique_key]
+
+        #permet d'inverser l'euristique de choix des variables
+        inverse_heuristique=settings[inverse_heuristique_key]
+
+        #permet de choisir la façon dont on choisi les valeur des variable
+        Value_ordering_heuristique=settings[Value_ordering_heuristique_key]
+
+        #permet de choisir une variante de certaine heuristique de variable
+        variante_var_heuristique=settings[variante_var_heuristique_key]
+
+        
+
         #identifiant processus
         num_thread=1
         #identifiant du nombre de procesus en parrallèle
@@ -892,8 +1185,41 @@ if __name__ == "__main__":
                 print(f"file {file_a_traiter} does not exists")
                 
                 exit(0)
-        #instance déjà traiter 
+        
+        
+        custom_relaunch=args[0].custom_relaunch
+        if(custom_relaunch):
+            execute_sol_inter(custom_relaunch
+                        ,solver_verbose=niveau_verbose
+                        ,instance_repertory=instance_repertory
+                        ,timeout_solver=timeout_solver
+                        ,nombre_solution=nombre_solution
+                        ,fonction_objectif=fonction_objectif
+                        ,timeout_activer=timeout_activer
+                        ,solver=solver
+                        ,extension_instance=extension_instance
+                        ,type_objectif=type_objectif
+                        ,repertoire_solution=repertoire_solution
+                        ,repertoire_preference_util=repertoire_preference_util
+                        ,preference_util=preference_util
+                        ,solution_inter=solution_inter
+                        ,timeout_sol_inter=timeout_sol_inter
+                        ,solution_custom=solution_custom
+                        ,nom_fichier_custom=custom_relaunch
+                        ,preference_recherche=settings
+                        ,type_objectif_inter_solution=type_objectif_inter_solution
+                        ,timeout_sol_custom=timeout_sol_custom
+                        ,densiter_graphe=densiter_graphe
+                        ,variable_heuristique=variable_heuristique
+                        ,inverse_heuristique=inverse_heuristique
+                        ,Value_ordering_heuristique=Value_ordering_heuristique
+                        ,variante_var_heuristique=variante_var_heuristique
+                        
+                )
+            exit(0)
 
+        #instance déjà traiter 
+    
         instance_exclu=[]
         if num_thread==1:
             for instance in instances:
@@ -919,6 +1245,10 @@ if __name__ == "__main__":
                         ,type_objectif_inter_solution=type_objectif_inter_solution
                         ,timeout_sol_custom=timeout_sol_custom
                         ,densiter_graphe=densiter_graphe
+                        ,variable_heuristique=variable_heuristique
+                        ,inverse_heuristique=inverse_heuristique
+                        ,Value_ordering_heuristique=Value_ordering_heuristique
+                        ,variante_var_heuristique=variante_var_heuristique
                         
                 )
                     
@@ -949,6 +1279,10 @@ if __name__ == "__main__":
                         ,type_objectif_inter_solution=type_objectif_inter_solution
                         ,timeout_sol_custom=timeout_sol_custom
                         ,densiter_graphe=densiter_graphe
+                        ,variable_heuristique=variable_heuristique
+                        ,inverse_heuristique=inverse_heuristique
+                        ,Value_ordering_heuristique=Value_ordering_heuristique
+                        ,variante_var_heuristique=variante_var_heuristique
                     )
                 instance_traiter+=num_thread
                 nombre_instance_traiter+=1

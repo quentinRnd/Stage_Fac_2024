@@ -65,7 +65,7 @@ def gestion_densiter_graphe(densiter_rechercher,repertoire_fichier=None,nom_fich
 
 """
 repertoire_instance="Instance_json"
-repertoire_instance_destination="Instance_json_densiter_0_7"
+repertoire_instance_destination="Instance_json_densiter_0_9"
 #recupere toute les instance du dossier des instances
 instances=os.listdir(repertoire_instance)
 pattern=r'\w+'
@@ -73,7 +73,7 @@ pattern=r'\w+'
 instances=sorted([re.findall(pattern, i)[0] for i in instances])
 creation_repertoire(repertoire_instance_destination)
 
-densiter_rechercher=0.7
+densiter_rechercher=0.9
 
 for instance in instances:
     instance_final=gestion_densiter_graphe(repertoire_fichier=repertoire_instance,nom_fichier=instance,densiter_rechercher=densiter_rechercher)
