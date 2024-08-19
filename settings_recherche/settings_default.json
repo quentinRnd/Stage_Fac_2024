@@ -7,8 +7,8 @@
     ,"timout_solution_custom":600
     ,"densiter_graphe":null
     ,"timeout_actif":false
-    ,"nombre_solution":1
-    ,"repertoire_solution":"solution/premiere_solution/base"
+    ,"nombre_solution":"ALL"
+    ,"repertoire_solution":"solution/test"
     ,"fonction_objectif":true
     ,"solver":"ACE"
     
@@ -23,7 +23,7 @@
     ,"type_objectif_inter_solution":"Maximise_score_chemin"
     ,"repertoire_profile_marcheureuse":"profile_marcheur"
     ,"profile_marcheureuse_choisie":"profile_1.json"
-    ,"inter_solution":false
+    ,"inter_solution":true
     ,"solution_algo_custom":true
 
 }

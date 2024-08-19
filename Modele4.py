@@ -792,11 +792,11 @@ def modele4(nom_instance
 
     print("start of the solve ",datetime.datetime.now())
 
-    option_ACE=f"-t={int(timeout_sol_inter) if solution_inter else int(solver_timeout_seconds)}s" if timeout_activer else ""
-    option_ACE+=f" {f"-varh={variable_heuristique}" if variable_heuristique is not None else ""}"
-    option_ACE+=f" {"-anti_varh" if inverse_heuristique else ""}"
-    option_ACE+=f" {f"-valh={Value_ordering_heuristique}" if Value_ordering_heuristique else ""}"
-    option_ACE+=f" {f"-wt={variante_var_heuristique}" if variante_var_heuristique else ""}"
+    option_ACE=f"-t={int(timeout_sol_inter) if solution_inter else int(solver_timeout_seconds)}s " if timeout_activer else ""
+    option_ACE+=f"-varh={variable_heuristique} " if variable_heuristique is not None else ""
+    option_ACE+="-anti_varh " if inverse_heuristique else ""
+    option_ACE+=f"-valh={Value_ordering_heuristique} " if Value_ordering_heuristique else ""
+    option_ACE+=f"-wt={variante_var_heuristique} " if variante_var_heuristique else ""
 
 
     resultat_recherche=solve(solver=solver_effectif 
